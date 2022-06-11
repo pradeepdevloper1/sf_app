@@ -1,0 +1,70 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.1.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="SkiaSharp" Version="2.80.2" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XF.APP.ABSTRACTION\XF.APP.ABSTRACTION.csproj" />
+    <ProjectReference Include="..\XF.APP.BAL\XF.APP.BAL.csproj" />
+    <ProjectReference Include="..\XF.APP.DTO\XF.APP.DTO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Assets\Localization\AppResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\OutputPage7i.xaml.cs">
+      <DependentUpon>OutputPage7i.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="XamlUtils\OutputInfoView7i.xaml.cs">
+      <DependentUpon>OutputInfoView7i.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Assets\Images\ic_defect_mark.png">
+      <Link>ic_defect_mark.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Assets\Images\ic_reject_mark.png">
+      <Link>ic_reject_mark.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Assets\Localization\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\OutputPage7i.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="XamlUtils\OutputButtonView7i.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="XamlUtils\OutputInfoView7i.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ListCells\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Acr.UserDialogs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v10.0\Mono.Android.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

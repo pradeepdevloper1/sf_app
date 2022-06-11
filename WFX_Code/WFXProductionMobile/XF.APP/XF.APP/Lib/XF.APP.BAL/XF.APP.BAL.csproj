@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.483" />
+    <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
+    <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.1.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XF.APP.ABSTRACTION\XF.APP.ABSTRACTION.csproj" />
+    <ProjectReference Include="..\XF.APP.ApiService\XF.APP.ApiService.csproj" />
+    <ProjectReference Include="..\XF.APP.DTO\XF.APP.DTO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="SkiaSharp" />
+    <None Remove="SkiaSharp.Views.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v10.0\Mono.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.AppCompat">
+      <HintPath>C:\Program Files (x86)\Microsoft\Xamarin\NuGet\xamarin.androidx.appcompat\1.2.0.6\lib\monoandroid90\Xamarin.AndroidX.AppCompat.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="PageViewModels\InspectionPageViewModel.cs">
+      <IncludeInPackage>true</IncludeInPackage>
+    </Compile>
+  </ItemGroup>
+</Project>

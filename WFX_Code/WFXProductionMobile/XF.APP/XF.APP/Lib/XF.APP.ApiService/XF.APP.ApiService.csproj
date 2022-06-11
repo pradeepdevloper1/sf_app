@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XF.APP.ABSTRACTION\XF.APP.ABSTRACTION.csproj" />
+    <ProjectReference Include="..\XF.APP.DTO\XF.APP.DTO.csproj" />
+  </ItemGroup>
+
+</Project>

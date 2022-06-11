@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:cc="clr-namespace:XF.BASE;assembly=XF.BASE"
+          xmlns:resources="clr-namespace:XF.BASE.Assets.Localization;assembly=XF.BASE"
+          x:Class="XF.BASE.ListCells.SoViewCell">
+
+    <ViewCell.View>
+
+        <cc:CardView
+            CardViewOutlineColor="White"
+            CardViewInnerFrameOutlineColor="LightBlue"
+            CardViewHasShadow="True"
+            IsClippedToBounds="True"
+            CardViewHorizontalOptions="FillAndExpand"
+            CardViewVerticalOptions="FillAndExpand"
+            Margin="8">
+            <cc:CardView.CardViewContent>
+
+                <Grid
+                    BackgroundColor="White"
+                    RowDefinitions="Auto,Auto,Auto,Auto"
+                    ColumnDefinitions="32*,29*,35*,4*"
+                    RowSpacing="2" ColumnSpacing="40"
+                    Padding="38, 25">
+
+                    <!-- Column 1 -->
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="{x:Static resources:AppResources.SoNumberText}"
+                        Style="{StaticResource SmallHeaderLabel}" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0,0,0,15"
+                        Text="{Binding soNo}"
+                        TextTransform="Uppercase"
+                        Style="{StaticResource HeaderValueLabel}" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Text="{x:Static resources:AppResources.StyleText}"
+                        Style="{StaticResource SmallHeaderLabel}" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="{Binding style}"
+                        Style="{StaticResource HeaderValueLabel}" />
+
+                    <!-- Column 2 -->
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="{x:Static resources:AppResources.CustomerText}"
+                        Style="{StaticResource SmallHeaderLabel}" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="0,0,0,15"
+                        Text="{Binding customer}"
+                        Style="{StaticResource HeaderValueLabel}" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="{x:Static resources:AppResources.ProductText}"
+                        Style="{StaticResource SmallHeaderLabel}" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="{Binding product}"
+                        Style="{StaticResource HeaderValueLabel}" />
+
+                    <!-- Column 3 -->
+                    <Grid
+                        Grid.RowSpan="4"
+                        Grid.Column="2"
+                        HorizontalOptions="CenterAndExpand"
+                        ColumnDefinitions="Auto,Auto"
+                        ColumnSpacing="40">
+
+                        <cc:CircleCountdown
+                            Grid.Column="0"
+                            HeightRequest="126"
+                            WidthRequest="126"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Progress="{Binding poGraphProgress}"
+                            ProgressStartColor="{StaticResource ProgressStartColor}"
+                            ProgressEndColor="{StaticResource ProgressEndColor}"
+                            StrokeWidth="4"/>
+
+                        <StackLayout
+                            Grid.Column="0"
+                            Spacing="3"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+
+                            <Label
+                                Text="{x:Static resources:AppResources.POsText}"
+                                HorizontalOptions="Center"
+                                Style="{StaticResource SmallHeaderLabel}" />
+                            <Label
+                                Text="{Binding completedPo}"
+                                HorizontalOptions="Center"
+                                FontSize="14" />
+                            <Label
+                                HeightRequest="1"
+                                WidthRequest="18"
+                                HorizontalOptions="Center"
+                                BackgroundColor="{StaticResource BaseTextColor}"
+                                FontSize="14" />
+                            <Label
+                                Text="{Binding noOfPO}"
+                                HorizontalOptions="Center"
+                                Style="{StaticResource LabelBold}"
+                                FontSize="14" />
+
+                        </StackLayout>
+
+                        <cc:CircleCountdown
+                            Grid.Column="1"
+                            HeightRequest="126"
+                            WidthRequest="126"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Progress="{Binding qtyGraphProgress}"
+                            ProgressStartColor="{StaticResource ProgressStartColor}"
+                            ProgressEndColor="{StaticResource ProgressEndColor}"
+                            StrokeWidth="4"/>
+
+                        <StackLayout
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+
+                        <Label
+                            Text="{x:Static resources:AppResources.QuantityText}"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource SmallHeaderLabel}" />
+                        <Label
+                            Text="{Binding completedQty}"
+                            HorizontalOptions="Center"
+                            FontSize="14" />
+                        <Label
+                            HeightRequest="1"
+                            WidthRequest="18"
+                            HorizontalOptions="Center"
+                            BackgroundColor="{StaticResource BaseTextColor}"
+                            FontSize="14" />
+                        <Label
+                            Text="{Binding soQty}"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource LabelBold}"
+                            FontSize="14" />
+
+                        </StackLayout>
+                    </Grid>
+
+                    <!-- Column 4 -->
+                    <ImageButton
+                        Grid.RowSpan="4"
+                        Grid.Column="3"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="ic_right_arrow" />
+
+                    <!-- Row 5 -->
+                    <!--<Button
+                        Grid.Row="4"
+                        Grid.ColumnSpan="2"
+                        Margin="0,37,0,47"
+                        TextTransform="Uppercase"
+                        Style="{StaticResource NoteButtonStyle}"
+                        Text="{x:Static resources:AppResources.SoPoInstructionText}" />-->
+                </Grid>
+
+            </cc:CardView.CardViewContent>
+        </cc:CardView>
+
+    </ViewCell.View>
+</ViewCell>

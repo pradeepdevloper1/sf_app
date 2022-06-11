@@ -1,0 +1,687 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:NavigationSearchPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xamlutils="clr-namespace:XF.BASE"
+    xmlns:pages="clr-namespace:XF.BASE.Pages;assembly=XF.BASE"
+    xmlns:resources="clr-namespace:XF.BASE.Assets.Localization;assembly=XF.BASE"
+    x:Class="XF.BASE.Pages.OutputPage">
+
+    <ContentPage.Resources>
+
+        <xamlutils:SegmentTextChanger x:Key="SegmentText" />
+
+        <Style TargetType="Frame">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="HasShadow" Value="True" />
+            <Setter Property="IsClippedToBounds" Value="True" />
+            <Setter Property="BackgroundColor" Value="White" />
+        </Style>
+
+        <Style x:Key="MultipleAddButtonStyle" TargetType="ImageButton">
+            <Setter Property="Margin" Value="0,15" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="BorderColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="IsEnabled" Value="False" />
+            <Setter Property="WidthRequest" Value="{DynamicResource MultipleAddBtnWidthRequest}" />
+        </Style>
+        <xamlutils:InverseBoolConverter x:Key="InvertBool" />
+    </ContentPage.Resources>
+
+    <ScrollView Margin="0" Padding="0">
+        <Grid
+            Margin="0"
+            RowSpacing="0"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="Auto,Auto,Auto,Auto,*">
+            <!--  Header View  -->
+            <Grid
+                x:Name="gridHeaderView"
+                Grid.Row="0"
+                Padding="23,3,21,10"
+                ColumnSpacing="15"
+                ColumnDefinitions="Auto,*,200,200,200"
+                VerticalOptions="Start"
+                HorizontalOptions="FillAndExpand">
+                <Grid
+                    VerticalOptions="CenterAndExpand"
+                    ColumnDefinitions="Auto,Auto"
+                    RowDefinitions="Auto,Auto"
+                    ColumnSpacing="10">
+
+                    <ImageButton
+                        Grid.RowSpan="2"
+                        Source="ic_left_arrow"
+                        VerticalOptions="CenterAndExpand" 
+                        Command="{Binding BackButtonCommand}" />
+
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding SelectedPo.soNo}"
+                        Style="{StaticResource SmallHeaderLabel}" />
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        TextTransform="Uppercase"
+                        Text="{Binding SelectedPo.poNo}"
+                        Style="{StaticResource HeaderValueLabel}" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackButtonCommand}" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <!--  1st DropDown  -->
+                <Frame Grid.Column="2">
+                    <Grid
+                        Padding="12"
+                        RowDefinitions="Auto,Auto"
+                        ColumnDefinitions="*,Auto">
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="{x:Static resources:AppResources.PartText}"
+                            Style="{StaticResource SmallHeaderLabel}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="{Binding SelectedPart}"
+                            Style="{StaticResource HeaderValueLabel}" />
+                        <ImageButton
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            IsEnabled="False"
+                            Source="ic_down_arrow"
+                            HorizontalOptions="EndAndExpand" />
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DropDownCommand}" CommandParameter="Part" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!--  2nd DropDown  -->
+                <Frame Grid.Column="3">
+                    <Grid
+                        Padding="12"
+                        RowDefinitions="Auto,Auto"
+                        ColumnDefinitions="*,Auto">
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="{x:Static resources:AppResources.ColourText}"
+                            Style="{StaticResource SmallHeaderLabel}" />
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Orientation="Horizontal">
+
+                            <Frame
+                                HeightRequest="15"
+                                WidthRequest="25"
+                                BackgroundColor="{Binding SelectedColourCode}" />
+
+                            <Label Text="{Binding SelectedColour}" Style="{StaticResource HeaderValueLabel}" />
+                        </StackLayout>
+
+                        <ImageButton
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            IsEnabled="False"
+                            Source="ic_down_arrow"
+                            HorizontalOptions="EndAndExpand" />
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DropDownCommand}" CommandParameter="Colour" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!--  3rd DropDown  -->
+                <Frame Grid.Column="4">
+                    <Grid
+                        Padding="12"
+                        RowDefinitions="Auto,Auto"
+                        ColumnDefinitions="*,Auto">
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="{x:Static resources:AppResources.SizeText}"
+                            Style="{StaticResource SmallHeaderLabel}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="{Binding SelectedSize}"
+                            Style="{StaticResource HeaderValueLabel}" />
+                        <ImageButton
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            IsEnabled="False"
+                            Source="ic_down_arrow"
+                            HorizontalOptions="EndAndExpand" />
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DropDownCommand}" CommandParameter="Size" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+
+            <!--  Separator  -->
+            <BoxView
+                Grid.Row="1"
+                BackgroundColor="{StaticResource LineSeparator}"
+                HeightRequest="2" />
+
+            <!--  Buttons  -->
+            <Grid
+                Grid.Row="2"
+                Padding="20,9,21,7"
+                ColumnSpacing="-2"
+                ColumnDefinitions="28*,28*,14*,15*,15*"
+                HorizontalOptions="FillAndExpand">
+
+                <Frame
+                    Grid.Column="0"
+                    Margin="0,2"
+                    HasShadow="False"
+                    BorderColor="{StaticResource LineSeparator}"
+                    BackgroundColor="{StaticResource SegmentBgColor}"
+                    Style="{StaticResource PlaceHolderFrameView}">
+
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        TextColor="{StaticResource SegmentTextColor}"
+                        FontSize="18"
+                        Text="{x:Static resources:AppResources.NewGarmentText}" />
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SwitchChangedCommand}" CommandParameter="0" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <Frame
+                    Grid.Column="1"
+                    Margin="0,2"
+                    ClassId="1"
+                    HasShadow="False"
+                    BorderColor="{StaticResource LineSeparator}"
+                    BackgroundColor="{StaticResource SegmentBgColor}"
+                    Style="{StaticResource PlaceHolderFrameView}">
+
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        TextColor="{StaticResource SegmentTextColor}"
+                        FontSize="18"
+                        Text="{x:Static resources:AppResources.ReworkGarmentText}" />
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SwitchChangedCommand}" CommandParameter="1" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!--  Segmnent switch  -->
+                <Frame Grid.Column="{Binding SwitchIndex}">
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        FontSize="18"
+                        Text="{Binding SwitchIndex, Converter={StaticResource SegmentText}}" />
+                </Frame>
+
+                <Button
+                    Grid.Column="2"
+                    x:Name="BtnUndo"
+                    Margin="17,0,0,0"
+                    Image="ic_btn_undo"
+                    ContentLayout="Left,0"
+                    Background="White"
+                    BackgroundColor="White"
+                    TextColor="{StaticResource BaseTextColor}"
+                    Text="{x:Static resources:AppResources.Undo5Button}"
+                    Command="{Binding Undo5Command}" />
+
+                <Button
+                    Grid.Column="3"
+                    x:Name="BtnPause"
+                    Margin="17,0,0,0"
+                    Image="ic_pause"
+                    ContentLayout="Left,0"
+                    Background="White"
+                    BackgroundColor="White"
+                    TextColor="{StaticResource BaseTextColor}"
+                    Text="{Binding BtnStopPause}"
+                    Command="{Binding PauseCommand}" />
+
+                <Button
+                    Grid.Column="4"
+                    x:Name="BtnComplete"
+                    Margin="17,0,0,0"
+                    Image="ic_btn_stroke"
+                    ContentLayout="Left,0"
+                    Text="{x:Static resources:AppResources.EndShiftButton}"
+                    Command="{Binding CompleteCommand}"
+                    CommandParameter="0" />
+
+            </Grid>
+
+            <!--  Separator  -->
+            <BoxView
+                Grid.Row="3"
+                BackgroundColor="{StaticResource LineSeparator}"
+                HeightRequest="2" />
+
+            <!--  Main View  -->
+            <Grid  
+                x:Name="gridMainView"
+                IsVisible="false"
+                Grid.Row="4"
+                Padding="20,9,21,7"
+                Margin="0,5,0,0"
+                ColumnSpacing="-2"
+                RowSpacing="12"
+                ColumnDefinitions="70*,65,30*"
+                RowDefinitions="75,75,75,75,75,75"
+                HorizontalOptions="FillAndExpand">
+
+                <ImageButton
+                    Grid.Column="1"
+                    Grid.RowSpan="2"
+                    IsEnabled="True"
+                    Source="ic_add_multiple"
+                    Command="{Binding MultipleAddCommand}"
+                    CommandParameter="1"
+                    Style="{StaticResource MultipleAddButtonStyle}" />
+                <xamlutils:OutputButtonView
+                    Grid.Column="0"
+                    Grid.RowSpan="2"
+                    ViewIcon="ic_smile_pass"
+                    ViewText="{Binding PassCount}"
+                    ViewTitle="{x:Static resources:AppResources.PassText}"
+                    ViewBgColor="{StaticResource PassBackgroundColor}">
+                    <xamlutils:OutputButtonView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddCommand}" CommandParameter="1"  />
+                    </xamlutils:OutputButtonView.GestureRecognizers>
+                </xamlutils:OutputButtonView>
+
+                <ImageButton
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Grid.RowSpan="2"
+                    Command="{Binding MultipleAddCommand}"
+                    CommandParameter="2"
+                    Style="{StaticResource MultipleAddButtonStyle}" />
+                <xamlutils:OutputButtonView
+                    x:Name="btnDefect"           
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Grid.RowSpan="2"
+                    ViewIcon="ic_smile_defect"
+                    ViewText="{Binding DefectCount}"
+                    ViewTitle="{x:Static resources:AppResources.DefectText}"
+                    ViewBgColor="{StaticResource DefectBackgroundColor}">
+                    <xamlutils:OutputButtonView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddCommand}" CommandParameter="2" />
+                    </xamlutils:OutputButtonView.GestureRecognizers>
+                </xamlutils:OutputButtonView>
+
+                <ImageButton
+                    Grid.Column="1"
+                    Grid.Row="4"
+                    Grid.RowSpan="2"
+                    Command="{Binding MultipleAddCommand}"
+                    CommandParameter="3"
+                    Style="{StaticResource MultipleAddButtonStyle}" />
+                <xamlutils:OutputButtonView
+                    x:Name="btnReject"
+                    Grid.Column="0"
+                    Grid.Row="4"
+                    Grid.RowSpan="2"
+                    ViewIcon="ic_smile_reject"
+                    ViewText="{Binding RejectCount}"
+                    ViewTitle="{x:Static resources:AppResources.RejectText}"
+                    ViewBgColor="{StaticResource RejectBackgroundColor}">
+                    <xamlutils:OutputButtonView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddCommand}" CommandParameter="3" />
+                    </xamlutils:OutputButtonView.GestureRecognizers>
+                </xamlutils:OutputButtonView>
+
+                <xamlutils:OutputInfoView
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    ViewTitle="{x:Static resources:AppResources.TargetText}"
+                    ViewText1="{x:Static resources:AppResources.PiecesText}"  
+                    ViewText2="{x:Static resources:AppResources.EfficiencyText}"
+                    ViewText1Value="{Binding TargetPiecesCount}"
+                    ViewText2Value="{Binding TargetEfficiencyPercentage}"
+                    ViewTextColor="{StaticResource BaseTextColor}" />
+
+                <xamlutils:OutputInfoView
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    ViewTitle="{x:Static resources:AppResources.ActualText}"
+                    ViewText1="{x:Static resources:AppResources.PiecesText}"
+                    ViewText2="{x:Static resources:AppResources.EfficiencyText}"
+                    ViewText1Value="{Binding ActualPiecesCount}"
+                    ViewText2Value="{Binding ActualEfficiencyPercentage}"
+                    ViewTextColor="{StaticResource RejectBackgroundColor}" />
+
+                <xamlutils:OutputInfoView
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    ViewTitle="{x:Static resources:AppResources.PassedText}"
+                    ViewText1="{x:Static resources:AppResources.ShiftText}"
+                    ViewText2="{x:Static resources:AppResources.CumulativeText}"
+                    ViewText1Value="{Binding PassedShiftCount}"
+                    ViewText2Value="{Binding PassedCumulative}"
+                    ViewTextColor="{StaticResource PassBackgroundColor}" />
+
+                <xamlutils:OutputInfoView
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    ViewTitle="{x:Static resources:AppResources.DefectText}"
+                    ViewText1="{x:Static resources:AppResources.ShiftText}"
+                    ViewText2="{x:Static resources:AppResources.CumulativeText}"
+                    ViewText1Value="{Binding DefectShiftCount}"
+                    ViewText2Value="{Binding DefectCumulative}"
+                    ViewTextColor="{StaticResource OutputDefectTextColor}" />
+
+                <xamlutils:OutputInfoView
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    ViewTitle="{x:Static resources:AppResources.RejectedText}"
+                    ViewText1="{x:Static resources:AppResources.ShiftText}"
+                    ViewText2="{x:Static resources:AppResources.CumulativeText}"
+                    ViewText1Value="{Binding RejectedShiftCount}"
+                    ViewText2Value="{Binding RejectedCumulative}"
+                    ViewTextColor="{StaticResource RejectBackgroundColor}" />
+
+                <xamlutils:OutputInfoView
+                    Grid.Row="5"
+                    Grid.Column="2"
+                    ViewTitle="{x:Static resources:AppResources.DefectRateText}"
+                    ViewText1="{x:Static resources:AppResources.ShiftText}"
+                    ViewText2="{x:Static resources:AppResources.AverageText}"
+                    ViewText1Value="{Binding DefectRateShiftPercentage}"
+                    ViewText2Value="{Binding AveragePercentage}"
+                    ViewTextColor="{StaticResource OutputRejectedTextColor}" />
+
+            </Grid>
+            <!--gridMainView7i-->
+            <Grid  
+                x:Name="gridMainView7i"
+                IsVisible="false"
+                HeightRequest="200"
+                Grid.Row="4"
+                Padding="20,0,20,5"
+                Margin="0,15,0,0"
+                ColumnSpacing="-2"
+                RowSpacing="10"
+                ColumnDefinitions="65*,60,40*"
+                RowDefinitions="38,38,38,38,38,38"
+                HorizontalOptions="FillAndExpand">
+
+                <ImageButton
+                    Grid.Column="1"
+                    Grid.RowSpan="2"
+                    IsEnabled="True"
+                    Source="ic_add_multiple"
+                    Command="{Binding MultipleAddCommand}"
+                    CommandParameter="1"
+                    Style="{StaticResource MultipleAddButtonStyle}" />
+                <xamlutils:OutputButtonView
+                    Grid.Column="0"
+                    Grid.RowSpan="2"
+                    ViewIcon="ic_smile_pass"
+                    ViewText="{Binding PassCount}"
+                    ViewTitle="{x:Static resources:AppResources.PassText}"
+                    ViewBgColor="{StaticResource PassBackgroundColor}">
+                    <xamlutils:OutputButtonView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddCommand}" CommandParameter="1" />
+                    </xamlutils:OutputButtonView.GestureRecognizers>
+                </xamlutils:OutputButtonView>
+
+                <ImageButton
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Grid.RowSpan="2"
+                    Command="{Binding MultipleAddCommand}"
+                    CommandParameter="2"
+                    Style="{StaticResource MultipleAddButtonStyle}" />
+                <xamlutils:OutputButtonView
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Grid.RowSpan="2"
+                    ViewIcon="ic_smile_defect"
+                    ViewText="{Binding DefectCount}"
+                    ViewTitle="{x:Static resources:AppResources.DefectText}"
+                    ViewBgColor="{StaticResource DefectBackgroundColor}">
+                    <xamlutils:OutputButtonView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddCommand}" CommandParameter="2" />
+                    </xamlutils:OutputButtonView.GestureRecognizers>
+                </xamlutils:OutputButtonView>
+
+                <ImageButton
+                    Grid.Column="1"
+                    Grid.Row="4"
+                    Grid.RowSpan="2"
+                    Command="{Binding MultipleAddCommand}"
+                    CommandParameter="3"
+                    Style="{StaticResource MultipleAddButtonStyle}" />
+                <xamlutils:OutputButtonView
+                    Grid.Column="0"
+                    Grid.Row="4"
+                    Grid.RowSpan="2"
+                    ViewIcon="ic_smile_reject"
+                    ViewText="{Binding RejectCount}"
+                    ViewTitle="{x:Static resources:AppResources.RejectText}"
+                    ViewBgColor="{StaticResource RejectBackgroundColor}">
+                    <xamlutils:OutputButtonView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddCommand}" CommandParameter="3" />
+                    </xamlutils:OutputButtonView.GestureRecognizers>
+                </xamlutils:OutputButtonView>
+
+                <xamlutils:OutputInfoView
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    ViewTitle="{x:Static resources:AppResources.TargetText}"
+                    ViewText1="{x:Static resources:AppResources.PiecesShortText}"
+                    ViewText2="{x:Static resources:AppResources.EfficiencyShortText}"
+                    ViewText1Value="{Binding TargetPiecesCount}"
+                    ViewText2Value="{Binding TargetEfficiencyPercentage}"
+                    ViewTextColor="{StaticResource BaseTextColor}" />
+
+                <xamlutils:OutputInfoView
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    ViewTitle="{x:Static resources:AppResources.ActualText}"
+                    ViewText1="{x:Static resources:AppResources.PiecesShortText}"
+                    ViewText2="{x:Static resources:AppResources.EfficiencyShortText}"
+                    ViewText1Value="{Binding ActualPiecesCount}"
+                    ViewText2Value="{Binding ActualEfficiencyPercentage}"
+                    ViewTextColor="{StaticResource RejectBackgroundColor}" />
+
+                <xamlutils:OutputInfoView
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    ViewTitle="{x:Static resources:AppResources.PassedText}"
+                    ViewText1="{x:Static resources:AppResources.ShiftText}"
+                    ViewText2="{x:Static resources:AppResources.CumulativeShortText}"
+                    ViewText1Value="{Binding PassedShiftCount}"
+                    ViewText2Value="{Binding PassedCumulative}"
+                    ViewTextColor="{StaticResource PassBackgroundColor}" />
+
+                <xamlutils:OutputInfoView
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    ViewTitle="{x:Static resources:AppResources.DefectText}"
+                    ViewText1="{x:Static resources:AppResources.ShiftText}"
+                    ViewText2="{x:Static resources:AppResources.CumulativeShortText}"
+                    ViewText1Value="{Binding DefectShiftCount}"
+                    ViewText2Value="{Binding DefectCumulative}"
+                    ViewTextColor="{StaticResource OutputDefectTextColor}" />
+
+                <xamlutils:OutputInfoView
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    ViewTitle="{x:Static resources:AppResources.RejectedText}"
+                    ViewText1="{x:Static resources:AppResources.ShiftText}"
+                    ViewText2="{x:Static resources:AppResources.CumulativeShortText}"
+                    ViewText1Value="{Binding RejectedShiftCount}"
+                    ViewText2Value="{Binding RejectedCumulative}"
+                    ViewTextColor="{StaticResource OutputRejectedTextColor}" />
+
+                <xamlutils:OutputInfoView
+                    Grid.Row="5"
+                    Grid.Column="2"
+                    ViewTitle="{x:Static resources:AppResources.DefectRateText}"
+                    ViewText1="{x:Static resources:AppResources.ShiftText}"
+                    ViewText2="{x:Static resources:AppResources.AverageShortText}"
+                    ViewText1Value="{Binding DefectRateShiftPercentage}"
+                    ViewText2Value="{Binding AveragePercentage}"
+                    ViewTextColor="{StaticResource OutputRejectedTextColor}" />
+            </Grid>
+
+
+            <!--  Start/Paused View  -->
+            <StackLayout
+                Grid.Row="1"
+                Grid.RowSpan="4"
+                Opacity="0.8"
+                BackgroundColor="{StaticResource BaseBackgroundColor}"
+                IsVisible="{Binding StartPauseViewVisibility}" />
+            <StackLayout
+                Grid.Row="1"
+                Grid.RowSpan="4"
+                IsVisible="{Binding StartPauseViewVisibility}">
+
+                <ContentView
+                    HeightRequest="261"
+                    WidthRequest="800"
+                    Background="White"
+                    BackgroundColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand">
+                    <Grid
+                        Padding="15"
+                        RowSpacing="25"
+                        ColumnSpacing="25"
+                        RowDefinitions="Auto,Auto,Auto">
+
+                        <Label
+                            Grid.Row="0"
+                            FontSize="18"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding PausedVisibility, Converter={StaticResource InvertBool}}"
+                            Text="{x:Static resources:AppResources.SelectReasonText}" />
+
+                        <Label
+                            Grid.Row="0"
+                            FontSize="18"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding PausedVisibility}"
+                            Text="{x:Static resources:AppResources.PausedText}" />
+
+                        <CollectionView
+                            Grid.Row="1"
+                            SelectionMode="Single"
+                            ItemsLayout="HorizontalList"
+                            HorizontalOptions="Center"
+                            HeightRequest="110"
+                            ItemsSource="{Binding StartPauseList}"
+                            SelectionChanged="CollectionView_SelectionChanged">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="13,0">
+                                        <Frame
+                                            WidthRequest="125"
+                                            Opacity="{Binding Opacity}"
+                                            BorderColor="{Binding BorderColor}"
+                                            BackgroundColor="{StaticResource PauseStartBgColor}">
+                                            <StackLayout Spacing="9" HeightRequest="110">
+                                                <Image
+                                                    Source="{Binding Image}"
+                                                    WidthRequest="40"
+                                                    HeightRequest="40"
+                                                    Margin="0,20,0,0"
+                                                    HorizontalOptions="Center"
+                                                    AutomationProperties.IsInAccessibleTree="True" />
+                                                <Label
+                                                    Text="{Binding Title}"
+                                                    HorizontalOptions="Center"
+                                                    FontFamily="{StaticResource FontFamilySemiBold}"
+                                                    FontSize="{StaticResource SmallHeaderLabelFontSize}" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <Button
+                            Grid.Row="2"
+                            WidthRequest="131"
+                            IsVisible="{Binding PausedVisibility}"
+                            HorizontalOptions="EndAndExpand"
+                            Command="{Binding ResumeCommand}"
+                            Text="{Binding BtnStopPause}" />
+                    </Grid>
+                </ContentView>
+            </StackLayout>
+
+            <!--  Question Prompt View  -->
+            <StackLayout
+                Grid.RowSpan="5"
+                Opacity="0.8"
+                BackgroundColor="#6FC0CC"
+                IsVisible="{Binding QuePromptViewVisibility}" />
+            <StackLayout
+                Grid.RowSpan="5"
+                VerticalOptions="CenterAndExpand"
+                IsVisible="{Binding QuePromptViewVisibility}">
+
+                <ContentView
+                    WidthRequest="600"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Background="White"
+                    BackgroundColor="White">
+
+                    <StackLayout Spacing="9" VerticalOptions="Center">
+                        <Label
+                            FontSize="24"
+                            Margin="0,65,0,40"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resources:AppResources.QuePromptText}" />
+                        <Button
+                            WidthRequest="164"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resources:AppResources.ContinueButton}"
+                            Command="{Binding CompleteCommand}"
+                            CommandParameter="1" />
+
+                        <Button
+                            WidthRequest="164"
+                            Margin="0,0,0,45"
+                            Background="#F0FFFF"
+                            BackgroundColor="#F0FFFF"
+                            HorizontalOptions="Center"
+                            TextColor="{StaticResource BaseTextColor}"
+                            Text="{x:Static resources:AppResources.CancelButton}"
+                            Command="{Binding CompleteCommand}"
+                            CommandParameter="2" />
+                    </StackLayout>
+                </ContentView>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+
+</pages:NavigationSearchPage>

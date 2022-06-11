@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:BasePage
+ xmlns:pages="clr-namespace:XF.BASE.Pages"    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:XF.BASE"
+    x:Class="XF.BASE.Pages.ProcessPage" NavigationPage.HasNavigationBar="False">
+
+
+
+    <ContentPage.Background>
+        <LinearGradientBrush
+StartPoint="0,0"
+EndPoint="1,1">
+            <GradientStop
+Offset="0.1"
+Color="{StaticResource PrimaryBackColor}" />
+            <GradientStop
+Offset="1.0"
+Color="{StaticResource PrimaryBackEndColor}" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Grid
+       RowDefinitions="*,Auto">
+        <Grid Grid.Row="0" 
+                     Margin="0"
+            RowSpacing="0"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand"
+            
+                 RowDefinitions="80,40,Auto,Auto,Auto">
+
+            <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>-->
+
+            <Grid Grid.Row="0" 
+            VerticalOptions="Start"
+            HorizontalOptions="EndAndExpand"
+            ColumnDefinitions="*,100"
+            Margin="0,30,10,0">
+
+                <ImageButton
+            Grid.Column="1"
+HorizontalOptions="EndAndExpand"
+HeightRequest="100"
+WidthRequest="100"
+Source="ic_close.png"
+Command="{Binding CloseCommand1}" />
+
+            </Grid>
+
+            <Grid Grid.Row="1"
+             VerticalOptions="Start" 
+            HorizontalOptions="Center"
+              HeightRequest="100"
+            Margin="0,0,0,0">
+
+                <Label Text="Issue pieces to next process" TextColor="White" FontSize="25"></Label>
+
+            </Grid>
+
+
+            <Grid Grid.Row="2"
+                x:Name="gridHeaderView"
+                Padding="3,3,3,3"
+                  Margin="10,10,10,0"
+                ColumnSpacing="15"
+                  RowSpacing="4"
+                    RowDefinitions="Auto,Auto"
+                ColumnDefinitions="15*,15*,15*,15*,15*,15*"
+                VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand">
+
+
+                <!--  1st DropDown  -->
+                <Label VerticalOptions="Start"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Production ord no." LineBreakMode="TailTruncation"  TextColor="White" FontSize="14"
+                             />
+                <Frame Grid.Column="0" Grid.Row="1" VerticalOptions="Center"   Padding="10" >
+                    <Grid 
+                       
+                        RowDefinitions="Auto,Auto"
+                        ColumnDefinitions="*,Auto">
+
+
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="{Binding SelectedProductionOrderNo}"
+                             />
+                        <ImageButton Margin="0,0,10,0" 
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            IsEnabled="False"
+                            Source="ic_down_arrow"
+                            HorizontalOptions="EndAndExpand" />
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DropDownCommand}" CommandParameter="ProductionOrderNo" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!--  2nd DropDown  -->
+                <Label VerticalOptions="Start"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="work ord no." LineBreakMode="TailTruncation"  TextColor="White" FontSize="14"
+                             />
+                <Frame Grid.Column="1" Grid.Row="1" VerticalOptions="Center" PropertyChanged="Frame_PropertyChanged"  Padding="10" >
+                    <Grid 
+                       
+                        RowDefinitions="Auto,Auto"
+                        ColumnDefinitions="*,Auto">
+
+
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="0"
+                          Text="{Binding SelectedWorkOrderNo}"
+                             />
+                        <ImageButton Margin="0,0,10,0" 
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            IsEnabled="False"
+                            Source="ic_down_arrow"
+                            HorizontalOptions="EndAndExpand" />
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DropDownCommand}"  CommandParameter="WorkOrderNo" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!--  3rd DropDown  -->
+                <Label VerticalOptions="Start"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Text="Part" LineBreakMode="TailTruncation"  TextColor="White" FontSize="14"
+                             />
+                <Frame Grid.Column="2" Grid.Row="1" VerticalOptions="Center"   Padding="10" >
+                    <Grid 
+                       
+                        RowDefinitions="Auto,Auto"
+                        ColumnDefinitions="*,Auto">
+
+
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="{Binding SelectedParts}"
+                             />
+                        <ImageButton Margin="0,0,10,0" 
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            IsEnabled="False"
+                            Source="ic_down_arrow"
+                            HorizontalOptions="EndAndExpand" />
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DropDownCommand}" CommandParameter="Parts" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!--  4th DropDown  -->
+                <Label VerticalOptions="Start"
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            Text="color" LineBreakMode="TailTruncation" TextColor="White" FontSize="14"
+                             />
+                <Frame Grid.Column="3" Grid.Row="1" VerticalOptions="Center" PropertyChanged="Frame_PropertyChanged_1"  Padding="10" >
+
+                    <Grid
+                        RowDefinitions="Auto,Auto"
+                        ColumnDefinitions="*,Auto">
+
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Orientation="Horizontal">
+
+                            <Frame Padding="9" PropertyChanged="Frame_PropertyChanged_1"
+                                HeightRequest="2"
+                                WidthRequest="2"
+                                BackgroundColor="{Binding SelectedColorsCode}" />
+
+                            <Label Text="{Binding SelectedColors}"/>
+                        </StackLayout>
+
+                        <ImageButton Margin="0,0,10,0" 
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            IsEnabled="False"
+                            Source="ic_down_arrow"
+                            HorizontalOptions="EndAndExpand" />
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DropDownCommand}" CommandParameter="Colors" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!--  5th DropDown  -->
+                <Label VerticalOptions="Start"
+                            Grid.Row="0"
+                            Grid.Column="4"
+                            Text="Issue to work ord no." LineBreakMode="TailTruncation" TextColor="White" FontSize="14"
+                             />
+                <Frame Grid.Column="4" Grid.Row="1" VerticalOptions="Center"   Padding="10" >
+                    <Grid 
+                       
+                        RowDefinitions="Auto,Auto"
+                        ColumnDefinitions="*,Auto">
+
+
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="{Binding IssueToWorkOrderNo}"
+                             />
+                        <ImageButton Margin="0,0,10,0" 
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            IsEnabled="False"
+                            Source="ic_down_arrow"
+                            HorizontalOptions="EndAndExpand" />
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DropDownCommand}" CommandParameter="IssueToWorkOrderNo" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <!--  6th DropDown  -->
+                <Label VerticalOptions="Start"
+                            Grid.Row="0"
+                            Grid.Column="5"
+                            Text="Issue to line no." TextColor="White" FontSize="14"
+                             />
+                <Frame Grid.Column="5" Grid.Row="1" VerticalOptions="Center"   Padding="10" >
+                    <Grid 
+                       
+                        RowDefinitions="Auto,Auto"
+                        ColumnDefinitions="*,Auto">
+
+
+                        <Label 
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="{Binding IssuetToLineNo}"
+                             />
+                        <ImageButton Margin="0,0,10,0" 
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            IsEnabled="False"
+                            Source="ic_down_arrow"
+                            HorizontalOptions="EndAndExpand" />
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DropDownCommand}" CommandParameter="IssuetToLineNo" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+
+            <ScrollView Grid.Row="3" Orientation="Vertical">
+                <Grid Grid.Row="3" x:Name="DataTableGrid" Margin="30,40,30,10" BackgroundColor="#e6f3f8">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid ColumnSpacing="15" BackgroundColor="#e6f3f8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.2*" />
+                            <ColumnDefinition  Width="1*" />
+                            <ColumnDefinition  Width="1.2*" />
+                            <ColumnDefinition Width="1.2*" />
+                            <ColumnDefinition  Width="1.2*" />
+                            <ColumnDefinition  Width="1.5*" />
+                            <ColumnDefinition Width="1.5*" />
+                            <ColumnDefinition  Width="1.2*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Label Text=""  VerticalOptions="Center" FontFamily="OpenSans-Regular" FontSize="14" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" BackgroundColor="Transparent"></Label>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="1"  >
+                            <Label Text="" VerticalOptions="Center"  FontFamily="OpenSans-Regular" FontSize="14" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" BackgroundColor="Transparent"></Label>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="2"  >
+                            <Label Text="Ordered Qty"  VerticalOptions="Center"  FontFamily="OpenSans-Regular" FontSize="14" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" BackgroundColor="Transparent"></Label>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="3" >
+                            <Label Text="Completed Qty" VerticalOptions="Center"  FontFamily="OpenSans-Regular" FontSize="14" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" BackgroundColor="Transparent"></Label>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="4"  >
+                            <Label Text="Issued Qty"  VerticalOptions="Center"   FontFamily="OpenSans-Regular" FontSize="14" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" BackgroundColor="Transparent"></Label>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="5"  >
+                            <Label Text="Recieved by Next Dept"  MaxLines="2"  VerticalOptions="Center"  FontFamily="OpenSans-Regular" FontSize="14" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" BackgroundColor="Transparent"></Label>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="6"  >
+                            <Label Text="Remaining Qty to be Issued" MaxLines="2" VerticalOptions="Center"   FontFamily="OpenSans-Regular" FontSize="14" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" BackgroundColor="Transparent"></Label>
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="7">
+                            <Label Text="Issue Color Qty"  Margin="0,0,2,0"  VerticalOptions="Center"  FontFamily="OpenSans-Regular" FontSize="14" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End" BackgroundColor="Transparent"></Label>
+                        </Grid>
+                        <BoxView HeightRequest="0.3"  Grid.Row="1" Grid.ColumnSpan="8" BackgroundColor="Black"></BoxView>
+
+                    </Grid>
+                    <ScrollView Grid.Row="1" Orientation="Vertical">
+                        <Grid Grid.Row="1" >
+
+                        <controls:RepeaterView ItemsSource="{Binding ProcessDatadto.data}" >
+                            <controls:RepeaterView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid RowSpacing="0" BackgroundColor="Transparent">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1.2*" />
+                                            <ColumnDefinition  Width="1*" />
+                                            <ColumnDefinition  Width="1.2*" />
+                                            <ColumnDefinition Width="1.2*" />
+                                            <ColumnDefinition  Width="1.2*" />
+                                            <ColumnDefinition  Width="1.5*" />
+                                            <ColumnDefinition Width="1.5*" />
+                                            <ColumnDefinition  Width="1.2*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" >
+                                            <StackLayout   Margin="12"                                              
+                                                       Orientation="Horizontal">
+                                                <Frame Padding="9" Margin="10,0,0,0" HorizontalOptions="End" VerticalOptions="StartAndExpand"
+                                                            HeightRequest="2"
+                                                            WidthRequest="2"
+                                                            BackgroundColor="{Binding colorHexName}" />
+                                                <Label  Text="{Binding color}"  VerticalOptions="StartAndExpand" FontAttributes="None"  FontFamily="OpenSans-Regular" FontSize="16" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"></Label>
+                                            </StackLayout>
+                                        </Grid>
+
+                                        <Grid Grid.Row="0" Grid.Column="1"  >
+                                            <Label Text="{Binding size}"  VerticalOptions="CenterAndExpand" FontAttributes="None"  FontFamily="OpenSans-Regular" FontSize="13" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="0" Grid.Column="2"  >
+                                            <Label Text="{Binding orderedQty}"  VerticalOptions="CenterAndExpand" FontAttributes="None"  FontFamily="OpenSans-Regular" FontSize="13" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="0" Grid.Column="3"  >
+                                            <Label  Text="{Binding completedQty}" VerticalOptions="CenterAndExpand" FontAttributes="None"  FontFamily="OpenSans-Regular" FontSize="13" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="0" Grid.Column="4">
+                                            <Label Text="{Binding issuedQty}" VerticalOptions="CenterAndExpand" FontAttributes="None"  FontFamily="OpenSans-Regular" FontSize="13" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="0" Grid.Column="5"  >
+                                            <Label  Text="{Binding receivedbyNextDept}"  VerticalOptions="CenterAndExpand" FontAttributes="None"  FontFamily="OpenSans-Regular" FontSize="13" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="0" Grid.Column="6"  >
+                                            <Label Text="{Binding remainingQtytobeIssued}"  VerticalOptions="CenterAndExpand" FontAttributes="None"  FontFamily="OpenSans-Regular" FontSize="13" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></Label>
+                                        </Grid>
+                                        <Grid Grid.Row="0" Grid.Column="7" BackgroundColor="White" Margin="0,0,2,0" >
+                                            <Entry Text="{Binding issueColorQty}" BackgroundColor="White"  VerticalOptions="CenterAndExpand" FontAttributes="None"  FontFamily="OpenSans-Regular" FontSize="13" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></Entry>
+                                        </Grid>
+                                        <BoxView HeightRequest="0.5" Margin="0,0,0,0" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="7" BackgroundColor="Black" ></BoxView>
+                                    </Grid>
+                                </DataTemplate>
+                            </controls:RepeaterView.ItemTemplate>
+                        </controls:RepeaterView>
+
+                    </Grid>
+                 </ScrollView>
+                    <Grid Grid.Row="2" BackgroundColor="White" Margin="0,0,2,0">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2.0*" />
+                                <ColumnDefinition  Width="1*" />
+                                <ColumnDefinition  Width="1.2*" />
+                                <ColumnDefinition Width="1.2*" />
+                                <ColumnDefinition  Width="1.2*" />
+                                <ColumnDefinition  Width="1.5*" />
+                                <ColumnDefinition Width="1.5*" />
+                                <ColumnDefinition  Width="1.2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Total Qty to be Issued" Margin="20,0,0,0" Grid.ColumnSpan="7" Grid.Row="0"  VerticalOptions="FillAndExpand" FontAttributes="Bold"  FontFamily="OpenSans-Regular" FontSize="20" HorizontalOptions="FillAndExpand" ></Label>
+                            <Grid Grid.Row="0" Grid.Column="7" BackgroundColor="White" >
+                                <Label Margin="0,0,10,0" Text="{Binding ProcessDatadto.Totalqty}" TextColor="Black"  VerticalOptions="FillAndExpand" FontAttributes="None" FontFamily="OpenSans-Regular" FontSize="15" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></Label>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+        </Grid>
+
+        <Grid Grid.Row="1" Padding="0,10,0,20" VerticalOptions="End" >
+            <Frame BackgroundColor="White" HorizontalOptions="Center" WidthRequest="150">
+                <Grid>
+                    <Label 
+                            VerticalOptions="Center"
+                          HorizontalOptions="Center"
+                           Text="ISSUE QTY"
+                            FontSize="20" TextColor="Black" />
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IssueQtyCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+        </Grid>
+    </Grid>
+
+
+
+
+</pages:BasePage>

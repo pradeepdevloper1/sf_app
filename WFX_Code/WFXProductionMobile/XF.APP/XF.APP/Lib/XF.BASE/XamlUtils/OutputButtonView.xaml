@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XF.BASE.OutputButtonView"
+    x:Name="this">
+
+    <Frame
+        BindingContext="{x:Reference this}" 
+        x:Name="frmOutputButtonView"
+        Padding="12"
+        Margin="0,4,0,4"
+        CornerRadius="4"
+        HasShadow="True"
+        IsClippedToBounds="True"
+        BackgroundColor="{Binding ViewBgColor}">
+        <Grid
+            ColumnDefinitions="20*,55*,2,25*">
+            <Image
+                Grid.Column="0"
+                Aspect="AspectFit"
+                VerticalOptions="CenterAndExpand"
+                Source="{Binding ViewIcon}" />
+            <Label
+                Grid.Column="1"
+                x:Name="lblBigHeaderText"
+                IsVisible="false"
+                Text="{Binding ViewTitle}"
+                Style="{StaticResource BigHeaderLabel}"/>
+            <Label
+                Grid.Column="1"
+                x:Name="lblBigHeaderText7i"
+                IsVisible="false"
+                Text="{Binding ViewTitle}"
+                Style="{StaticResource BigHeaderLabel7i}"/>
+            <BoxView
+                Grid.Column="2"
+                WidthRequest="2"
+                BackgroundColor="{StaticResource PrimaryTextColor}" />
+            <Label
+                Grid.Column="3"               
+                x:Name="lblBigHeaderValue"
+                IsVisible="false"
+                FontSize="{StaticResource SubHeaderLabelFontSize}"
+                Text="{Binding ViewText}"
+                Style="{StaticResource BigHeaderLabel}"/>
+            <Label
+                Grid.Column="3"
+                x:Name="lblBigHeaderValue7i"
+                IsVisible="false"
+                FontSize="{StaticResource SubHeaderLabelFontSize}"
+                Text="{Binding ViewText}"
+                Style="{StaticResource BigHeaderLabel7i}"/>
+        </Grid>
+    </Frame>
+</ContentView>

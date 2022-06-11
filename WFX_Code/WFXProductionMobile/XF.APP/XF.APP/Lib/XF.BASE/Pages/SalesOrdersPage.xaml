@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:NavigationSearchPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xamlutils="clr-namespace:XF.BASE;assembly=XF.BASE"
+    xmlns:pages="clr-namespace:XF.BASE.Pages;assembly=XF.BASE"
+    xmlns:cell="clr-namespace:XF.BASE.ListCells;assembly=XF.BASE"
+    xmlns:resources="clr-namespace:XF.BASE.Assets.Localization;assembly=XF.BASE"
+    x:Class="XF.BASE.Pages.SalesOrdersPage">
+
+    <pages:NavigationSearchPage.Content>
+
+        <StackLayout>
+
+            <!-- SO View -->
+            <ListView
+                Margin="12, 10"
+                ClassId="SoList"
+                HasUnevenRows="True"
+                ItemsSource="{Binding SoList}"
+                BackgroundColor="Transparent"
+                IsVisible="{Binding IsPoView, Converter={xamlutils:InverseBoolConverter}}"
+                ItemSelected="ListView_ItemSelected"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding RefreshCommand}"
+                IsRefreshing="{Binding IsRefreshing}"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <cell:SoViewCell/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- PO View -->
+            <Grid
+                Margin="23,25,37,29"
+                IsVisible="{Binding IsPoView}"
+                RowDefinitions="Auto,Auto"
+                ColumnSpacing="22"
+                RowSpacing="2"
+                ColumnDefinitions="Auto,70*,20*"
+                HorizontalOptions="FillAndExpand">
+
+                <ImageButton
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
+                    Source="ic_left_arrow"
+                    Command="{Binding BackButtonCommand}" />
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="{x:Static resources:AppResources.SoNumberText}"
+                    Style="{StaticResource SmallHeaderLabel}" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="0,0,0,15"
+                    TextTransform="Uppercase"
+                    Text="{Binding SelectedSo.soNo}"
+                    Style="{StaticResource HeaderValueLabel}" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    HorizontalOptions="EndAndExpand"
+                    TextColor="{StaticResource SecondaryTextColor}"
+                    Style="{StaticResource SmallHeaderLabel}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding PoQty}"/>
+                            <Span Text=" "/>
+                            <Span Text="{x:Static resources:AppResources.PoQtyText}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+
+            <BoxView
+                IsVisible="{Binding IsPoView}"
+                BackgroundColor="{StaticResource LineSeparator}"
+                HeightRequest="2"/>
+
+            <ListView
+                Margin="12,23,12,0"
+                HasUnevenRows="True"
+                ClassId="PoList"
+                ItemsSource="{Binding PoList}"
+                BackgroundColor="Transparent"
+                IsVisible="{Binding IsPoView}"
+                ItemSelected="ListView_ItemSelected"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding RefreshCommand}"
+                IsRefreshing="{Binding IsRefreshing}"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <cell:PoViewCell/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </pages:NavigationSearchPage.Content>
+
+</pages:NavigationSearchPage>

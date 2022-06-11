@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="XF.APP.LightTheme"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="AccentColor">#2E96C1</Color>
+    <Color x:Key="InverseTextColor">White</Color>
+
+    <Color x:Key="BaseBackgroundColor">#F5F5F5</Color>
+
+    <Color x:Key="BaseTextColor">#4A4A4A</Color>
+    <Color x:Key="BaseTextColorLight">#8493A4</Color>
+
+    <Color x:Key="PrimaryBackColor">#43CECD</Color>
+    <Color x:Key="PrimaryBackEndColor">#1F6DB7</Color>
+    <Color x:Key="PrimaryTextColor">White</Color>
+    <Color x:Key="SecondaryBackColor">White</Color>
+    <Color x:Key="SecondaryTextColor">Black</Color>
+    
+    <Color x:Key="ProgressStartColor">#2E96C1</Color>
+    <Color x:Key="ProgressEndColor">#49EDE3</Color>
+    <Color x:Key="ProgressDefaultColor">#ECF0F5</Color>
+
+    <Color x:Key="SimpleBorderColor">#E5E5E5</Color>
+    <Color x:Key="SeparatorColor">#D8D8D8</Color>
+    <Color x:Key="LineSeparator">#EDEDED</Color>
+    <Color x:Key="DefectCardLineSeparator">#DFDFDF</Color>
+
+    <Color x:Key="PassBackgroundColor">#2ABB9B</Color>
+    <Color x:Key="DefectBackgroundColor">#F7BE3B</Color>
+    <Color x:Key="RejectBackgroundColor">#D24D57</Color>
+
+    <Color x:Key="DefectTextColor">#D99800</Color>
+    <Color x:Key="RejectTextColor">#564d4d</Color>
+    <Color x:Key="OutputDefectTextColor">#FFB300</Color>
+    <Color x:Key="OutputRejectedTextColor">#564d4d</Color>
+
+    <!--  Control properties  -->
+    <Color x:Key="ControlBackgroundColor">White</Color>
+    <Color x:Key="ControlTextColor">#4A4A4A</Color>
+    <Color x:Key="ControlPlaceholderColor">#4A4A4A</Color>
+    <Color x:Key="ControlBorderColor">#D8D8D8</Color>
+
+    <!--  Rounded button properties  -->
+    <Color x:Key="RoundedBtnPassBgColor">#28B192</Color>
+    <Color x:Key="RoundedBtnDefectBgColor">#F6B520</Color>
+    <Color x:Key="RoundedBtnRejectBgColor">#CB3D48</Color>
+    <Color x:Key="RoundedBtnTextColor">White</Color>
+
+    <!--  Order screen properties  -->
+    <Color x:Key="SmallHeaderTextColor">#3CBBC9</Color>
+
+    <!--  Inspection and Defect selection screen properties  -->
+    <Color x:Key="InspPlaceHolderBgColor">#F9F9F9</Color>
+    <Color x:Key="InspPlaceHolderBorderColor">#F3F3F3</Color>
+    <Color x:Key="InspPlaceHolderTextColor">#D2D2D2</Color>
+    <Color x:Key="DefectPlaceHolderBgColor">#F6B520</Color>
+    <Color x:Key="DefectPlaceHolderBorderColor">#ECA709</Color>
+    <Color x:Key="DefectPlaceHolderTextColor">#D99800</Color>
+    <Color x:Key="RejectPlaceHolderBgColor">#D56E6A</Color>
+    <Color x:Key="RejectPlaceHolderBorderColor">#D56E6A</Color>
+    <Color x:Key="SelectedCardViewBorderColor">#49EDE3</Color>
+    <Color x:Key="SelectedDefectBorderColor">#ECA600</Color>
+    <Color x:Key="SelectedRejectBorderColor">#D56E6A</Color>
+
+    <!--  Output screen properties  -->
+    <Color x:Key="BlueColor">#58ACDC</Color>
+    <Color x:Key="SegmentBgColor">#F2F2F2</Color>
+    <Color x:Key="SegmentTextColor">#C7C7C7</Color>
+    <Color x:Key="PauseStartBgColor">#FAFAFA</Color>
+
+</ResourceDictionary>

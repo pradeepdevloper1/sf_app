@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <OnPlatform
+        x:Key="AppFontFamilyRegular"
+        x:TypeArguments="x:String"
+        Default="SourceSansProRegular">
+        <On Platform="Android" Value="SourceSansProRegular" />
+        <On Platform="iOS" Value="SourceSansProRegular" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="AppFontFamilyBold"
+        x:TypeArguments="x:String"
+        Default="SourceSansProBold">
+        <On Platform="Android" Value="SourceSansProBold" />
+        <On Platform="iOS" Value="SourceSansProBold" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontFamilyBold"
+        x:TypeArguments="x:String"
+        Default="OpenSansBold">
+        <On Platform="Android" Value="OpenSansBold" />
+        <On Platform="iOS" Value="OpenSansBold" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontFamilyBoldItalic"
+        x:TypeArguments="x:String"
+        Default="OpenSansBoldItalic">
+        <On Platform="Android" Value="OpenSansBoldItalic" />
+        <On Platform="iOS" Value="OpenSansBoldItalic" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontFamilyExtraBold"
+        x:TypeArguments="x:String"
+        Default="OpenSansExtraBold">
+        <On Platform="Android" Value="OpenSansExtraBold" />
+        <On Platform="iOS" Value="OpenSansExtraBold" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontFamilyExtraBoldItalic"
+        x:TypeArguments="x:String"
+        Default="OpenSansExtraBoldItalic">
+        <On Platform="Android" Value="OpenSansExtraBoldItalic" />
+        <On Platform="iOS" Value="OpenSansExtraBoldItalic" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontFamilyItalic"
+        x:TypeArguments="x:String"
+        Default="OpenSansItalic">
+        <On Platform="Android" Value="OpenSansItalic" />
+        <On Platform="iOS" Value="OpenSansItalic" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontFamilyLight"
+        x:TypeArguments="x:String"
+        Default="OpenSansLight">
+        <On Platform="Android" Value="OpenSansLight" />
+        <On Platform="iOS" Value="OpenSansLight" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontFamilyLightItalic"
+        x:TypeArguments="x:String"
+        Default="OpenSansLightItalic">
+        <On Platform="Android" Value="OpenSansLightItalic" />
+        <On Platform="iOS" Value="OpenSansLightItalic" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontFamilyRegular"
+        x:TypeArguments="x:String"
+        Default="OpenSansRegular">
+        <On Platform="Android" Value="OpenSansRegular" />
+        <On Platform="iOS" Value="OpenSansRegular" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontFamilySemiBold"
+        x:TypeArguments="x:String"
+        Default="OpenSansSemiBold">
+        <On Platform="Android" Value="OpenSansSemiBold" />
+        <On Platform="iOS" Value="OpenSansSemiBold" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontFamilySemiBoldItalic"
+        x:TypeArguments="x:String"
+        Default="OpenSansSemiBoldItalic">
+        <On Platform="Android" Value="OpenSansSemiBoldItalic" />
+        <On Platform="iOS" Value="OpenSansSemiBoldItalic" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontIconGrialIconsLine"
+        x:TypeArguments="x:String"
+        Default="GrialIconsLine">
+        <On Platform="Android" Value="GrialIconsLine" />
+        <On Platform="iOS" Value="GrialIconsLine" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontGrialIconsFill"
+        x:TypeArguments="x:String"
+        Default="GrialIconsFill">
+        <On Platform="Android" Value="GrialIconsFill" />
+        <On Platform="iOS" Value="GrialIconsFill" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontIconFontAwesome5BrandsRegular"
+        x:TypeArguments="x:String"
+        Default="FontAwesome5BrandsRegular">
+        <On Platform="Android" Value="FontAwesome5BrandsRegular" />
+        <On Platform="iOS" Value="FontAwesome5BrandsRegular" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontIconFontAwesome5FreeRegular"
+        x:TypeArguments="x:String"
+        Default="FontAwesome5FreeRegular">
+        <On Platform="Android" Value="FontAwesome5FreeRegular" />
+        <On Platform="iOS" Value="FontAwesome5FreeRegular" />
+    </OnPlatform>
+
+    <OnPlatform
+        x:Key="FontIconFontAwesome5FreeSolid"
+        x:TypeArguments="x:String"
+        Default="FontAwesome5FreeSolid">
+        <On Platform="Android" Value="FontAwesome5FreeSolid" />
+        <On Platform="iOS" Value="FontAwesome5FreeSolid" />
+    </OnPlatform>
+
+</ResourceDictionary>

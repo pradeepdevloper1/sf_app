@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:XF.BASE.Assets.Localization;assembly=XF.BASE" 
+             xmlns:cc="clr-namespace:XF.BASE"
+             x:Class="XF.BASE.ListCells.LineViewCell">
+  <ViewCell.View>
+        <cc:CardView
+            CardViewOutlineColor="White"
+            CardViewInnerFrameOutlineColor="LightBlue"
+            CardViewHasShadow="True"
+            IsClippedToBounds="True"
+            CardViewHorizontalOptions="FillAndExpand"
+            CardViewVerticalOptions="FillAndExpand"
+            Margin="2">
+            <cc:CardView.CardViewContent>
+                <Grid  BackgroundColor="White" Opacity="{Binding Opacity }">
+                    <Label HorizontalOptions="StartAndExpand" Padding="10,10,10,10" Grid.Column="0"  Text="{Binding LineName}"></Label>
+                </Grid>
+            </cc:CardView.CardViewContent>
+        </cc:CardView>
+    </ViewCell.View>
+</ViewCell>

@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:NavigationSearchPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xamlutils="clr-namespace:XF.BASE"
+    xmlns:pages="clr-namespace:XF.BASE.Pages;assembly=XF.BASE"
+    xmlns:resources="clr-namespace:XF.BASE.Assets.Localization;assembly=XF.BASE"
+    x:Class="XF.BASE.Pages.InspectionPage">
+
+    <pages:NavigationSearchPage.Resources>
+        <ResourceDictionary>
+            <xamlutils:InverseBoolConverter x:Key="InvertBool" />
+            <xamlutils:InverseHasElements x:Key="InvertHasElements" />
+            <xamlutils:CollectionHasElementsConverter x:Key="HasElements" />
+        </ResourceDictionary>
+    </pages:NavigationSearchPage.Resources>
+
+    <StackLayout>
+
+        <!--  Header  -->
+        <Grid
+            Margin="23,25,37,29"
+            RowDefinitions="Auto,Auto"
+            ColumnSpacing="22"
+            RowSpacing="0"
+            ColumnDefinitions="Auto,70*,20*"
+            HorizontalOptions="FillAndExpand">
+
+            <Grid
+                Grid.RowSpan="2"
+                VerticalOptions="CenterAndExpand"
+                ColumnDefinitions="Auto,Auto"
+                RowDefinitions="Auto,Auto"
+                ColumnSpacing="10">
+
+                <ImageButton
+                    Grid.RowSpan="2"
+                    Source="ic_left_arrow"
+                    VerticalOptions="CenterAndExpand" 
+                    Command="{Binding BackButtonCommand}" />
+
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding SelectedPo.soNo}"
+                    Style="{StaticResource SmallHeaderLabel}" />
+
+                <Label
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    TextTransform="Uppercase"
+                    Text="{Binding SelectedPo.poNo}"
+                    Style="{StaticResource HeaderValueLabel}" />
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackButtonCommand}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+
+            <StackLayout
+                Grid.RowSpan="2"
+                Grid.Column="2"
+                Spacing="2">
+
+                <Label
+                    HorizontalOptions="EndAndExpand"
+                    TextColor="{StaticResource SecondaryTextColor}"
+                    Style="{StaticResource SmallHeaderLabel}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding PiecesQty}" />
+                            <Span Text=" " />
+                            <Span Text="{x:Static resources:AppResources.PiecesText}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label
+                    HorizontalOptions="EndAndExpand"
+                    TextColor="{StaticResource SecondaryTextColor}"
+                    Style="{StaticResource SmallHeaderLabel}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding ColoursQty}" />
+                            <Span Text=" " />
+                            <Span Text="{x:Static resources:AppResources.ColoursText}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label
+                    HorizontalOptions="EndAndExpand"
+                    TextColor="{StaticResource SecondaryTextColor}"
+                    Style="{StaticResource SmallHeaderLabel}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding SizesQty}" />
+                            <Span Text=" " />
+                            <Span Text="{x:Static resources:AppResources.SizesText}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </Grid>
+
+        <!--  Separator  -->
+        <BoxView BackgroundColor="{StaticResource LineSeparator}" HeightRequest="2" />
+
+        <!--  Main View  -->
+        <Grid
+            RowDefinitions="16,65,*"
+            ColumnDefinitions="27*,27*,27*,19*"
+            Margin="20,15,20,0"
+            RowSpacing="15"
+            ColumnSpacing="15"
+            VerticalOptions="FillAndExpand">
+
+            <!--  Column 1 - Parts  -->
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource SmallHeaderLabel}"
+                TextColor="{StaticResource InspPlaceHolderTextColor}"
+                Text="{x:Static resources:AppResources.PartsText}" />
+
+            <ListView
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                ClassId="1"
+                SeparatorVisibility="None"
+                ItemSelected="ListView_ItemSelected"
+                RowHeight="{StaticResource PartsCellHeight}"
+                ItemsSource="{Binding Parts}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="0,0,0,10"
+                                Padding="0"
+                                IsClippedToBounds="True"
+                                BorderColor="{Binding BorderColor}"
+                                BackgroundColor="{Binding BackgroundColor}"
+                                HasShadow="{Binding HasShadow}"
+                                Style="{StaticResource PlaceHolderFrameView}">
+
+                                <StackLayout
+                                    Padding="47,0,0,0"
+                                    Opacity="{Binding Opacity}"
+                                    VerticalOptions="CenterAndExpand">
+
+                                    <Label
+                                        TextTransform="Uppercase"
+                                        TextColor="{Binding HeaderTextColor}"
+                                        Style="{StaticResource HeaderValueLabel}"
+                                        Text="{Binding HeaderText}" />
+                                    <Label
+                                        TextColor="{Binding SubTextColor}"
+                                        Style="{StaticResource SmallHeaderLabel}"
+                                        Text="{Binding SubText}" />
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!--  Column 2 - Colours  -->
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{StaticResource SmallHeaderLabel}"
+                TextColor="{StaticResource InspPlaceHolderTextColor}"
+                Text="{x:Static resources:AppResources.ColoursText}" />
+
+            <ListView
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                ClassId="2"
+                SeparatorVisibility="None"
+                ItemsSource="{Binding Colours}"
+                ItemSelected="ListView_ItemSelected"
+                RowHeight="{StaticResource ColoursOrLocCellHeight}"
+                IsVisible="{Binding ColoursVilibility}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="0,0,0,10"
+                                Padding="0"
+                                IsClippedToBounds="True"
+                                BorderColor="{Binding BorderColor}"
+                                BackgroundColor="{Binding BackgroundColor}"
+                                HasShadow="{Binding HasShadow}"
+                                Style="{StaticResource PlaceHolderFrameView}">
+                                <Grid
+                                    Padding="47,0,0,0"
+                                    ColumnSpacing="15"
+                                    Opacity="{Binding Opacity}"
+                                    VerticalOptions="CenterAndExpand"
+                                    RowDefinitions="Auto,Auto"
+                                    ColumnDefinitions="30,Auto">
+
+                                    <Frame
+                                        Padding="0"
+                                        Margin="0,10"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="0"
+                                        HeightRequest="30"
+                                        WidthRequest="30"
+                                        HasShadow="{Binding HasShadow}"
+                                        BackgroundColor="{Binding BoxColor}" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        TextTransform="Uppercase"
+                                        TextColor="{Binding HeaderTextColor}"
+                                        Style="{StaticResource HeaderValueLabel}"
+                                        Text="{Binding HeaderText}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        TextColor="{Binding SubTextColor}"
+                                        Style="{StaticResource SmallHeaderLabel}"
+                                        Text="{Binding SubText}" />
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <xamlutils:PlaceHolderView
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                ViewBgColor="{StaticResource InspPlaceHolderBgColor}"
+                ViewTextColor="{StaticResource InspPlaceHolderTextColor}"
+                ViewBorderColor="{StaticResource InspPlaceHolderBorderColor}"
+                ViewText="{x:Static resources:AppResources.ColoursValidation}"
+                IsVisible="{Binding ColoursPlaceholderVilibility}" />
+
+            <!--  Column 3 - Sizes  -->
+            <Label
+                Grid.Row="0"
+                Grid.Column="2"
+                Style="{StaticResource SmallHeaderLabel}"
+                TextColor="{StaticResource InspPlaceHolderTextColor}"
+                Text="{x:Static resources:AppResources.SizesText}" />
+
+            <ListView
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="2"
+                ClassId="3"
+                SeparatorVisibility="None"
+                ItemsSource="{Binding Sizes}"
+                ItemSelected="ListView_ItemSelected"
+                RowHeight="{StaticResource SizesOrDefectsCellHeight}"
+                IsVisible="{Binding SizeVilibility}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="0,0,0,10"
+                                Padding="0"
+                                IsClippedToBounds="True"
+                                BorderColor="{Binding BorderColor}"
+                                BackgroundColor="{Binding BackgroundColor}"
+                                HasShadow="{Binding HasShadow}"
+                                Style="{StaticResource PlaceHolderFrameView}">
+
+                                <Label
+                                    Padding="47,0,0,0"
+                                    TextColor="{Binding HeaderTextColor}"
+                                    Style="{StaticResource HeaderValueLabel}"
+                                    Text="{Binding HeaderText}"
+                                    VerticalOptions="CenterAndExpand" />
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <xamlutils:PlaceHolderView
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="2"
+                ViewBgColor="{StaticResource InspPlaceHolderBgColor}"
+                ViewTextColor="{StaticResource InspPlaceHolderTextColor}"
+                ViewBorderColor="{StaticResource InspPlaceHolderBorderColor}"
+                ViewText="{x:Static resources:AppResources.SizesValidation}"
+                IsVisible="{Binding SizePlaceholderVilibility}" />
+
+            <!--  Column 4 - Start Inspection  -->
+
+            <Frame
+                Grid.Row="1"
+                Grid.Column="3"
+                Margin="0,2"
+                HasShadow="False"
+                IsClippedToBounds="True"
+                BorderColor="{StaticResource InspPlaceHolderBorderColor}"
+                BackgroundColor="{StaticResource InspPlaceHolderBgColor}"
+                Style="{StaticResource PlaceHolderFrameView}"
+                IsVisible="{Binding StartInspectionVilibility, Converter={StaticResource InvertBool}}">
+
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    TextColor="{StaticResource InspPlaceHolderTextColor}"
+                    FontSize="18"
+                    Text="{x:Static resources:AppResources.StartInspectionButton}" />
+            </Frame>
+
+            <Button
+                Grid.Row="1"
+                Grid.Column="3"
+                Command="{Binding StartInspectionCommand}"
+                Text="{x:Static resources:AppResources.StartInspectionButton}"
+                IsVisible="{Binding StartInspectionVilibility}">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Offset="0.1" Color="{StaticResource SmallHeaderTextColor}" />
+                        <GradientStop Offset="1.0" Color="{StaticResource SelectedCardViewBorderColor}" />
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <!--  Column 4 - Shift Change -->
+            <Frame
+                VerticalOptions="StartAndExpand"
+                HeightRequest="60"
+                Grid.Row="2"
+                Grid.Column="3"                
+                HasShadow="False"
+                IsClippedToBounds="True"
+                BorderColor="{StaticResource InspPlaceHolderBorderColor}"
+                BackgroundColor="{StaticResource InspPlaceHolderBgColor}"
+                Style="{StaticResource PlaceHolderFrameView}"
+                IsVisible="{Binding StartInspectionVilibility, Converter={StaticResource InvertBool}}">
+
+                <Label
+                    x:Name="lblShiftDropdown"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    TextColor="{StaticResource InspPlaceHolderTextColor}"
+                    Text="{x:Static resources:AppResources.ShiftDropdownText}" />
+            </Frame>
+            <Grid
+                Grid.Row="2"
+                Grid.Column="3"
+                VerticalOptions="StartAndExpand"
+                HeightRequest="60">
+                <Picker Title="Shift" ItemsSource="{Binding DropdownValue}" ItemDisplayBinding="{Binding ValueToDisplay}" 
+                            SelectedIndex="{Binding SelectedValue,Mode=TwoWay}" SelectedIndexChanged="Handle_SelectedIndexChanged"  
+                            IsVisible="{Binding StartInspectionVilibility}" />
+            </Grid>
+      
+        
+        </Grid>
+    </StackLayout>
+</pages:NavigationSearchPage>

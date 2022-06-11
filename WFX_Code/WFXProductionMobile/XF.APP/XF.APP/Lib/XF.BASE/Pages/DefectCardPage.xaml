@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:XF.BASE.Pages;assembly=XF.BASE"
+    xmlns:fontIcon="clr-namespace:XF.BASE;assembly=XF.BASE"
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    xmlns:resources="clr-namespace:XF.BASE.Assets.Localization;assembly=XF.BASE"
+    x:Class="XF.BASE.Pages.DefectCardPage"
+    NavigationPage.HasBackButton="False">
+
+    <NavigationPage.TitleView>
+        <Grid
+            VerticalOptions="CenterAndExpand"
+            ColumnDefinitions="*,50"
+            Margin="23,0,0,0">
+            
+            <Label
+                Grid.Column="0"
+                VerticalOptions="CenterAndExpand"
+                Style="{StaticResource HeaderValueLabel}"
+                TextColor="{StaticResource PrimaryTextColor}"
+                Text="{x:Static resources:AppResources.DefectGarmentText}" />
+            <ImageButton
+                Grid.Column="1"
+                HorizontalOptions="EndAndExpand"
+                HeightRequest="50"
+                WidthRequest="50"
+                Source="ic_close"
+                Command="{Binding CloseCommand}" />
+            </Grid>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="HasShadow" Value="True" />
+            <Setter Property="IsClippedToBounds" Value="True" />
+            <Setter Property="BackgroundColor" Value="White" />
+        </Style>
+        <fontIcon:InverseBoolConverter x:Key="InvertBool" />
+    </ContentPage.Resources>
+
+    <StackLayout Spacing="0">
+
+        <!-- Separator -->
+        <BoxView
+            x:Name="Separator"
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="2"/>
+
+        <!-- Main View -->
+        <Grid
+            RowDefinitions="80*,50,20*"
+            ColumnDefinitions="30*,70*"
+            Margin="5,18,5,0"
+            VerticalOptions="Start"
+            ColumnSpacing="15"
+            RowSpacing="15">
+
+            <ListView
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                SeparatorVisibility="None"
+                ItemSelected="ListView_ItemSelected"
+                RowHeight="{StaticResource DefectCardCellHeight}"
+                ItemsSource="{Binding Defects}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Frame
+                                    Margin="0,0,0,15"
+                                    Opacity="{Binding Opacity}"
+                                    HeightRequest="{DynamicResource DefectCardCellHeight}"
+                                    HasShadow="{Binding HasShadow}"
+                                    IsVisible="{Binding IsAddCell, Converter={StaticResource InvertBool}}"
+                                    Style="{StaticResource PlaceHolderFrameView}">
+
+                                    <StackLayout
+                                       Spacing="15"
+                                        IsClippedToBounds="True"
+                                        VerticalOptions="CenterAndExpand">
+                                    
+                                        <Label
+                                            FontSize="16"
+                                            HorizontalTextAlignment="Center"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{Binding TypeText}" />
+                                        <Label
+                                            FontFamily="{StaticResource FontFamilyBold}"
+                                            FontSize="{StaticResource HeaderValueLabelFontSize}"
+                                            HorizontalTextAlignment="Center"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{Binding LocOrOperText}" />
+                                        <BoxView
+                                            Margin="38,0"
+                                            HorizontalOptions="FillAndExpand"
+                                            BackgroundColor="{StaticResource DefectCardLineSeparator}"
+                                            HeightRequest="1"/>
+                                        <Label
+                                            Margin="24,0"
+                                            FontSize="15"
+                                            HorizontalTextAlignment="Center"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{Binding DefectListText}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame
+                                    IsVisible="{Binding IsAddCell}"
+                                    VerticalOptions="CenterAndExpand"
+                                    HeightRequest="{DynamicResource DefectCardCellHeight}"
+                                    BackgroundColor="{Binding BackgroundColor}"
+                                    Style="{StaticResource PlaceHolderFrameView}">
+
+                                    <Image
+                                        Source="ic_plus"
+                                        HorizontalOptions="Center"
+                                        HeightRequest="{DynamicResource ControlHeightRequest}"
+                                        WidthRequest="{DynamicResource ControlHeightRequest}" />
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Frame
+                Grid.RowSpan="2"
+                Grid.Column="1" Grid.ColumnSpan="2" 
+                />
+
+            <StackLayout
+                Grid.Row="0"
+                Grid.Column="1"
+                Orientation="Horizontal"
+                Margin="0,0,50,0"
+                HorizontalOptions="CenterAndExpand"
+                >
+                <skia:SKCanvasView
+                    ClassId="0"
+                    x:Name="canvas1"
+                    Touch="CanvasView_Touch"
+                    EnableTouchEvents="True"
+                    HorizontalOptions="CenterAndExpand"
+                    PaintSurface="OnCanvasViewPaintSurface" />
+
+                    <skia:SKCanvasView
+                    ClassId="1"
+                    x:Name="canvas2"
+                    Touch="CanvasView_Touch"
+                    EnableTouchEvents="True"
+                    HorizontalOptions="CenterAndExpand"
+                    PaintSurface="OnCanvasViewPaintSurface" />
+
+                    <skia:SKCanvasView
+                    ClassId="2"
+                    x:Name="canvas3"
+                    Touch="CanvasView_Touch"
+                    EnableTouchEvents="True"
+                    HorizontalOptions="CenterAndExpand"
+                    PaintSurface="OnCanvasViewPaintSurface" />
+
+                <skia:SKCanvasView
+                    ClassId="3"
+                    x:Name="canvas4"
+                    Touch="CanvasView_Touch"
+                    EnableTouchEvents="True"
+                    HorizontalOptions="CenterAndExpand"
+                    PaintSurface="OnCanvasViewPaintSurface" />
+            </StackLayout>
+
+                
+            <StackLayout
+                Grid.Row="1"
+                Grid.Column="1"
+                x:Name="corousalView"
+                Orientation="Horizontal"
+                VerticalOptions="Center"
+                HorizontalOptions="CenterAndExpand">
+
+                <Button
+                    x:Name="CarouselViewBtn1"
+                    ClassId="0"
+                    Margin="5"
+                    CornerRadius="30"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    Clicked="CarouselViewBtn_Clicked"
+                    Background="{Binding CorousalViewBtnColor}"
+                    BorderColor="{StaticResource ProgressDefaultColor}"
+                    BackgroundColor="{Binding CorousalViewBtnColor}"/>
+
+                <Button
+                    x:Name="CarouselViewBtn2"
+                    ClassId="1"
+                    Margin="5"
+                    CornerRadius="30"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    Background="#EDEDED" 
+                    BackgroundColor="#EDEDED"
+                    Clicked="CarouselViewBtn_Clicked" />
+            </StackLayout>
+
+            <Button
+                x:Name="BtnCheck"
+                Grid.Row="2" Grid.Column="1"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center" CornerRadius="50"
+                WidthRequest="100" HeightRequest="100"
+                Style="{StaticResource RoundedButtonStyle}"
+                Background="White"
+                BackgroundColor="White"
+                Text="{x:Static fontIcon:FontawesomeSolidFont.Check}"
+                FontFamily="{StaticResource FontIconFontAwesome5FreeSolid}"
+                Clicked="SubmitBtn_Clicked" 
+                IsEnabled="True"/>
+        </Grid>
+    </StackLayout>
+
+</pages:BasePage>

@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <UserSecretsId>08a5c146-e51a-4039-8f6d-d1373fa3a102</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\Assets\Fonts\OpenSans-Bold.ttf" Link="Assets\Fonts\OpenSans-Bold.ttf" />
+    <EmbeddedResource Include="..\Assets\Fonts\OpenSans-BoldItalic.ttf" Link="Assets\Fonts\OpenSans-BoldItalic.ttf" />
+    <EmbeddedResource Include="..\Assets\Fonts\OpenSans-ExtraBold.ttf" Link="Assets\Fonts\OpenSans-ExtraBold.ttf" />
+    <EmbeddedResource Include="..\Assets\Fonts\OpenSans-ExtraBoldItalic.ttf" Link="Assets\Fonts\OpenSans-ExtraBoldItalic.ttf" />
+    <EmbeddedResource Include="..\Assets\Fonts\OpenSans-Italic.ttf" Link="Assets\Fonts\OpenSans-Italic.ttf" />
+    <EmbeddedResource Include="..\Assets\Fonts\OpenSans-Light.ttf" Link="Assets\Fonts\OpenSans-Light.ttf" />
+    <EmbeddedResource Include="..\Assets\Fonts\OpenSans-LightItalic.ttf" Link="Assets\Fonts\OpenSans-LightItalic.ttf" />
+    <EmbeddedResource Include="..\Assets\Fonts\OpenSans-Regular.ttf" Link="Assets\Fonts\OpenSans-Regular.ttf" />
+    <EmbeddedResource Include="..\Assets\Fonts\OpenSans-SemiBold.ttf" Link="Assets\Fonts\OpenSans-SemiBold.ttf" />
+    <EmbeddedResource Include="..\Assets\Fonts\OpenSans-SemiBoldItalic.ttf" Link="Assets\Fonts\OpenSans-SemiBoldItalic.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\Assets\Fonts\FontAwesome5Brands-Regular-400.otf" Link="Assets\Fonts\FontAwesome5Brands-Regular-400.otf" />
+    <EmbeddedResource Include="..\Assets\Fonts\FontAwesome5Free-Regular-400.otf" Link="Assets\Fonts\FontAwesome5Free-Regular-400.otf" />
+    <EmbeddedResource Include="..\Assets\Fonts\FontAwesome5Free-Solid-900.otf" Link="Assets\Fonts\FontAwesome5Free-Solid-900.otf" />
+    <EmbeddedResource Include="..\Assets\Fonts\grialiconsfill.ttf" Link="Assets\Fonts\grialiconsfill.ttf" />
+    <EmbeddedResource Include="..\Assets\Fonts\grialiconsline.ttf" Link="Assets\Fonts\grialiconsline.ttf" />
+    <EmbeddedResource Include="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	<PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.1.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lib\XF.APP.ABSTRACTION\XF.APP.ABSTRACTION.csproj" />
+    <ProjectReference Include="..\Lib\XF.APP.ApiService\XF.APP.ApiService.csproj" />
+    <ProjectReference Include="..\Lib\XF.APP.BAL\XF.APP.BAL.csproj" />
+    <ProjectReference Include="..\Lib\XF.APP.DAL\XF.APP.DAL.csproj" />
+    <ProjectReference Include="..\Lib\XF.APP.DTO\XF.APP.DTO.csproj" />
+    <ProjectReference Include="..\Lib\XF.APP.LogService\XF.APP.LogService.csproj" />
+    <ProjectReference Include="..\Lib\XF.BASE\XF.BASE.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Fonts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Themes\DarkTheme.xaml.cs">
+      <DependentUpon>DarkTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

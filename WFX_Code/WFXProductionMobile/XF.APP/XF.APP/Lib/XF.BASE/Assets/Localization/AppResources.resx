@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LoadingText" xml:space="preserve">
+    <value>Please wait..</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Endline QC Mobile Application</value>
+  </data>
+  <data name="ContactUsEmailLink" xml:space="preserve">
+    <value>support@worldfashionexchange.com</value>
+  </data>
+  <data name="CopyrightText" xml:space="preserve">
+    <value>Copyright © World Fashion exchange All Rights Reserved.</value>
+  </data>
+  <data name="CreateAccountLink" xml:space="preserve">
+    <value>Create a new account</value>
+  </data>
+  <data name="ForgotPasswordLink" xml:space="preserve">
+    <value>Forgot password ?</value>
+  </data>
+  <data name="LoginButton" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="PasswordPlaceholder" xml:space="preserve">
+    <value>Enter Password</value>
+  </data>
+  <data name="UsernamePlaceholder" xml:space="preserve">
+    <value>Enter User Name</value>
+  </data>
+  <data name="VersionText" xml:space="preserve">
+    <value>Version </value>
+  </data>
+  <data name="PassText" xml:space="preserve">
+    <value>Pass </value>
+  </data>
+  <data name="DefectText" xml:space="preserve">
+    <value>Defect </value>
+  </data>
+  <data name="RejectText" xml:space="preserve">
+    <value>Reject </value>
+  </data>
+  <data name="GarmentsText" xml:space="preserve">
+    <value>Garments </value>
+  </data>
+  <data name="SuccessMsgText" xml:space="preserve">
+    <value>Defect Saved Successfully</value>
+  </data>
+  <data name="FailureMsgText" xml:space="preserve">
+    <value>Something Went Wrong</value>
+  </data>
+  <data name="SelectDefectTitle" xml:space="preserve">
+    <value>Select a Defect</value>
+  </data>
+  <data name="SelectRejectTitle" xml:space="preserve">
+    <value>Select a Reject</value>
+  </data>
+  <data name="SelectTypeText" xml:space="preserve">
+    <value>Select Type</value>
+  </data>
+  <data name="SelectLocOrOpText" xml:space="preserve">
+    <value>Select Location/Operation</value>
+  </data>
+  <data name="SelectDefectsText" xml:space="preserve">
+    <value>Select Defects</value>
+  </data>
+  <data name="MarkOnGarmentText" xml:space="preserve">
+    <value>Mark on Garment</value>
+  </data>
+  <data name="SelectLocOrOpValidation" xml:space="preserve">
+    <value>SELECT A TYPE TO DISPLAY LOCATIONS/OPERATIONS</value>
+  </data>
+  <data name="SelectDefectsValidation" xml:space="preserve">
+    <value>SELECT A LOCATION/OPERATION TO DISPLAY DEFECTS</value>
+  </data>
+  <data name="MarkOnGarmValidation" xml:space="preserve">
+    <value>SELECT DEFECTS TO DISPLAY GARMENT</value>
+  </data>
+  <data name="SaveDefectButton" xml:space="preserve">
+    <value>SAVE DEFECT</value>
+  </data>
+  <data name="ConstructionText" xml:space="preserve">
+    <value>Construction</value>
+  </data>
+  <data name="DefectGarmentText" xml:space="preserve">
+    <value>Defect Garment</value>
+  </data>
+  <data name="SoSearchBarText" xml:space="preserve">
+    <value>Search Sales Orders</value>
+  </data>
+  <data name="PoSearchBarText" xml:space="preserve">
+    <value>Search Purchase Orders</value>
+  </data>
+  <data name="PoQtyText" xml:space="preserve">
+    <value>Work Orders</value>
+  </data>
+  <data name="LineIDText" xml:space="preserve">
+    <value>Line ID: </value>
+  </data>
+  <data name="SoNumberText" xml:space="preserve">
+    <value>Production Order</value>
+  </data>
+  <data name="PoNumberText" xml:space="preserve">
+    <value>Work Order No.</value>
+  </data>
+  <data name="StyleText" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="CustomerText" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="ProductText" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="OrderStartDateText" xml:space="preserve">
+    <value>Order Start Date</value>
+  </data>
+  <data name="ExFactoryDateText" xml:space="preserve">
+    <value>Ex-Factory Date</value>
+  </data>
+  <data name="POsText" xml:space="preserve">
+    <value>POs</value>
+  </data>
+  <data name="QuantityText" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="SoPoInstructionText" xml:space="preserve">
+    <value>  THIS PO IS ON PRIORITY, PLEASE START WITH FOCUS ON MEASUREMENTS  </value>
+  </data>
+  <data name="PiecesText" xml:space="preserve">
+    <value>Pieces</value>
+  </data>
+  <data name="ColoursText" xml:space="preserve">
+    <value>Colours</value>
+  </data>
+  <data name="SizesText" xml:space="preserve">
+    <value>Sizes</value>
+  </data>
+  <data name="PartsText" xml:space="preserve">
+    <value>Parts</value>
+  </data>
+  <data name="StartInspectionButton" xml:space="preserve">
+    <value>START INSPECTION</value>
+  </data>
+  <data name="ColoursValidation" xml:space="preserve">
+    <value>SELECT A PART TO DISPLAY COLOURS</value>
+  </data>
+  <data name="SizesValidation" xml:space="preserve">
+    <value>SELECT A COLOUR TO DISPLAY SIZES</value>
+  </data>
+  <data name="PartText" xml:space="preserve">
+    <value>Part</value>
+  </data>
+  <data name="ColourText" xml:space="preserve">
+    <value>Colour</value>
+  </data>
+  <data name="SizeText" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="NewGarmentText" xml:space="preserve">
+    <value>New Garment</value>
+  </data>
+  <data name="ReworkGarmentText" xml:space="preserve">
+    <value>Rework Garment</value>
+  </data>
+  <data name="Undo5Button" xml:space="preserve">
+    <value>UNDO</value>
+  </data>
+  <data name="PauseButton" xml:space="preserve">
+    <value>PAUSE</value>
+  </data>
+  <data name="StartButton" xml:space="preserve">
+    <value>START</value>
+  </data>
+  <data name="EndShiftButton" xml:space="preserve">
+    <value>END SHIFT</value>
+  </data>
+  <data name="TargetText" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="ActualText" xml:space="preserve">
+    <value>Actual</value>
+  </data>
+  <data name="PassedText" xml:space="preserve">
+    <value>Passed</value>
+  </data>
+  <data name="RejectedText" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="DefectRateText" xml:space="preserve">
+    <value>Reject Rate</value>
+  </data>
+  <data name="EfficiencyText" xml:space="preserve">
+    <value>Efficiency</value>
+  </data>
+  <data name="ShiftText" xml:space="preserve">
+    <value>Shift</value>
+  </data>
+  <data name="ShiftDropdownText" xml:space="preserve">
+    <value>Select Shift</value>
+  </data>
+  <data name="CumulativeText" xml:space="preserve">
+    <value>Cumulative</value>
+  </data>
+  <data name="AverageText" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="QuePromptText" xml:space="preserve">
+    <value>Are you sure you want to continue?</value>
+  </data>
+  <data name="ContinueButton" xml:space="preserve">
+    <value>CONTINUE</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>CANCEL</value>
+  </data>
+  <data name="SelectReasonText" xml:space="preserve">
+    <value>Select Reason</value>
+  </data>
+  <data name="WashroomText" xml:space="preserve">
+    <value>Washroom</value>
+  </data>
+  <data name="NoFeedText" xml:space="preserve">
+    <value>No feed</value>
+  </data>
+  <data name="LunchBreakText" xml:space="preserve">
+    <value>Lunch break</value>
+  </data>
+  <data name="MeetingText" xml:space="preserve">
+    <value>Meeting</value>
+  </data>
+  <data name="OtherText" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="PausedText" xml:space="preserve">
+    <value>Paused</value>
+  </data>
+  <data name="ResumeButton" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="AverageShortText" xml:space="preserve">
+    <value>Avg.</value>
+  </data>
+  <data name="CumulativeShortText" xml:space="preserve">
+    <value>Cum.</value>
+  </data>
+  <data name="EfficiencyShortText" xml:space="preserve">
+    <value>Eff.</value>
+  </data>
+  <data name="PiecesShortText" xml:space="preserve">
+    <value>Pcs.</value>
+  </data>
+</root>

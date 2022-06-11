@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B0424B89-62B1-4D3E-A917-1850140E1EAD}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>XF.APP.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>XF.APP.iOS</AssemblyName>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <ProvisioningType>automatic</ProvisioningType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <MtouchInterpreter>-all</MtouchInterpreter>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderer\EditorRenderer.cs" />
+    <Compile Include="Renderer\EntryRenderer.cs" />
+    <Compile Include="Renderer\PickerRenderer.cs" />
+    <Compile Include="Renderer\PickerRendererHelper.cs" />
+    <BundleResource Include="..\Assets\Db\E2E.db">
+      <Link>Resources\E2E.db</Link>
+    </BundleResource>
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <BundleResource Include="..\Assets\Images\ic_smile_pass.png">
+      <Link>Resources\ic_smile_pass.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_stroke.png">
+      <Link>Resources\ic_stroke.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_close.png">
+      <Link>Resources\ic_close.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_smile_defect.png">
+      <Link>Resources\ic_smile_defect.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_smile_reject.png">
+      <Link>Resources\ic_smile_reject.png</Link>
+    </BundleResource>
+    <Compile Include="Service\StatusBarStyleManager.cs" />
+    <BundleResource Include="..\Assets\Images\ic_right_arrow.png">
+      <Link>Resources\ic_right_arrow.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_hamburger.png">
+      <Link>Resources\ic_hamburger.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_logout.png">
+      <Link>Resources\ic_logout.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_search.png">
+      <Link>Resources\ic_search.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_wfx_logo.png">
+      <Link>Resources\ic_wfx_logo.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_wfx_login_logo.png">
+      <Link>Resources\ic_wfx_login_logo.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_down_arrow_blue.png">
+      <Link>Resources\ic_down_arrow_blue.png</Link>
+    </BundleResource>
+    <Compile Include="Renderer\FrameRenderer_iOS.cs" />
+    <BundleResource Include="..\Assets\Images\ic_nav_close.png">
+      <Link>Resources\ic_nav_close.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_left_arrow.png">
+      <Link>Resources\ic_left_arrow.png</Link>
+    </BundleResource>
+    <Compile Include="Renderer\ListRenderer.cs" />
+    <BundleResource Include="..\Assets\Images\ic_collapse.png">
+      <Link>Resources\ic_collapse.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_expand.png">
+      <Link>Resources\ic_expand.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_shirt_back.png">
+      <Link>Resources\ic_shirt_back.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_shirt_front.png">
+      <Link>Resources\ic_shirt_front.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_correct_mark.png">
+      <Link>Resources\ic_correct_mark.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_down_arrow.png">
+      <Link>Resources\ic_down_arrow.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_pause.png">
+      <Link>Resources\ic_pause.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_undo.png">
+      <Link>Resources\ic_undo.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_add_multiple.png">
+      <Link>Resources\ic_add_multiple.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_plus.png">
+      <Link>Resources\ic_plus.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_lunch_break.png">
+      <Link>Resources\ic_lunch_break.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_meeting.png">
+      <Link>Resources\ic_meeting.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_no_feed.png">
+      <Link>Resources\ic_no_feed.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_washroom.png">
+      <Link>Resources\ic_washroom.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_defect_mark.png">
+      <Link>Resources\ic_defect_mark.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_reject_mark.png">
+      <Link>Resources\ic_reject_mark.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_question.png">
+      <Link>Resources\ic_question.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_btn_stroke.png">
+      <Link>Resources\ic_btn_stroke.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Assets\Images\ic_btn_undo.png">
+      <Link>Resources\ic_btn_undo.png</Link>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
+      <Version>3.1.11</Version>
+    </PackageReference>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.8.116</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Acr.UserDialogs">
+      <Version>7.1.0.483</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Lib\XF.APP.ABSTRACTION\XF.APP.ABSTRACTION.csproj">
+      <Project>{75331aeb-0c9a-40af-8594-e722469b8166}</Project>
+      <Name>XF.APP.ABSTRACTION</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\XF.APP.ApiService\XF.APP.ApiService.csproj">
+      <Project>{230A80FC-012D-4CD5-A4AB-401BA83AFA4C}</Project>
+      <Name>XF.APP.ApiService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\XF.BASE\XF.BASE.csproj">
+      <Project>{0988fabe-81bd-4359-a18b-f3fc44165ac0}</Project>
+      <Name>XF.BASE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XF.APP\XF.APP.csproj">
+      <Project>{9DB5786D-7DC4-4913-804C-3C9D9CA6DCE1}</Project>
+      <Name>XF.APP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_settings.png" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XF.BASE.OutputInfoView"
+    x:Name="this">
+
+    <ContentView.Resources>
+        <Style x:Key="BoldTextLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="{StaticResource BaseTextFontSize}" />
+            <Setter Property="FontFamily" Value="{StaticResource FontFamilyBold}" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+    </ContentView.Resources>
+    <Grid>
+    <Frame 
+        x:Name="frmOutputView10i"
+        IsVisible="false"
+        BindingContext="{x:Reference this}"
+        Padding="12,8"
+        Margin="20,0,0,0"
+        CornerRadius="4"
+        HasShadow="True"
+        IsClippedToBounds="True"
+        BackgroundColor="White">
+
+        <Grid
+            ColumnDefinitions="45*,55*"
+            RowDefinitions="Auto,Auto,Auto">
+
+            <Label
+                Grid.Column="0"
+                Grid.RowSpan="3"
+                Style="{StaticResource BoldTextLabel}"
+                Text="{Binding ViewTitle}" />
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{StaticResource BoldTextLabel}"
+                TextColor="{Binding ViewTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding ViewText1Value}" FontFamily="{StaticResource FontFamilyLight}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding ViewText1}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <BoxView
+                Grid.Row="1"
+                Grid.Column="1"
+                HeightRequest="1"
+                BackgroundColor="{Binding ViewTextColor}" />
+
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                Style="{StaticResource BoldTextLabel}"
+                TextColor="{Binding ViewTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding ViewText2Value}" FontFamily="{StaticResource FontFamilyLight}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding ViewText2}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+        </Grid>
+
+    </Frame>
+    <Frame 
+        x:Name="frmOutputView7i"
+        IsVisible="false"
+        BindingContext="{x:Reference this}"
+        Padding="20,10"
+        Margin="20,0,0,0"
+        CornerRadius="4"
+        HasShadow="True"
+        IsClippedToBounds="True"
+        BackgroundColor="White">
+        <Grid
+            ColumnDefinitions="40*,29*,2*,29*"
+            RowDefinitions="Auto">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"  
+                Style="{StaticResource BoldTextLabel}"
+                Text="{Binding ViewTitle}" >
+            </Label>
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{StaticResource BoldTextLabel}"
+                TextColor="{Binding ViewTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding ViewText1Value}" FontFamily="{StaticResource FontFamilyLight}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding ViewText1}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label
+                Grid.Row="0"
+                Grid.Column="2"  
+                Style="{StaticResource BoldTextLabel}"
+                Text="|" >
+            </Label>
+            <Label
+                Grid.Row="0"
+                Grid.Column="3"
+                Style="{StaticResource BoldTextLabel}"
+                TextColor="{Binding ViewTextColor}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding ViewText2Value}" FontFamily="{StaticResource FontFamilyLight}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding ViewText2}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+    </Frame>
+    </Grid>
+</ContentView>

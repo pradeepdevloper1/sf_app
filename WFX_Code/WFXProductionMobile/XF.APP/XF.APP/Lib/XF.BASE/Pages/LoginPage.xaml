@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XF.BASE.Pages.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:resources="clr-namespace:XF.BASE.Assets.Localization;assembly=XF.BASE"
+    xmlns:trigger="clr-namespace:XF.BASE;assembly=XF.BASE"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush
+            StartPoint="0,0"
+            EndPoint="1,1">
+
+            <GradientStop
+                Offset="0.1" 
+                Color="{StaticResource PrimaryBackColor}" />
+            <GradientStop
+                Offset="1.0" 
+                Color="{StaticResource PrimaryBackEndColor}" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Content>
+        <ScrollView Margin="0" Padding="0">
+
+            <Grid Margin="0" Padding="0" RowDefinitions="*, 37">
+
+                <Frame
+                    Grid.Row="0"
+                    Padding="40,30,40,20"
+                    BackgroundColor="White"
+                    CornerRadius="5"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="350">
+
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="10">
+
+                        <Image
+                            Grid.Row="0"
+                            Source="ic_wfx_login_logo"
+                            HorizontalOptions="Center" />
+
+                        <StackLayout
+                            Grid.Row="1"
+                            Spacing="-2"
+                            HorizontalOptions="End"
+                            Orientation="Horizontal">
+
+                            <Label
+                                x:Name="lblTabletID"
+                                TextColor="Black"
+                                Margin="0,0,10,0"
+                                Style="{StaticResource SmallHeaderLabel}"
+                                HorizontalOptions="CenterAndExpand" />
+
+                            <Picker
+                                ItemDisplayBinding="{Binding LanguageTitle}"
+                                ItemsSource="{Binding Languages}"
+                                ClassId="{Binding SelectedLanguages.LanguageCode}"
+                                SelectedItem="{Binding SelectedLanguages, Mode=TwoWay}" >
+                                    <Picker.Triggers>
+                                        <EventTrigger Event="Unfocused">
+                                            <trigger:LocalizationTrigger/>
+                                        </EventTrigger>
+                                    </Picker.Triggers>
+                            </Picker>
+                            <ImageButton
+                                WidthRequest="10"
+                                HeightRequest="10"
+                                Source="ic_down_arrow_blue" />
+                        </StackLayout>
+
+                        <Entry
+                            Grid.Row="2"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="{x:Static resources:AppResources.UsernamePlaceholder}"
+                            Text="{Binding Username, Mode=TwoWay}" />
+
+                        <Entry
+                            Grid.Row="3"
+                            IsPassword="True"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="{x:Static resources:AppResources.PasswordPlaceholder}"
+                            Text="{Binding Password, Mode=TwoWay}" />
+
+                        <Button
+                            Grid.Row="4"
+                            Margin="0,20,0,10"
+                            Command="{Binding LoginCommand}"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resources:AppResources.LoginButton}"
+                            WidthRequest="250" />
+
+                        <StackLayout
+                            Grid.Row="5"
+                            Padding="0,10,0,10"
+                            Orientation="Horizontal">
+                            <Label
+                                HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource LabelLight}"
+                                Text="{x:Static resources:AppResources.ForgotPasswordLink}" >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Label
+                                HorizontalOptions="EndAndExpand"
+                                Style="{StaticResource LabelLight}"
+                                Text="{x:Static resources:AppResources.CreateAccountLink}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CreateAccountCommand}" NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+
+                    </Grid>
+                </Frame>
+
+                <Grid
+                    Grid.Row="1"
+                    Margin="35,0"
+                    RowDefinitions="1,Auto"
+                    ColumnDefinitions="33*,34*,33*">
+
+                <BoxView
+                    Grid.Row="0"
+                    Grid.ColumnSpan="3"
+                    Style="{StaticResource BorderStyle}"
+                    BackgroundColor="White" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        TextColor="White"
+                        Style="{StaticResource SmallHeaderLabel}"
+                        HorizontalOptions="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static resources:AppResources.VersionText}" />
+                                <Span Text="{Binding Version}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        TextColor="White"
+                        Style="{StaticResource SmallHeaderLabel}"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{x:Static resources:AppResources.CopyrightText}" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        x:Name="LabelSupportMail"
+                        TextColor="White"
+                        Style="{StaticResource SmallHeaderLabel}"
+                        HorizontalOptions="EndAndExpand"
+                        Text="{x:Static resources:AppResources.ContactUsEmailLink}"
+                        TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SupportCommand}" CommandParameter="{Binding Source={x:Reference LabelSupportMail}, Path=Text}" NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </Grid>
+
+            </Grid>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

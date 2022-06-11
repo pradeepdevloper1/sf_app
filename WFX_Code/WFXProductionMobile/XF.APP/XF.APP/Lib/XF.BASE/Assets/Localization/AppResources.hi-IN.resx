@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LoadingText" xml:space="preserve">
+    <value>कृपया प्रतीक्षा करें..</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>एंडलाइन क्यूसी मोबाइल एप्लीकेशन</value>
+  </data>
+  <data name="ContactUsEmailLink" xml:space="preserve">
+    <value>support@worldfashionexchange.com</value>
+  </data>
+  <data name="CopyrightText" xml:space="preserve">
+    <value>कॉपीराइट © विश्व फैशन एक्सचेंज सर्वाधिकार सुरक्षित।</value>
+  </data>
+  <data name="CreateAccountLink" xml:space="preserve">
+    <value>एक नया खाता बनाएं</value>
+  </data>
+  <data name="ForgotPasswordLink" xml:space="preserve">
+    <value>पासवर्ड भूल गए ?</value>
+  </data>
+  <data name="LoginButton" xml:space="preserve">
+    <value>लॉग इन करें</value>
+  </data>
+  <data name="PasswordPlaceholder" xml:space="preserve">
+    <value>पास वर्ड दर्ज करें</value>
+  </data>
+  <data name="UsernamePlaceholder" xml:space="preserve">
+    <value>उपयोगकर्ता नाम दर्ज करें</value>
+  </data>
+  <data name="VersionText" xml:space="preserve">
+    <value>संस्करण</value>
+  </data>
+  <data name="PassText" xml:space="preserve">
+    <value>उत्तीर्ण</value>
+  </data>
+  <data name="DefectText" xml:space="preserve">
+    <value>दोष</value>
+  </data>
+  <data name="RejectText" xml:space="preserve">
+    <value>अस्वीकार</value>
+  </data>
+  <data name="GarmentsText" xml:space="preserve">
+    <value>गारमेंट्स</value>
+  </data>
+  <data name="SuccessMsgText" xml:space="preserve">
+    <value>दोष सफलतापूर्वक सहेजा गया</value>
+  </data>
+  <data name="FailureMsgText" xml:space="preserve">
+    <value>कुछ गलत हो गया</value>
+  </data>
+  <data name="SelectDefectTitle" xml:space="preserve">
+    <value>एक दोष का चयन करें</value>
+  </data>
+  <data name="SelectRejectTitle" xml:space="preserve">
+    <value>एक अस्वीकार का चयन करें</value>
+  </data>
+  <data name="SelectTypeText" xml:space="preserve">
+    <value>प्रकार चुनें</value>
+  </data>
+  <data name="SelectLocOrOpText" xml:space="preserve">
+    <value>स्थान/संचालन का चयन करें</value>
+  </data>
+  <data name="SelectDefectsText" xml:space="preserve">
+    <value>दोषों का चयन करें</value>
+  </data>
+  <data name="MarkOnGarmentText" xml:space="preserve">
+    <value>परिधान पर निशान</value>
+  </data>
+  <data name="SelectLocOrOpValidation" xml:space="preserve">
+    <value>स्थान/संचालन प्रदर्शित करने के लिए एक प्रकार का चयन करें</value>
+  </data>
+  <data name="SelectDefectsValidation" xml:space="preserve">
+    <value>दोषों को प्रदर्शित करने के लिए स्थान/संचालन का चयन करें</value>
+  </data>
+  <data name="MarkOnGarmValidation" xml:space="preserve">
+    <value>परिधान प्रदर्शित करने के लिए दोषों का चयन करें</value>
+  </data>
+  <data name="SaveDefectButton" xml:space="preserve">
+    <value>सेव डिफेक्ट</value>
+  </data>
+  <data name="ConstructionText" xml:space="preserve">
+    <value>निर्माण</value>
+  </data>
+  <data name="DefectGarmentText" xml:space="preserve">
+    <value>दोष परिधान</value>
+  </data>
+  <data name="SoSearchBarText" xml:space="preserve">
+    <value>बिक्री आदेश खोजें</value>
+  </data>
+  <data name="PoSearchBarText" xml:space="preserve">
+    <value>खरीद आदेश खोजें</value>
+  </data>
+  <data name="PoQtyText" xml:space="preserve">
+    <value>खरीद आदेश</value>
+  </data>
+  <data name="LineIDText" xml:space="preserve">
+    <value>लाइन आईडी:</value>
+  </data>
+  <data name="SoNumberText" xml:space="preserve">
+    <value>बिक्री आदेश संख्या</value>
+  </data>
+  <data name="PoNumberText" xml:space="preserve">
+    <value>खरीद आदेश ्संक्या।</value>
+  </data>
+  <data name="StyleText" xml:space="preserve">
+    <value>अंदाज</value>
+  </data>
+  <data name="CustomerText" xml:space="preserve">
+    <value>ग्राहक</value>
+  </data>
+  <data name="ProductText" xml:space="preserve">
+    <value>उत्पाद</value>
+  </data>
+  <data name="OrderStartDateText" xml:space="preserve">
+    <value>आदेश प्रारंभ तिथि</value>
+  </data>
+  <data name="ExFactoryDateText" xml:space="preserve">
+    <value>पूर्व फैक्टरी तिथि</value>
+  </data>
+  <data name="POsText" xml:space="preserve">
+    <value>पीओ</value>
+  </data>
+  <data name="QuantityText" xml:space="preserve">
+    <value>मात्रा</value>
+  </data>
+  <data name="SoPoInstructionText" xml:space="preserve">
+    <value>यह पीओ प्राथमिकता पर है, कृपया माप पर ध्यान देने के साथ प्रारंभ करें</value>
+  </data>
+  <data name="PiecesText" xml:space="preserve">
+    <value>टुकड़े टुकड़े</value>
+  </data>
+  <data name="ColoursText" xml:space="preserve">
+    <value>रंग की</value>
+  </data>
+  <data name="SizesText" xml:space="preserve">
+    <value>आकार</value>
+  </data>
+  <data name="PartsText" xml:space="preserve">
+    <value>पार्ट्स</value>
+  </data>
+  <data name="StartInspectionButton" xml:space="preserve">
+    <value>निरीक्षण शुरू करें</value>
+  </data>
+  <data name="ColoursValidation" xml:space="preserve">
+    <value>रंग प्रदर्शित करने के लिए एक भाग का चयन करें</value>
+  </data>
+  <data name="SizesValidation" xml:space="preserve">
+    <value>आकार प्रदर्शित करने के लिए एक रंग चुनें</value>
+  </data>
+  <data name="PartText" xml:space="preserve">
+    <value>भाग</value>
+  </data>
+  <data name="ColourText" xml:space="preserve">
+    <value>रंग</value>
+  </data>
+  <data name="SizeText" xml:space="preserve">
+    <value>आकार</value>
+  </data>
+  <data name="NewGarmentText" xml:space="preserve">
+    <value>नया परिधान</value>
+  </data>
+  <data name="ReworkGarmentText" xml:space="preserve">
+    <value>रिवर्क गारमेंट</value>
+  </data>
+  <data name="Undo5Button" xml:space="preserve">
+    <value>पूर्ववत</value>
+  </data>
+  <data name="PauseButton" xml:space="preserve">
+    <value>रोकें</value>
+  </data>
+  <data name="StartButton" xml:space="preserve">
+    <value>शुरु</value>
+  </data>
+  <data name="EndShiftButton" xml:space="preserve">
+    <value>अंत शिफ्ट</value>
+  </data>
+  <data name="TargetText" xml:space="preserve">
+    <value>लक्ष्य</value>
+  </data>
+  <data name="ActualText" xml:space="preserve">
+    <value>वास्तविक</value>
+  </data>
+  <data name="PassedText" xml:space="preserve">
+    <value>बीतने के</value>
+  </data>
+  <data name="RejectedText" xml:space="preserve">
+    <value>अस्वीकार</value>
+  </data>
+  <data name="DefectRateText" xml:space="preserve">
+    <value>अस्वीकार</value>
+  </data>
+  <data name="EfficiencyText" xml:space="preserve">
+    <value>दक्षता</value>
+  </data>
+  <data name="ShiftText" xml:space="preserve">
+    <value>खिसक जाना</value>
+  </data>
+  <data name="CumulativeText" xml:space="preserve">
+    <value>संचयी</value>
+  </data>
+  <data name="AverageText" xml:space="preserve">
+    <value>औसत</value>
+  </data>
+  <data name="QuePromptText" xml:space="preserve">
+    <value>क्या तुम वाकई जारी रखना चाहते हो?</value>
+  </data>
+  <data name="ContinueButton" xml:space="preserve">
+    <value>जारी रखें</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>रद्द करना</value>
+  </data>
+  <data name="SelectReasonText" xml:space="preserve">
+    <value>कारण चुनें</value>
+  </data>
+  <data name="WashroomText" xml:space="preserve">
+    <value>टट्टी</value>
+  </data>
+  <data name="NoFeedText" xml:space="preserve">
+    <value>कोई फ़ीड नहीं</value>
+  </data>
+  <data name="LunchBreakText" xml:space="preserve">
+    <value>दोपहर का भोजनावकाश</value>
+  </data>
+  <data name="MeetingText" xml:space="preserve">
+    <value>मुलाकात</value>
+  </data>
+  <data name="OtherText" xml:space="preserve">
+    <value>अन्य</value>
+  </data>
+  <data name="PausedText" xml:space="preserve">
+    <value>रोके गए</value>
+  </data>
+  <data name="ResumeButton" xml:space="preserve">
+    <value>फिर शुरू करना</value>
+  </data>
+  <data name="AverageShortText" xml:space="preserve">
+    <value>औसत</value>
+  </data>
+  <data name="CumulativeShortText" xml:space="preserve">
+    <value>संचयी</value>
+  </data>
+  <data name="EfficiencyShortText" xml:space="preserve">
+    <value>दक्षता</value>
+  </data>
+  <data name="PiecesShortText" xml:space="preserve">
+    <value>टुकड़े</value>
+  </data>
+</root>

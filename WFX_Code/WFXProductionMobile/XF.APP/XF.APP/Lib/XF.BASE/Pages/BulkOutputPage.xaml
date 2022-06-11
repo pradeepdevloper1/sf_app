@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:XF.BASE.Pages;assembly=XF.BASE"
+    xmlns:resources="clr-namespace:XF.BASE.Assets.Localization;assembly=XF.BASE"
+    xmlns:fontIcon="clr-namespace:XF.BASE;assembly=XF.BASE"
+    x:Class="XF.BASE.Pages.BulkOutputPage"
+    NavigationPage.HasBackButton="False">
+
+    <NavigationPage.TitleView>
+        <ImageButton
+            HorizontalOptions="StartAndExpand"
+            HeightRequest="50"
+            WidthRequest="50"
+            Source="ic_close"
+            Command="{Binding CloseCommand}" />
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView Margin="0" Padding="0">
+
+             <Grid Margin="0" Padding="0" ColumnDefinitions="50*,50*">
+
+                 <!-- Left side view -->
+                 <StackLayout
+                    Grid.Column="0"
+                    Orientation="Vertical"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="30"
+                        WidthRequest="30"
+                        Source="{Binding SmileType}" />
+
+                    <Label
+                        HorizontalOptions="Center"
+                        Style="{StaticResource HeaderValueLabel}"
+                        Margin="0,10,0,20"
+                        TextColor="{StaticResource PrimaryTextColor}"
+                        Text="{Binding BulkOutputType}" />
+
+                    <Label
+                        HorizontalOptions="Center"
+                        Style="{StaticResource LabelLight}"
+                        FontSize="88"
+                        TextColor="{StaticResource PrimaryTextColor}"
+                        Text="{Binding TotalCount, Mode=TwoWay}" />
+
+                    <Label
+                        HorizontalOptions="Center"
+                        Style="{StaticResource HeaderValueLabel}"
+                        Margin="0,20,0,25"
+                        TextColor="{StaticResource PrimaryTextColor}"
+                        Text="{x:Static resources:AppResources.GarmentsText}" />
+
+                    <Button
+                        Style="{StaticResource RoundedButtonStyle}"
+                        ImageSource="ic_stroke.png"
+                        BackgroundColor="White"
+                        Background="White"
+                        Command="{Binding SubmitCommand}" />
+                </StackLayout>
+
+                 <!-- Left side view -->
+                <Grid
+                    Grid.Column="1"
+                    RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="10"
+                    ColumnDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="10"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                    <Button
+                        Grid.Row="0" Grid.Column="0"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        BackgroundColor="{Binding RoundedBtnBgColor}"
+                        Background="{Binding RoundedBtnBgColor}"
+                        Text="1"
+                        Command="{Binding NumericButtonCommand}" CommandParameter="1"/>
+                    <Button
+                        Grid.Row="0" Grid.Column="1"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        BackgroundColor="{Binding RoundedBtnBgColor}"
+                        Background="{Binding RoundedBtnBgColor}"
+                        Text="2"
+                        Command="{Binding NumericButtonCommand}" CommandParameter="2" />
+                    <Button
+                        Grid.Row="0" Grid.Column="2"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        BackgroundColor="{Binding RoundedBtnBgColor}"
+                        Background="{Binding RoundedBtnBgColor}"
+                        Text="3"
+                        Command="{Binding NumericButtonCommand}" CommandParameter="3" />
+                    <Button
+                        Grid.Row="1" Grid.Column="0"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        BackgroundColor="{Binding RoundedBtnBgColor}"
+                        Background="{Binding RoundedBtnBgColor}"
+                        Text="4"
+                        Command="{Binding NumericButtonCommand}" CommandParameter="4" />
+                    <Button
+                        Grid.Row="1" Grid.Column="1"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        BackgroundColor="{Binding RoundedBtnBgColor}"
+                        Background="{Binding RoundedBtnBgColor}"
+                        Text="5"
+                        Command="{Binding NumericButtonCommand}" CommandParameter="5" />
+                    <Button
+                        Grid.Row="1" Grid.Column="2"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        BackgroundColor="{Binding RoundedBtnBgColor}"
+                        Background="{Binding RoundedBtnBgColor}"
+                        Text="6"
+                        Command="{Binding NumericButtonCommand}" CommandParameter="6" />
+                    <Button
+                        Grid.Row="2" Grid.Column="0"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        BackgroundColor="{Binding RoundedBtnBgColor}"
+                        Background="{Binding RoundedBtnBgColor}"
+                        Text="7"
+                        Command="{Binding NumericButtonCommand}" CommandParameter="7" />
+                    <Button
+                        Grid.Row="2" Grid.Column="1"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        BackgroundColor="{Binding RoundedBtnBgColor}"
+                        Background="{Binding RoundedBtnBgColor}"
+                        Text="8"
+                        Command="{Binding NumericButtonCommand}" CommandParameter="8" />
+                    <Button
+                        Grid.Row="2" Grid.Column="2"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        BackgroundColor="{Binding RoundedBtnBgColor}"
+                        Background="{Binding RoundedBtnBgColor}"
+                        Text="9"
+                        Command="{Binding NumericButtonCommand}" CommandParameter="9" />
+                    <Button
+                        Grid.Row="3" Grid.Column="1"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        BackgroundColor="{Binding RoundedBtnBgColor}"
+                        Background="{Binding RoundedBtnBgColor}"
+                        Text="0"
+                        Command="{Binding NumericButtonCommand}" CommandParameter="0" />
+                    <Button
+                        Grid.Row="3" Grid.Column="2"
+                        Style="{StaticResource RoundedButtonStyle}"
+                        BackgroundColor="{Binding RoundedBtnBgColor}"
+                        Background="{Binding RoundedBtnBgColor}"
+                        Text="{x:Static fontIcon:FontawesomeRegularFont.ArrowLeft}"
+                        Command="{Binding ClearCommand}" />
+                </Grid>
+
+            </Grid>
+
+        </ScrollView>
+    </ContentPage.Content>
+</pages:BasePage>

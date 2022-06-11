@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xamlutils="clr-namespace:XF.BASE;assembly=XF.BASE"
+    xmlns:pages="clr-namespace:XF.BASE.Pages;assembly=XF.BASE"
+    xmlns:resources="clr-namespace:XF.BASE.Assets.Localization;assembly=XF.BASE"
+    x:Class="XF.BASE.Pages.NavigationSearchPage"
+    NavigationPage.HasBackButton="False">
+
+    <NavigationPage.TitleView>
+
+        <StackLayout
+            Margin="10,0"
+            Spacing="0"
+            VerticalOptions="Center">
+
+            <!-- Default Header -->
+            <Grid
+                IsVisible="{Binding IsSearchBarVisible, Converter={xamlutils:InverseBoolConverter}}"
+                ColumnDefinitions="10*,40*,40*,5*,5*"
+                VerticalOptions="Center">
+
+                <!-- Hamburger and search -->
+                <StackLayout
+                    Grid.Column="0"
+                    Spacing="20"
+                    Orientation="Horizontal">
+
+                    <!--<ImageButton Source="ic_hamburger"/>-->
+                    <ImageButton
+                        Source="ic_search"
+                        Command="{Binding SearchCommand}" />
+                </StackLayout>
+
+                <!-- Nav title icon -->
+                <Image
+                    Grid.Column="1"
+                    Aspect="AspectFit"
+                    HorizontalOptions="EndAndExpand"
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    Source="ic_wfx_logo"/>
+
+                <!-- User id and line man labels -->
+                <StackLayout
+                    Grid.Column="2"
+                    Spacing="15"
+                    VerticalOptions="Center"
+                    Orientation="Horizontal"
+                    HorizontalOptions="EndAndExpand">
+
+                    <Label
+                        FontSize="{StaticResource NavLabelFontSize}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static resources:AppResources.LineIDText}"/>
+                                <Span Text=" "/>
+                                <Span Text="{Binding LineID}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <BoxView
+                        VerticalOptions="Center"
+                        HeightRequest="21"
+                        BackgroundColor="{StaticResource LineSeparator}"
+                        WidthRequest="2"/>
+                    <Label
+                        FontSize="{StaticResource NavLabelFontSize}"
+                        Text="{Binding LineMan}" />
+                </StackLayout>
+                
+                <!-- setting -->
+                <ImageButton
+                    HorizontalOptions="End"
+                    Grid.Column="3"
+                    Command="{Binding SettingCommand}"
+                    Source="ic_settings.png"/>
+                
+                <!-- Logout -->
+                <ImageButton
+                    HorizontalOptions="End"
+                    Grid.Column="4"
+                    Command="{Binding LogoutCommand}"
+                    Source="ic_logout"/>
+
+            </Grid>
+
+            <!-- Search Header -->
+            <Grid
+                IsVisible="{Binding IsSearchBarVisible}"
+                ColumnDefinitions="95*,5*"
+                VerticalOptions="Center">
+
+                <SearchBar
+                    x:Name="SearchBar" 
+                    Grid.Column="0"
+                    PlaceholderColor="#BDBDBD"
+                    CancelButtonColor="Transparent"
+                    TextColor="{StaticResource SecondaryTextColor}"
+                    Placeholder="{x:Static resources:AppResources.SoSearchBarText}"
+                    Text="{Binding SearchText, Mode=TwoWay}"
+                    SearchCommand="{Binding SearchCommand}"
+                    SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"/>
+
+                <!-- Close -->
+                <ImageButton
+                    HorizontalOptions="End"
+                    Grid.Column="1"
+                    HeightRequest="35"
+                    WidthRequest="35"
+                    Command="{Binding CloseCommand}"
+                    Source="ic_nav_close"/>
+
+            </Grid>
+
+            <BoxView
+                HeightRequest="2"
+                Margin="0,10,0,0"
+                VerticalOptions="Start"
+                BackgroundColor="{StaticResource LineSeparator}"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+</pages:BasePage>
