@@ -1,0 +1,125 @@
+<p *ngIf="!model"><em>Loading...</em></p>
+<div class="wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 mb-10">
+        <div class="top-heading">
+          OUTPUT QUALITY STATUS
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10"></div>
+      <div class="col-md-3 mb-10"></div>
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <a href=""style="float: right;" (click)="home()"> <img src="../../assets/images/icon-1a.svg"></a>
+        </div>
+      </div>
+    </div>
+    <!--row-->
+    <div class="row mt-30 ">
+      <div class="col-md-4 pl-40">
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Checkpoint</span>
+            End line QC {{ UserName }}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Customer</span>
+            {{ model.customer }}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Date & Time</span>
+            {{ CurrentDate | date: 'dd/MM/yyyy hh:mm:ss a'}}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Line</span>
+            {{ model.line }}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Work Order</span>
+            {{ model.poNo}}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Product</span>
+            {{ model.product}}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Time Left</span>
+            {{ model.timeLeft}}
+          </div>
+        </div>
+        <!--col-md-3-->
+      </div>
+      <!--col-md-4-->
+      <div class="col-md-8 mt-nv60">
+        <div class="card card-shadow mb-4">
+          <div class="card-body padding-30">
+            <div class="col-xl-12 col-lg-12 col-md-6 mb-3">
+              <div class="card bg-white border-0 ptb-15 text-light">
+                <div class="card-body color-box text-center">
+                  <h6 class="m-0 text-dark">TOTAL GARMENTS CHECKED</h6>
+                  <h2 class="text-dark">
+                    {{model.picesCheckedForDisplay}}
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-6 mb-3">
+              <div class="card bg-primary border-0 ptb-15 text-light">
+                <div class="card-body color-box text-center">
+                  <h6 class="m-0">GOOD GARMENTS</h6>
+                  <h2>
+                    {{ model.outputGoodPCS}}
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-6 mb-3">
+              <div class="card bg-warning border-0 ptb-15 text-light">
+                <div class="card-body color-box text-center">
+                  <h6 class="m-0">RE-WORK GARMENTS</h6>
+                  <h2>
+                    {{ model.reWorkDefectPCS}}
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-6 mb-3">
+              <div class="card bg-danger border-0 ptb-15 text-light">
+                <div class="card-body color-box text-center">
+                  <h6 class="m-0">REJECT GARMENTS</h6>
+                  <h2>
+                    {{ model.rejectPCS}}
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--card-body-->
+        </div>
+      </div>
+      <!--col-md-9-->
+    </div>
+    <!--ROW-->
+  </div>
+  <!--container-fluid-->
+</div>

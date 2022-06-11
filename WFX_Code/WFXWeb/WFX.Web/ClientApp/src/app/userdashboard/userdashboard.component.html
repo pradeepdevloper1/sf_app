@@ -1,0 +1,466 @@
+<p *ngIf="!userdashboardmodel"><em>Loading...</em></p>
+
+<div class="wrapper">
+
+  <div class="container_full">
+
+    <div class="content_wrapper">
+      <div class="container-fluid">
+        <div class="page-heading">
+
+          <div class="row d-flex align-items-center">
+
+            <div class="col-md-2">
+              <div class="form-group form-focus select-focus">
+                <!--<label class="focus-label" >Start Date</label>-->
+                <label class="focus-label" translate>lang.startdate</label>
+                <!--<p translate>demo.startdate</p>-->
+                <div class="input-group">
+                  <input class="form-control-2 datetimepicker" [ngModel]="startdate | date:'dd/MM/YYYY'" type="text"
+                    #dp_startdate (blur)="StartDate(dp_startdate.value)">
+                </div>
+              </div>
+            </div>
+            <!--col-md-2-->
+
+            <div class="col-md-2">
+              <div class="form-group form-focus select-focus">
+                <label class="focus-label" translate>lang.enddate</label>
+                <div class="input-group">
+                  <input class="form-control-2 datetimepicker" [ngModel]="enddate | date:'dd/MM/YYYY'" type="text"
+                    #dp_enddate (blur)="EndDate(dp_enddate.value)">
+                </div>
+              </div>
+            </div>
+            <!--col-md-2-->
+
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group form-focus select-focus">
+                    <label class="focus-label" translate>lang.process</label>
+                    <ng-select2 class="w100" [data]="processlist" [placeholder]="'Select'"
+                      (valueChanged)="ProcessChangeHandler($event)">
+                    </ng-select2>
+                  </div>
+                </div>
+                <!--col-md-6-->
+
+                <div class="col-md-6">
+                  <div class="form-group form-focus select-focus">
+                    <label class="focus-label" translate>lang.module</label>
+                    <ng-select2 class="w100" [data]="modulelist" [(ngModel)]="value" [placeholder]="'All'"
+                      (valueChanged)="moduleChangeHandler($event)">
+                    </ng-select2>
+                  </div>
+                </div>
+                <!--col-md-6-->
+              </div>
+              <!--row-->
+            </div>
+            <!--col-md-4-->
+          </div>
+          <!--row-->
+        </div>
+        <!-- page-heading -->
+        <!-- Section -->
+        <section class="chart_section">
+          <div class="row">
+            <div class="col-xl-4 col-md-6 mb-3">
+              <div class="card bg-1 border-0 text-light ptb-10">
+                <div class="card-body ptb-0">
+                  <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-1">
+                      <div class="w-img">
+                        <img src="../../assets/images/icon-running.svg">
+                      </div>
+                    </div>
+                    <!--col-lg-2-->
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                      <div class="w1">
+                        <h6 class="m-0 text-white" translate>lang.runningworkorders</h6>
+                      </div>
+                    </div>
+                    <!--col-lg-7-->
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                      <div class="w2">
+                        <p>
+                          {{ userdashboardmodel.runningOrders}}
+                        </p>
+                      </div>
+                    </div>
+                    <!--col-lg-3-->
+                  </div>
+                  <!--row-->
+                </div>
+                <!--card-body-->
+              </div>
+              <!--bg-1-->
+            </div>
+            <div class="col-xl-4 col-md-6 mb-3">
+              <div class="card bg-2 border-0 text-light ptb-10">
+                <div class="card-body ptb-0">
+                  <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-1">
+                      <div class="w-img">
+                        <img src="../../assets/images/icon-completed.svg">
+                      </div>
+                    </div>
+                    <!--col-lg-2-->
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                      <div class="w1">
+                        <h6 class="m-0 text-white" translate>lang.completedworkorders</h6>
+                      </div>
+                    </div>
+                    <!--col-lg-7-->
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                      <div class="w2">
+                        <p>
+                          {{ userdashboardmodel.completedOrders}}
+                        </p>
+                      </div>
+                    </div>
+                    <!--col-lg-3-->
+                  </div>
+                  <!--row-->
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mb-3">
+              <div class="card bg-3 border-0 text-light ptb-10">
+                <div class="card-body ptb-0">
+                  <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-1">
+                      <div class="w-img">
+                        <img src="../../assets/images/icon-delayed-order.svg">
+                      </div>
+                    </div>
+                    <!--col-lg-2-->
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                      <div class="w1">
+                        <h6 class="m-0 text-white" translate>lang.delayedworkorders</h6>
+                      </div>
+                    </div>
+                    <!--col-lg-7-->
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                      <div class="w2">
+                        <p>
+                          {{ userdashboardmodel.delayedOrders}}
+                        </p>
+                      </div>
+                    </div>
+                    <!--col-lg-3-->
+                  </div>
+                  <!--row-->
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mb-3">
+              <div class="card  border-0 text-light ptb-10" style="background-color:#e83e8c ;">
+                <div class="card-body ptb-0">
+                  <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-1">
+                      <div class="w-img">
+                        <img src="../../assets/images/icon-compliance.svg">
+                      </div>
+                    </div>
+                    <!--col-lg-2-->
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                      <div class="w1">
+                        <h6 class="m-0 text-white" translate>lang.compliance</h6>
+                      </div>
+                    </div>
+                    <!--col-lg-7-->
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                      <div class="w2">
+                        <p>
+                          {{ userdashboardmodel.compliance}}%
+                        </p>
+                      </div>
+                    </div>
+                    <!--col-lg-3-->
+                  </div>
+                  <!--row-->
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mb-3">
+              <div class="card bg-4 border-0 text-light ptb-10">
+                <div class="card-body ptb-0">
+                  <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-1">
+                      <div class="w-img">
+                        <img src="../../assets/images/icon-pieces.svg">
+                      </div>
+                    </div>
+                    <!--col-lg-2-->
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                      <div class="w1">
+                        <h6 class="m-0 text-dark" translate>lang.pieceschecked</h6>
+                      </div>
+                    </div>
+                    <!--col-lg-7-->
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                      <div class="w2 text-dark">
+                        <p>
+                          {{ userdashboardmodel.picesChecked}}
+                        </p>
+                      </div>
+                    </div>
+                    <!--col-lg-3-->
+                  </div>
+                  <!--row-->
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 col-md-3 mb-2">
+              <div class="card bg-6 border-0 text-light ptb-10">
+                <div class="card-body ptb-0">
+                  <div class="text-center">
+
+                    <div class="pr-0 ptb-0">
+                      <h6 class="f30 m-0 text-dark text-center line-height-30">{{ userdashboardmodel.rejectionRate}}%
+                      </h6>
+                      <h6 class="f16 m-0 text-dark text-center line-height-20" translate>lang.rejectionrate</h6>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 col-md-3 mb-2">
+              <div class="card border-0 text-light bg-4 p-0">
+                <div class="card-body ptb-0">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <h6 class="f30 m-0 text-dark text-center line-height-40">{{ userdashboardmodel.currentDHU}}</h6>
+                      <h6 class="f16 m-0 text-dark text-center line-height-30" translate>lang.currentdhu</h6>
+
+                    </div>
+                    <!--col-lg-7-->
+
+                  </div>
+                  <!--row-->
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!--row-->
+
+          <div class="row pb-10">
+
+            <div class=" col-xl-4 col-md-12 col-lg-4">
+              <div class="card card-shadow mb-4 ">
+
+                <div class="card-body" style="padding:0px 0px 27px 0px;">
+                  <ul class="nav nav-pills" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#tab-p_1" translate>lang.workorderstatus</a>
+                    </li>
+                    <!--<li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#tab-p_2">Task Queue</a>
+                    </li>-->
+                  </ul>
+
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="tab-p_1" role="tabpanel">
+                      <div class="rb_card scroll_auto scroll_mr light_scroll">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col" translate>lang.workorderno</th>
+                              <th scope="col" translate>lang.productionorderno</th>
+                              <th scope="col" class="text-right" translate>lang.status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let oneorder of userdashboardmodel.orderlist">
+                              <td style="color: darkgrey;">{{ oneorder.poNo }} </td>
+                              <td style="color: darkgrey;">{{ oneorder.soNo }} </td>
+                              <td class="text-right" style="color: darkgrey;">{{ oneorder.orderRemark }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <!--tab-pane-1-->
+                    <div class="tab-pane" id="tab-p_2" role="tabpanel">
+                      <div class="rb_card scroll_auto scroll_mr light_scroll">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col">Order No.</th>
+                              <th scope="col" class="text-right">Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="txt-blue">#2837401283</td>
+                              <td class="text-right txt-blue">Order Completed</td>
+                            </tr>
+                            <tr>
+                              <td>#2837401283</td>
+                              <td class="text-right txt-blue">Order Started</td>
+                            </tr>
+                            <tr>
+                              <td>#2837401283</td>
+                              <td class="text-right">Settings Updated</td>
+                            </tr>
+
+                            <tr>
+                              <td>#2837401283</td>
+                              <td class="text-right txt-blue">Order Started</td>
+                            </tr>
+                            <tr>
+                              <td>#2837401283</td>
+                              <td class="text-right txt-blue">Order Started</td>
+                            </tr>
+                            <tr>
+                              <td>#2837401283</td>
+                              <td class="text-right">Settings Updated</td>
+                            </tr>
+
+                            <tr>
+                              <td class="txt-blue">#2837401283</td>
+                              <td class="text-right txt-blue">Order Completed</td>
+                            </tr>
+                            <tr>
+                              <td>#2837401283</td>
+                              <td class="text-right txt-blue">Order Started</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <!--tab-pane-2-->
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!--col-md-4-->
+
+            <div class=" col-xl-8 col-md-12 col-lg-8">
+
+              <div class="row">
+                <div class="col-md-6 col-lg-6 col-xl-6">
+                  <div class="card card-shadow mb-3">
+                    <div class="card-body">
+                      <span class="f12 strong" translate>lang.efficiancy</span>
+                      <div id="b-area" class=""></div>
+                      <ejs-chart id="chart-container-eff" [primaryXAxis]='xAxis' [primaryYAxis]='yAxis'
+                        [legendSettings]='legendSettings' [tooltip]='tooltip' height='324'>
+                        <e-annotations *ngIf="this.AveragetLlineEff > 0" name='Avg'>
+                          <e-annotation visible=true
+                            content='<div id = "test" style="border-top:3px dashed grey;border-top-width: 2px; width: 10000px;border-top-color: red"></div>'
+                            [x]='avgline' [y]='AveragetLlineEff' coordinateUnits='Point'>
+                          </e-annotation>
+                        </e-annotations>
+                        <e-series-collection>
+                          <e-series [dataSource]='minefflst' type='Line' xName='qcDay' yName='qcEff' name='Min'
+                            [marker]='marker'></e-series>
+                          <e-series [dataSource]='maxefflst' type='Line' xName='qcDay' yName='qcEff' name='Max'
+                            [marker]='marker'></e-series>
+                        </e-series-collection>
+                      </ejs-chart>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-6">
+                  <div class="card card-shadow mb-3">
+                    <div class="card-body">
+                      <span class="f12 strong" translate>lang.defecttally</span>
+                      <div id="b-area" class=""></div>
+                      <ejs-accumulationchart id="chart-container-defect" [legendSettings]='legendSettings2'
+                        [tooltip]='tooltip' height='324'>
+                        <e-accumulation-series-collection>
+                          <e-accumulation-series [dataSource]='topdefectlist' xName='defectName' yName='per'
+                            innerRadius='90%' [dataLabel]='datalabel'></e-accumulation-series>
+                        </e-accumulation-series-collection>
+                      </ejs-accumulationchart>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4">
+                  <div class="social-box">
+                    <span class="f30 txt-orange"> {{ userdashboardmodel.lowestLlineEff}}%</span><br><span
+                      translate>lang.lowest</span><br><span translate>lang.lineefficiancy</span>
+                  </div>
+                  <!--/social-box-->
+                </div>
+
+                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4">
+                  <div class="social-box">
+                    <span class="f30 txt-blue">{{ userdashboardmodel.averagetLlineEff}}%</span><br><span
+                      translate>lang.average</span><br><span translate>lang.lineefficiancy</span>
+                  </div>
+                  <!--/social-box-->
+                </div>
+
+                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4">
+                  <div class="social-box">
+                    <span class="f30 txt-blue">{{ userdashboardmodel.highestLlineEff}}%</span><br><span
+                      translate>lang.highest</span><br><span translate>lang.lineefficiancy</span>
+                  </div>
+                  <!--/social-box-->
+                </div>
+
+
+                <div class="col-xl-6 col-md-12 mb-6">
+                  <div class="card bg-4 border-0 text-light ptb-26">
+                    <div class="card-body ptb-0">
+                      <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                          <div class="w-img">
+                            <img src="../../assets/images/icon-6.svg">
+                          </div>
+                        </div>
+                        <!--col-lg-2-->
+                        <div class="col-lg-7 col-md-7 col-sm-7">
+                          <div class="w1">
+                            <h6 class="m-0 text-dark" translate>lang.qualitybottlenecks</h6>
+                          </div>
+                        </div>
+                        <!--col-lg-7-->
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                          <div class="w2 text-dark">
+                            <p>
+                              {{ userdashboardmodel.qualityBottlenecks}}
+                            </p>
+                          </div>
+                        </div>
+                        <!--col-lg-3-->
+                      </div>
+                      <!--row-->
+                    </div>
+                  </div>
+                </div>
+                <!--col-xl-6-->
+
+              </div>
+              <!--row-->
+            </div>
+            <!--col-md-6-->
+
+
+          </div>
+          <!--col-md-8-->
+
+        </section>
+        <!-- chart_section -->
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,270 @@
+<p *ngIf="!planmodel"><em>Loading...</em></p>
+
+<div class="wrapper">
+
+  <div class="container_full">
+
+    <div class="content_wrapper">
+      <div class="container-fluid">
+        <div class="row h90">
+          <div class="col-md-12 h90">
+            <div class="mt-80 mb-4 h100">
+              <button *ngIf="showButton && selectedTab == 'LineTarget'" type="button" class="btn btn-gradient float-right" (click)="savechanges()" translate>
+                lang.savechange
+              </button>
+              <ul class="nav nav-pills nav-pills-success mb-2 bdr-none" role="tablist">
+                <li class="nav-item" >
+                  <a class="nav-link" id="firstTab" data-toggle="tab" href="#tab-p-i_1" (click)="onTabClick($event)" translate> lang.linebooking</a>
+                </li>
+                <li class="nav-item" >
+                  <a class="nav-link active" id="secondTab" data-toggle="tab" href="#tab-p-i_2" (click)="onTabClick($event)"  translate>lang.targetplan</a>
+                </li>
+              </ul>
+
+              <div class="tab-content h100">
+
+                <div class="tab-pane h100" id="tab-p-i_1" role="tabpanel">
+                  <div class="page-heading" style="position:absolute; top:0px; ">
+
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-12">
+                        <div class="breadcrumb_nav">
+                          <ol class="breadcrumb">
+                            <li>
+                              <a class="parent-item" routerLink="/User/UserDashboard"><img src="../../assets/images/icon-home.svg" border="0"></a>
+                              <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li class="active" translate>
+                              lang.planupload
+                            </li>
+                          </ol>
+                        </div>
+                        <div class="page-breadcrumb">
+                          <h1 translate>lang.linebooking</h1>
+                        </div>
+
+                      </div>
+                    </div>
+                    <!--row-->
+                  </div>
+                  <!-- page-heading -->
+                  <!--(click)='BrowseBookingFile()'-->
+                  <div class="row h100">
+                    <div class="col-md-3 text-center h100">
+                      <div class="card card-shadow mb-3 pt-80  pb-160 h95">
+                        <div class="card-body plr-0">
+                          <form id="file-upload-form" action="" class="w-100">
+
+                            <!--<input id="file-upload" type="file" name="fileUpload" (click)='BrowseBookingFile()' />-->
+                            <label for="file-upload" id="file-drag" class="m-0 p-0" (click)='BrowseBookingFile()'>
+                              <div style="width:33px; margin:0px auto"><img src="../../assets/images/icon-upload.svg">
+                              </div>
+                              <h1 class="mb-40" translate>lang.uploadlinebooking</h1>
+
+                              <p class="mb-0 line-height-0" translate>lang.draglineplaningfile</p>
+                              <p class="mt-0 pt-0">or</p>
+
+                              <span id="file-upload-btn" class="button w-75" (click)='BrowseBookingFile()' translate>lang.browse</span>
+                            </label>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!--col-md-3-->
+                    <div class="col-md-9 h100">
+                      <div class="row">
+
+                        <div class="col-md-3">
+                          <div class="form-group form-focus select-focus">
+                            <label class="focus-label" translate>lang.startdate</label>
+                            <input class="form-control-2 datetimepicker" [ngModel]="lstartdate | date:'dd/MM/YYYY'"
+                              type="text">
+                          </div>
+                        </div>
+                        <!--col-md-3-->
+                        <div class="col-md-3">
+                          <div class="form-group form-focus select-focus">
+                            <label class="focus-label" translate>lang.enddate</label>
+                            <input class="form-control-2 datetimepicker" [ngModel]="lenddate | date:'dd/MM/YYYY'"
+                              type="text">
+                          </div>
+                        </div>
+                        <!--col-md-3-->
+
+                        <div class="col-md-2">
+                          <div class="form-group form-focus select-focus">
+                            <label class="focus-label" translate>lang.po</label>
+                            <ng-select2 class="w100" [data]="planmodel.polist" [placeholder]="'All'"
+                              (valueChanged)="bookingpoChangeHandler($event)">
+                            </ng-select2>
+                          </div>
+                        </div>
+
+                        <div class="col-md-2">
+                          <div class="form-group form-focus select-focus">
+                            <label class="focus-label" translate>lang.module</label>
+                            <ng-select2 class="w100" [data]="planmodel.modulelist"[placeholder]="'All'"
+                              (valueChanged)="bookingmoduleChangeHandler($event)">
+                            </ng-select2>
+                          </div>
+                        </div>
+                        <!--col-md-2-->
+                        <div class="col-md-2">
+                          <div class="form-group form-focus select-focus">
+                            <label class="focus-label" translate>lang.line</label>
+                            <ng-select2 class="w100" [data]="planmodel.linelist"[placeholder]="'All'"
+                              (valueChanged)="bookinglineChangeHandler($event)">
+                            </ng-select2>
+                          </div>
+                        </div>
+                        <!--col-md-2-->
+                      </div>
+                      <!--row-->
+                      <div class="card card-shadow mb-3 h85">
+                        <ag-grid-angular style="width: 100%; height: 100%;"class="ag-theme-alpine" [rowData]="rowData"
+                          [columnDefs]="columnDefs">
+                        </ag-grid-angular>
+                      </div>
+
+                    </div>
+                    <!--col-md-9-->
+                  </div>
+                  <!--row-->
+
+                </div>
+
+                <div class="tab-pane h100 active" id="tab-p-i_2" role="tabpanel">
+                  <div class="page-heading" style="position:absolute; top:0px; ">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-12">
+                        <div class="breadcrumb_nav">
+                          <ol class="breadcrumb">
+                            <li>
+                              <a class="parent-item" routerLink="/User/UserDashboard"><img
+                                  src="../../assets/images/icon-home.svg" border="0"></a>
+                              <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li class="active" translate>
+                              lang.planupload
+                            </li>
+                          </ol>
+                        </div>
+                        <div class="page-breadcrumb">
+                          <h1 translate>lang.targetplan</h1>
+                        </div>
+
+                      </div>
+                    </div>
+                    <!--row-->
+                  </div>
+                  <!-- page-heading -->
+                  <div class="row h100">
+                    <div class="col-md-3 text-center h100">
+                      <div class="card card-shadow mb-3 pt-60  pb-160 h95">
+                        <div class="card-body plr-0">
+
+                          <div style="width:33px; margin:0px auto"><img src="../../assets/images/icon-upload.svg"></div>
+                          <h1  translate>lang.uploadplan</h1>
+                           <button   type="button" class="btn btn-pill genrate-po-plan-sheet" (click)='GeneratePOPlanSheet()'>
+                          <span translate>lang.generatepoplansheet</span>
+                           </button>
+                          <form id="file-upload-form" action="" class="w-50" style="height: 40px;margin-top: 5%;">
+
+                            <input id="file-upload1" type="file" name="fileUpload" (change)='BrowseTargetFile($event)'  />
+                            <label for="file-upload1" id="file-drag" >
+                              <span id="file-upload-btn" class="button w-80" translate>lang.browse</span>
+
+                              <button type="button" class="btn btn-pill btn-outline-secondary" style="margin-top: 5%;" (click)='SampleFile()'>
+                                <img src="../../assets/images/icon-download.svg"> <span
+                                  translate>lang.sampleformat</span>
+                              </button>
+                            </label>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!--col-md-3-->
+                    <div class="col-md-9 h100" >
+
+                      <div class="row">
+                        <div class="col-md-2">
+                          <div class="form-group form-focus select-focus">
+                            <label class="focus-label" translate>lang.startdate</label>
+                            <input class="form-control-2 datetimepicker" [ngModel]="startdate | date:'dd/MM/YYYY'"
+                              type="text" #dp_startdate (blur)="StartDate(dp_startdate.value)">
+                          </div>
+                        </div>
+                        <!--col-md-3-->
+                        <div class="col-md-2">
+                          <div class="form-group form-focus select-focus">
+                            <label class="focus-label" translate>lang.enddate</label>
+                            <input class="form-control-2 datetimepicker" [ngModel]="enddate | date:'dd/MM/YYYY'"
+                              type="text" #dp_enddate (blur)="EndDate(dp_enddate.value)">
+                          </div>
+                        </div>
+                        <!--col-md-3-->
+
+                        <div class="col-md-2">
+                          <div class="form-group form-focus select-focus">
+                            <label class="focus-label" translate>lang.workorder</label>
+                            <ng-select2 class="w100" [data]="planmodel.polist" [placeholder]="'All'"
+                              (valueChanged)="poChangeHandler($event)">
+                            </ng-select2>
+                          </div>
+                        </div>
+                        <!--col-md-2-->
+                        <div class="col-md-2">
+                          <div class="form-group form-focus select-focus">
+                            <label class="focus-label" translate>lang.module</label>
+                            <ng-select2 class="w100" [data]="planmodel.modulelist" [placeholder]="'All'"
+                              (valueChanged)="moduleChangeHandler($event)">
+                            </ng-select2>
+                          </div>
+                        </div>
+                        <!--col-md-2-->
+                        <div class="col-md-2">
+                          <div class="form-group form-focus select-focus">
+                            <label class="focus-label" translate>lang.process</label>
+                            <ng-select2 class="w100" [data]="planmodel.processlist" [placeholder]="'All'"
+                              (valueChanged)="processChangeHandler($event)">
+                            </ng-select2>
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group form-focus select-focus">
+                            <label class="focus-label" translate>lang.line</label>
+                            <ng-select2 class="w100" [data]="planmodel.linelist" [placeholder]="'All'"
+                              (valueChanged)="lineChangeHandler($event)">
+                            </ng-select2>
+                          </div>
+                        </div>
+                        <!--col-md-2-->
+                      </div>
+                      <!--row-->
+                      <div class="card card-shadow mb-3 h85">
+                        <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-alpine"
+                          [rowData]="target_rowData" [columnDefs]="target_columnDefs" (gridReady)="OnGridReady($event)"
+                          (cellValueChanged)="cellValueChanged($event)"[frameworkComponents]="frameworkComponents">
+                        </ag-grid-angular>
+                      </div>
+
+                    </div>
+                    <!--col-md-9-->
+                  </div>
+                  <!--row-->
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          <!--col-md-10-->
+        </div>
+        <!--row-->
+      </div>
+      <!--container-fluid-->
+    </div>
+
+  </div>
+</div>

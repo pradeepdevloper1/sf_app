@@ -1,0 +1,86 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+/*a {
+  color: #0366d6;
+}
+
+code {
+  color: #E01A76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}*/
+
+/*html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+body {
+  padding: 1rem;
+  overflow: auto;
+}*/
+
+
+
+@import url('../src/assets/css/bootstrap.min.css');
+@import url('../src/assets/css/dataTables.bootstrap4.min.css');
+
+@import url('../src/assets/css/jquery.mCustomScrollbar.css');
+
+@import url('../src/assets/css/style.css');
+@import url('../src/assets/css/select2.min.css');
+@import url('../src/assets/css/bootstrap-datetimepicker.min.css');
+@import url('../src/assets/css/menu.css');
+@import url('../src/assets/css/header.css');
+@import url('../src/assets/css/responsive.css');
+
+@import url('../src/assets/css/light.css');
+
+@import url('../src/assets/css/jquery.fancybox.min.css');
+
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
+
+.ag-theme-balham .ag-header {
+  text-align: center;
+  height: 450px;
+}
+
+.example-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#myGrid {
+  flex: 1 1 0px;
+  width: 100%;
+}
+
+/*.select2-container {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  vertical-align: middle;
+  width: 100% !important;
+}*/
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,90 @@
+<div class="wrapper">
+
+  <div class="container_full">
+    <button   type="button" class="btn btn-gradient float-right" (click)="saveChanges()" style="margin-top:10px">Save Changes</button>
+    <!-- <button  type="button" class="btn btn-pill genrate-po-plan-sheet" style="float:right;width:90px;height: 10%;margin-top: 1.5%;margin-right: 1%;"(click)="saveChanges()">x <span translate>lang.close</span></button> -->
+
+    <div class="content_wrapper">
+      <div class="container-fluid">
+
+        <div class="row h100">
+
+          <div class="col-md-2 h100">
+
+            <div class="card card-shadow mb-4 mt-4 h100">
+
+              <div class="card-body h100" style="padding:10px 0px;">
+
+                <h6 class="sale" translate>lang.productionorder </h6>
+                <div class="rb_card-2 scroll_auto scroll_mr light_scroll h90">
+                  <form method="post" class="find">
+                    <input title="Search" value="" type="submit" class="button">
+                    <input type="text" class="textbox" placeholder="{{'lang.search'|translate}}"
+                      (input)="onChangeEvent($event)">
+                  </form>
+
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr *ngFor="let polist of poviewmodel.polist">
+                        <td>
+                          <a  style="color:black;"> {{polist.value}} </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-10">
+          <div class="page-heading">
+
+            <div class="row d-flex align-items-center">
+
+              <div class="col-md-5">
+                <div class="breadcrumb_nav">
+                  <ol class="breadcrumb">
+                    <li>
+                      <a class="parent-item" routerLink="/User/UserDashboard"><img src="../../assets/images/icon-home.svg"
+                          border="0"></a>
+                      <i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                      <a routerLink="/User/OrderList"><span translate>lang.orderlist</span></a>
+                      <i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="wraptext">
+                      <a class="txt-blue" [routerLink]="['/User/SOView',sono ]"><span translate>lang.po</span>
+                        {{sono }}</a>
+                    </li>
+
+                  </ol>
+                </div>
+                <div class="page-breadcrumb wraptext">
+                  <h1> <span translate>lang.productionorder</span> {{sono}}</h1>
+
+               </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-9 h100" style="padding-top: 5%"> -->
+            <!-- <div class="card card-shadow mb-3 h100"> -->
+
+              <ag-grid-angular style="width:110%; height: 100%;" class="ag-theme-alpine" [columnDefs]="columnDefs"
+                [rowData]="rowData" [defaultColDef]="defaultColDef" (gridReady)="onGridReady($event)"
+                [suppressRowClickSelection]="true" [frameworkComponents]="frameworkComponents">
+              </ag-grid-angular>
+            <!-- </div> -->
+
+          <!-- </div> -->
+        </div>
+        </div>
+      </div>
+      <!--container-fluid-->
+    </div>
+
+  </div>
+
+</div>

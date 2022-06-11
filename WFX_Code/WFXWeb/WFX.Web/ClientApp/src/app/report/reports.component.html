@@ -1,0 +1,178 @@
+<p *ngIf="!ordermodel"><em>Loading...</em></p>
+
+<div class="wrapper">
+
+    <div class="container_full">
+
+        <div class="content_wrapper">
+            <div class="container-fluid">
+
+                <div class="page-heading">
+
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-4">
+                            <div class="breadcrumb_nav">
+                                <ol class="breadcrumb">
+                                    <li>
+                                        <a class="parent-item" routerLink="/User/UserDashboard"><img src="../../assets/images/icon-home.svg" border="0"></a> <i class="fa fa-angle-right"></i>
+                                    </li>
+                                    <li class="active" translate>
+                                        lang.reports
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="page-breadcrumb">
+                                <h1 translate>lang.reports</h1>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4"></div>
+
+                    </div>
+                    <!-- page-heading -->
+                    <!-- Section -->
+                    <section class="chart_section" style="margin-top:10px;">
+                        <div class="row">
+
+
+                        </div>
+                        <!--row-->
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group form-focus select-focus">
+                                    <label class="focus-label" translate>lang.startdate</label>
+                                    <input class="form-control-2 datetimepicker" [ngModel]="startdate | date:'dd/MM/YYYY'" type="text" #dp_startdate (blur)="StartDate(dp_startdate.value)">
+                                </div>
+                            </div>
+                            <!--col-md-2-->
+                            <div class="col-md-2">
+                                <div class="form-group form-focus select-focus">
+                                    <label class="focus-label" translate>lang.enddate</label>
+                                    <input class="form-control-2 datetimepicker" [ngModel]="enddate | date:'dd/MM/YYYY'" type="text" #dp_enddate (blur)="EndDate(dp_enddate.value)">
+                                </div>
+                            </div>
+                            <!--col-md-2-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group form-focus select-focus">
+                                    <label class="focus-label" translate>lang.module</label>
+                                    <ng-select2 class="w100" [data]="ordermodel.modulelist" [placeholder]="'Select'" (valueChanged)="ModuleChangeHandler($event)">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group form-focus select-focus">
+                                    <label class="focus-label" translate>lang.process</label>
+                                    <ng-select2 class="w100" [data]="ordermodel.processlist" [placeholder]="'Select'" (valueChanged)="ProcessChangeHandler($event)">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                            <!--col-md-2-->
+                            <div class="col-md-2">
+                                <div class="form-group form-focus select-focus">
+                                    <label class="focus-label" translate>lang.line</label>
+                                    <ng-select2 class="w100" [data]="ordermodel.linelist" [placeholder]="'Select'" (valueChanged)="LineChangeHandler($event)">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                            <!--col-md-2-->
+                            <div class="col-md-2">
+                                <div class="form-group form-focus select-focus">
+                                    <label class="focus-label" translate>lang.style</label>
+                                    <ng-select2 class="w100" [data]="ordermodel.stylelist" [placeholder]="'Select'" (valueChanged)="StyleChangeHandler($event)">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group form-focus select-focus">
+                                    <label class="focus-label" translate>lang.workorder</label>
+                                    <ng-select2 class="w100" [data]="ordermodel.polist" [placeholder]="'Select'" (valueChanged)="POChangeHandler($event)">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                            <!--col-md-2-->
+                            <div class="col-md-2">
+                                <div class="form-group form-focus select-focus">
+                                    <label class="focus-label" translate>lang.productionorder</label>
+                                    <ng-select2 class="w100" [data]="ordermodel.solist" [placeholder]="'Select'" (valueChanged)="SOChangeHandler($event)">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                            <!--col-md-2-->
+                        </div>
+                        <div class="row">
+
+                            <div class=" col-xl-6 col-md-6 col-lg-6">
+                                <div class="card card-shadow mb-3 ">
+
+                                    <div class="">
+                                        <table id="bs4-table" class="table table-bordered table-striped tb-padd-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="pl-10 mtb-3 float-left bdr-none blk" translate>lang.reports</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td class="pl-10 blk"><span class="urgent" translate>lang.productionsummary</span>
+                                                        <a href="javascript:void(0);"><img src="../../assets/images/icon-download.svg" border="0" class="float-right" (click)='ProductionSummary()'></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-10 blk"><span class="urgent" translate>lang.endlinequalitychecker</span>
+                                                        <a href="javascript:void(0);"><img src="../../assets/images/icon-download.svg" border="0" class="float-right" (click)='EndlineQCSummary()'></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-10 blk"><span class="urgent" translate>lang.targetvsactual</span>
+                                                        <a href="javascript:void(0);"><img src="../../assets/images/icon-download.svg" border="0" class="float-right" (click)='TargetVsActual()'></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-10 blk"><span class="urgent" translate>lang.defectanalysis</span>
+                                                        <a href="javascript:void(0);"><img src="../../assets/images/icon-download.svg" border="0" class="float-right" (click)='DefectAnalysis()'></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-10 blk"><span class="urgent" translate>lang.qualityperformancesummary</span>
+                                                        <a href="javascript:void(0);"><img src="../../assets/images/icon-download.svg" border="0" class="float-right" (click)='QualityPerfromance()'></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-10 blk"><span class="urgent" translate>lang.hourlyproduction</span>
+                                                        <a href="javascript:void(0);"><img src="../../assets/images/icon-download.svg" border="0" class="float-right" (click)='HourlyProduction()'></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--card-body-->
+
+                                </div>
+
+                            </div>
+                            <!--col-md-4-->
+
+                            <div class=" col-xl-12 col-md-12 col-lg-12">
+                            </div>
+                            <!--col-md-12-->
+
+                        </div>
+                        <!--row-->
+
+                    </section>
+                    <!-- chart_section -->
+
+
+                </div>
+            </div>
+            <!-- Content_right_End -->
+
+        </div>
+
+    </div>
+
+</div>

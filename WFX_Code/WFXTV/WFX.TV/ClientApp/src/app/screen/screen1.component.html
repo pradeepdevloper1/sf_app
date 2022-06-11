@@ -1,0 +1,162 @@
+<p *ngIf="!model"><em>Loading...</em></p>
+<div class="wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 mb-10">
+        <div class="top-heading">
+          HOURLY PRODUCTION TABLE
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10"></div>
+      <div class="col-md-3 mb-10"></div>
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <a href=""  style="float: right;" (click)="home()"> <img src="../../assets/images/icon-1a.svg"></a>
+        </div>
+      </div>
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Checkpoint</span>
+          End line QC {{ UserName }}
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Customer</span>
+          {{ model.customer }}
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Date & Time</span>
+          {{ CurrentDate | date: 'dd/MM/yyyy hh:mm:ss a'}}
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Line</span>
+          {{ model.line }}
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Work Order</span>
+          {{ model.poNo}}
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Product</span>
+          {{ model.product}}
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Time Left</span>
+          {{ model.timeLeft}}
+        </div>
+      </div>
+      <!--col-md-3-->
+    </div>
+    <!--row-->
+    <div class="row mt-20 ">
+      <div class="col-md-6">
+        <div class="card card-shadow mb-4">
+          <div class="card-body">
+            <table class="table table-borderless table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Hour</th>
+                  <th scope="col">Target</th>
+                  <th scope="col">Output</th>
+                  <th scope="col">Variation</th>
+                  <th scope="col">DHU</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let lst of model.hourlyProductionList">
+                  <th scope="row">{{ lst.hour }} </th>
+                  <td>{{ lst.target }}</td>
+                  <td>{{ lst.output }}</td>
+                  <td>{{ lst.variation }}</td>
+                  <td>{{ lst.defectRate}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--col-md-6-->
+      <div class="col-md-6">
+        <div class="card card-shadow mb-4">
+          <div class="card-body">
+            <table class="table table-borderless table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Hour</th>
+                  <th scope="col">Target</th>
+                  <th scope="col">Output</th>
+                  <th scope="col">Variation</th>
+                  <th scope="col">DHU</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--col-md-6-->
+    </div>
+    <!--ROW-->
+    <div class="row">
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card bg-info border-0 ptb-20 text-light">
+          <div class="card-body color-box text-center">
+            <h6 class="m-0">TARGET</h6>
+            <h2>
+              {{ model.target}}
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card bg-primary border-0 ptb-20 text-light">
+          <div class="card-body color-box text-center">
+            <h6 class="m-0">OUTPUT</h6>
+            <h2>
+              {{ model.outputGoodPCS}}
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card bg-warning border-0 ptb-20 text-light">
+          <div class="card-body color-box text-center">
+            <h6 class="m-0">VARIATION</h6>
+            <h2>
+              {{ model.variation}}
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card bg-danger border-0 ptb-20 text-light">
+          <div class="card-body color-box text-center">
+            <h6 class="m-0">DHU</h6>
+            <h2>
+              {{ model.defectRate}}
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--row-->
+  </div>
+  <!--container-fluid-->
+</div>

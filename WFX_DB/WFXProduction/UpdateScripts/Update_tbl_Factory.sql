@@ -1,0 +1,1 @@
+Update tbl_Factory set LinkedwithERP = 'NO'  WHERE LinkedwithERP IS NULL

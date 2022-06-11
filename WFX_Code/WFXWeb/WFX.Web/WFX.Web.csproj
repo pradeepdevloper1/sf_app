@@ -1,0 +1,208 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\organisation\**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\organisation\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ClientApp\src\app\organisation\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\organisation\**" />
+    <TypeScriptCompile Remove="ClientApp\src\app\organisation\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\helper.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Remove="ClientApp\src\app\admin\editcluster.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\admin\editfactory.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\admin\editorganisation.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\admin\modulelist.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\layout\admin-header\site-header.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\services\module.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\models\ModuleModel.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\order\cell-custom .component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\order\cell-poview.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\admindashboard.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\culster.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\customer.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\defects.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\factory.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\factorywizard.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\line.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\login.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\order.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\organisation.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\plan.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\product.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\productfit.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\qc.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\shift.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\user.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\services\userdashboard.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\linetarget\planeditor.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\order\editorder.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\order\imgeditor.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\order\reports.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\services\excelexport.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\services\factorywizard.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\services\plan.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\services\userdashboard.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\models\AdminExcelModel.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\models\FactoryViewModel.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\models\OrganisationModel.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\models\PlanModel.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\models\PurchaseOrderModel.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\models\UserDashboardModel.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\services\culster.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\services\factory.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\services\organisation.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\models\CulsterModel.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\models\FactoryModel.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClientApp\src\assets\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="ClientApp\src\assets\css\bootstrap.min.css" />
+    <Content Include="ClientApp\src\assets\css\dataTables.bootstrap4.min.css" />
+    <Content Include="ClientApp\src\assets\css\header.css" />
+    <Content Include="ClientApp\src\assets\css\jquery.mCustomScrollbar.css" />
+    <Content Include="ClientApp\src\assets\css\light.css" />
+    <Content Include="ClientApp\src\assets\css\menu.css" />
+    <Content Include="ClientApp\src\assets\css\responsive.css" />
+    <Content Include="ClientApp\src\assets\css\select2.min.css" />
+    <Content Include="ClientApp\src\assets\css\style.css" />
+    <Content Include="ClientApp\src\assets\images\bg.jpg" />
+    <Content Include="ClientApp\src\assets\images\calander.png" />
+    <Content Include="ClientApp\src\assets\images\favicon-32x32.png" />
+    <Content Include="ClientApp\src\assets\images\favicon.ico">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\images\icon-1.png" />
+    <Content Include="ClientApp\src\assets\images\icon-10a.png" />
+    <Content Include="ClientApp\src\assets\images\icon-11a.png" />
+    <Content Include="ClientApp\src\assets\images\icon-12a.png" />
+    <Content Include="ClientApp\src\assets\images\icon-1a.png" />
+    <Content Include="ClientApp\src\assets\images\icon-1ahover.png" />
+    <Content Include="ClientApp\src\assets\images\icon-2.png" />
+    <Content Include="ClientApp\src\assets\images\icon-2a.png" />
+    <Content Include="ClientApp\src\assets\images\icon-2ahover.png" />
+    <Content Include="ClientApp\src\assets\images\icon-3.png" />
+    <Content Include="ClientApp\src\assets\images\icon-3a.png" />
+    <Content Include="ClientApp\src\assets\images\icon-3ahover.png" />
+    <Content Include="ClientApp\src\assets\images\icon-4.png" />
+    <Content Include="ClientApp\src\assets\images\icon-4a.png" />
+    <Content Include="ClientApp\src\assets\images\icon-4ahover.png" />
+    <Content Include="ClientApp\src\assets\images\icon-5.png" />
+    <Content Include="ClientApp\src\assets\images\icon-5a.png" />
+    <Content Include="ClientApp\src\assets\images\icon-5ahover.png" />
+    <Content Include="ClientApp\src\assets\images\icon-6.png" />
+    <Content Include="ClientApp\src\assets\images\icon-6a.png" />
+    <Content Include="ClientApp\src\assets\images\icon-6ahover.png" />
+    <Content Include="ClientApp\src\assets\images\icon-7a.png" />
+    <Content Include="ClientApp\src\assets\images\icon-7ahover.png" />
+    <Content Include="ClientApp\src\assets\images\icon-8a.png" />
+    <Content Include="ClientApp\src\assets\images\icon-9a.png" />
+    <Content Include="ClientApp\src\assets\images\icon-download.png" />
+    <Content Include="ClientApp\src\assets\images\icon-invalid.jpg" />
+    <Content Include="ClientApp\src\assets\images\icon-success.jpg" />
+    <Content Include="ClientApp\src\assets\images\icon-upload.jpg" />
+    <Content Include="ClientApp\src\assets\images\logo2.png" />
+    <Content Include="ClientApp\src\assets\images\menu-icon-1.jpg" />
+    <Content Include="ClientApp\src\assets\images\menu-icon-2.jpg" />
+    <Content Include="ClientApp\src\assets\images\menu-icon-3.jpg" />
+    <Content Include="ClientApp\src\assets\images\menu-icon-4.jpg" />
+    <Content Include="ClientApp\src\assets\images\menu-icon-5.jpg" />
+    <Content Include="ClientApp\src\assets\images\menu-icon-6.jpg" />
+    <Content Include="ClientApp\src\assets\images\menu-icon-7.jpg" />
+    <Content Include="ClientApp\src\assets\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="ClientApp\src\assets\js\bootstrap.min.js" />
+    <Content Include="ClientApp\src\assets\js\custom.js" />
+    <Content Include="ClientApp\src\assets\js\dataTables.bootstrap4.min.js" />
+    <Content Include="ClientApp\src\assets\js\echarts_echarts-all-3.js" />
+    <Content Include="ClientApp\src\assets\js\index_init-echarts.js" />
+    <Content Include="ClientApp\src\assets\js\jquery.dataTables.min.js" />
+    <Content Include="ClientApp\src\assets\js\jquery.dcjqaccordion.2.7.js" />
+    <Content Include="ClientApp\src\assets\js\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="ClientApp\src\assets\js\jquery.min.js" />
+    <Content Include="ClientApp\src\assets\js\moment.min.js" />
+    <Content Include="ClientApp\src\assets\js\popper.min.js" />
+    <Content Include="ClientApp\src\assets\js\select2.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="ClientApp\src\app\layout\admin-header\site-header.component.css" />
+    <None Include="ClientApp\src\app\layout\admin-header\site-header.component.html" />
+    <None Include="ClientApp\src\app\layout\admin-header\site-header.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ClientApp\src\models\FactoryViewModel - Copy.js">
+      <DependentUpon>FactoryViewModel.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\models\FactoryViewModel - Copy.js.map">
+      <DependentUpon>FactoryViewModel.js.map</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties clientapp_4angular_1json__JsonSchema="" properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

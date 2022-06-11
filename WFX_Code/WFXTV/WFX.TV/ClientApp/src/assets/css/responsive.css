@@ -1,0 +1,38 @@
+/* CSS Document */
+
+
+@media screen and (min-width: 1440px) and (max-width: 1920px) {
+
+.table td,.table th{padding:.60rem .75rem;}
+
+.table.tbl-res td,.table.tbl-res th{padding:.70rem .75rem;}
+.hgt-scr2 {min-height:555px;}
+.hgt-scr3 {min-height:60px;}
+.ver-col .full-hgt {
+min-height:650px;
+padding-top:200px;
+}
+.btm-20 {
+margin-bottom:20px!important;
+}
+.login-content {
+	max-width: 500px;
+	margin: 10vh auto;
+}
+}
+@media screen and (min-width: 800px) and (max-width: 1380px) {
+
+.table td,.table th{padding:.20rem .75rem;}
+.table.tbl-res td,.table.tbl-res th{padding:.50rem .75rem;}
+.hgt-scr2 {min-height:475px;}
+.hgt-scr3 {min-height:50px;}
+}
+
+@media (max-width: 768px) {
+.mt-nv60 {
+margin-top:0px;
+}
+p.txt-black { 
+text-align:center;
+}
+}

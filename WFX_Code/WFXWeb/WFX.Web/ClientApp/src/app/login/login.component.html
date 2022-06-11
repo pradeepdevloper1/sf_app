@@ -1,0 +1,133 @@
+<!--<div class="wrapper bg_darck">
+  <div class="container">
+    <div class="login-content">
+
+          <div class="login-form">
+        <div class="text-center">
+          <h1>Account Login</h1>
+          <h4>Log into your account</h4>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="login()" #formDir="ngForm" novalidate>
+          <div class="form-group row">
+            <div class="col-sm-4 "></div>
+            <div class="col-sm-4">
+              <select class="form-control" id="">
+                <option>EN</option>-->
+<!--<option>2</option>-->
+<!--</select>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+<div class="form-group">-->
+<!--<input type="email" class="form-control" placeholder="User Name">-->
+<!--<input class="form-control" type="text" placeholder="User Name" formControlName="userName" autocomplete="off" required>
+
+</div>
+<div class="form-group">-->
+<!--<input type="password" class="form-control" placeholder="Password">-->
+<!--<input class="form-control" type="password" placeholder="Password" formControlName="password" autocomplete="off" required>
+</div>
+
+<div>
+  <p style="color:#E92626;font-size:20px;font-weight:normal" Class="success" align="left">
+    {{errorMessage}}
+  </p>
+</div>
+
+<div class="register-link m-t-15 text-center">
+  <p>
+    <a href="#"> Version 1.0</a>
+  </p>
+</div>
+<div class="text-center">-->
+<!--<button type="submit" class="btn btn-success">Sign in</button>-->
+<!--<button type="submit" class=" btn btn-success">Sign in</button>
+          </div>
+          <div class="forgot">
+            <label>
+              <a href="#" class="txt-grey">Forgot Password?</a>
+            </label>
+            <label class="pull-right">
+              <a href="#" class="txt-grey">Create a new account</a>
+            </label>
+          </div>
+
+        </form>
+        <hr>
+        <div class="bottom">
+          <a href="">Contact us: support@worldfashionexchange.com </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+
+<body class="bg_darck">
+  <div class="">
+    <div class="container">
+      <div class="login-content">
+
+        <div class="login-form">
+          <div class="logo-login">
+            <img alt="" src="../../assets/images/logo.svg">
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="login()" #formDir="ngForm" novalidate>
+            <div class="select-top-login">
+              <ng-select2 class="slt-login" [data]="languagelist"
+                          (valueChanged)="useLanguage($event)">
+              </ng-select2>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control form-control-login" placeholder="Enter URL">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control form-control-login" placeholder="Enter User Name" formControlName="userName">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control form-control-login" placeholder="Enter Password" formControlName="password">
+            </div>
+
+            <div>
+              <p style="color:#E92626;font-size:20px;font-weight:normal" Class="success" align="left">
+                {{errorMessage}}
+              </p>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-flat m-b-30 mt-30">Log In</button>
+            <div class="mt-30 mb-30">
+              <label>
+                <a href="#">Forgot Password?</a>
+              </label>
+              <label class="pull-right">
+                <a href="#">Create a new account</a>
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <!-- Footer -->
+    <div class="footer footer-login ptb-20">
+      <div class="container-fluid-login">
+        <div class="row row-login">
+          <div class="col-xl-4 col-lg-4 col-md-4 pull-left text-left">Version 1.1</div>
+          <div class="col-xl-4 col-lg-4 col-md-4 text-center">
+            <p>
+              Copyright &copy; World Fashion exchange All Rights Reserved.
+            </p>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-4 pull-right text-right"><a href="mailto:support@worldfashionexchange.com">support@worldfashionexchange.com</a></div>
+
+        </div>
+      </div>
+    </div>
+    <!-- Footer_End -->
+
+
+
+  </div>
+</body>
+
+

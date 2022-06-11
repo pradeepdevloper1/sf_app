@@ -1,0 +1,88 @@
+  <!-- header -->
+<header class="main-header">
+  <div class="container_header">
+
+    <div class="icon_menu">
+      <a  class="sidebar-toggler"><img src="../../assets/images/icon-8a.svg"></a>
+    </div>
+
+    <div class="search">
+      <a id="toggle_res_search" data-toggle="collapse" data-target="#search_form" class="res-only-view collapsed" href="javascript:void(0);" aria-expanded="false"> <img src="../../assets/images/icon-9a.svg"> </a>
+      <form id="search_form" role="search" class="search-form collapse" action="#">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search..." (input)="onChangeEvent($event)">
+          <button type="button" class="btn" data-target="#search_form" data-toggle="collapse" aria-label="Close">
+            <i class="fa fa-search" (click)='GlobalSearch()'></i>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="logo d-flex align-items-center justify-content-center justify-content-lg-start">
+      <a > <span class="logo-default"> <img src="../../assets/images/logo2.svg" alt=""> </span> </a>
+
+    </div>
+
+    <div class="right_detail">
+      <div class="row d-flex align-items-center min-h pos-md-r">
+
+
+        <div class="col-xl-12 col-10 d-flex justify-content-end">
+          <div class="right_bar_top d-flex align-items-center">
+
+            <div class="select-top">
+              <select name="slct" id="slct" class="slt">
+                <option selected>{{UserName}}</option>
+                <option value="1">{{UserName}}</option>
+                <option value="2">{{UserName}}</option>
+              </select>
+            </div>
+
+
+            <!-- Dropdown_User_End -->
+            <!-- DropDown_Inbox -->
+            <div class="dropdown dropdown-inbox">
+              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> <img src="../../assets/images/icon-10a.svg"></a>
+
+            </div>
+            <!--DropDown_Inbox_End -->
+            <!-- notification_Start -->
+            <div class="dropdown dropdown-notification">
+              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false"> <img src="../../assets/images/icon-11a.svg"> <span class="badge_coun"> 6 </span> </a>
+              <ul class="dropdown-menu scroll_auto height_fixed">
+                <li class="bigger">
+                  <h3><span class="bold">Notifications</span></h3>
+                  <!-- <span class="notification-label">New 3</span> -->
+                </li>
+                <!-- <li>
+                  <ul class="dropdown-menu-list">
+                    <li>
+                      <a href="javascript:;"> <span class="time">just now</span> <span class="details"> <span class="notification-icon deepPink-bgcolor"> <i class="fa fa-check"></i> </span> Congratulations!. </span> </a>
+                    </li>
+                    <li>
+                      <a href="javascript:;"> <span class="time">3 mins</span> <span class="details"> <span class="notification-icon purple-bgcolor"> <i class="fa fa-user o"></i> </span> <b>Micle </b>is now following you. </span> </a>
+                    </li>
+                    <li>
+                      <a href="javascript:;"> <span class="time">7 mins</span> <span class="details"> <span class="notification-icon blue-bgcolor"> <i class="fa fa-comments-o"></i> </span> <b>Furah </b>sent you a message. </span> </a>
+                    </li>
+                  </ul>
+                </li> -->
+              </ul>
+            </div>
+            <!-- notification_End -->
+            <!-- DropDown_Inbox -->
+            <div class="dropdown dropdown-inbox">
+              <!--<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> <img src="../../assets/images/icon-12a.svg"></a>-->
+              <a href="" class="dropdown-toggle" (click)="logout()"> <img src="../../assets/images/icon-12a.svg"></a>
+            </div>
+            <!--DropDown_Inbox_End -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</header>
+<!-- header_End -->

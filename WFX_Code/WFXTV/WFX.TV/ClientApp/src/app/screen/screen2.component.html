@@ -1,0 +1,105 @@
+<p *ngIf="!model"><em>Loading...</em></p>
+<div class="wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 mb-10">
+        <div class="top-heading">
+          DEFECT HOTSPOT
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10"></div>
+      <div class="col-md-3 mb-10"></div>
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <a href="" style="float: right;" (click)="home()"> <img src="../../assets/images/icon-1a.svg"></a>
+        </div>
+      </div>
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Checkpoint</span>
+          End line QC {{ UserName }}
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Customer</span>
+          {{ model.customer }}
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Date & Time</span>
+          {{ CurrentDate | date: 'dd/MM/yyyy hh:mm:ss a'}}
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Line</span>
+          {{ model.line }}
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Work Order</span>
+          {{ model.poNo}}
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Product</span>
+          {{ model.product}}
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <span>Time Left</span>
+          {{ model.timeLeft}}
+        </div>
+      </div>
+      <!--col-md-3-->
+    </div>
+    <!--row-->
+    <div class="row mt-20 ">
+      <div class="col-md-3">
+        <div class="card card-shadow mb-4">
+          <div class="card-body">
+            <table class="table table-borderless table-striped table-defects tbl-res">
+              <thead>
+                <tr>
+                  <th scope="col">Top Defects</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let lst of model.defectList">
+                  <td><b>{{ lst.defectCount }}</b></td>
+                  <td>{{ lst.defectName }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-8">
+        <div class="card card-shadow ">
+          <div class="card-body" style="display: flex;flex-wrap: wrap;margin-right: 60px;margin-left: 90px;">
+            <div class="col-md-6" *ngFor="let img of imagelist">
+              <img src={{img.imagePath}}>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--col-md-9-->
+    </div>
+    <!--ROW-->
+  </div>
+  <!--container-fluid-->
+</div>

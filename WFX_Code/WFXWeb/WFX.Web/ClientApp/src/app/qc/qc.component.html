@@ -1,0 +1,496 @@
+
+<p *ngIf="!qcmodel"><em>Loading...</em></p>
+
+<div class="wrapper">
+
+  <div class="container_full">
+
+    <div class="content_wrapper">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-md-12">
+            <div class="page-heading">
+
+              <div class="row d-flex align-items-center">
+
+              </div><!--row-->
+            </div>
+
+            <div class="row">
+              <div class="clearfix"></div>
+              <div class="col-md-2">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.process</label>
+                  <ng-select2 class="w100" [data]="qcsearchmodel.processlist"
+                              [placeholder]="'All'"
+                              (valueChanged)="ProcessChangeHandler($event)">
+                  </ng-select2>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.product</label>
+                  <ng-select2 class="w100" [data]="qcsearchmodel.productlist"
+                              [placeholder]="'All'"
+                              (valueChanged)="ProductChangeHandler($event)">
+                  </ng-select2>
+                </div>
+              </div><!--col-md-2-->
+              <div class="col-md-2">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.style</label>
+                  <ng-select2 class="w100" [data]="qcsearchmodel.stylelist"
+                              [placeholder]="'All'"
+                              (valueChanged)="StyleChangeHandler($event)">
+                  </ng-select2>
+                </div>
+              </div><!--col-md-2-->
+              <div class="col-md-2">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.fit</label>
+                  <ng-select2 class="w100" [data]="qcsearchmodel.productfitlist"
+                              [placeholder]="'All'"
+                              (valueChanged)="FitChangeHandler($event)">
+                  </ng-select2>
+                </div>
+              </div><!--col-md-2-->
+              <div class="col-md-2">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.season</label>
+                  <ng-select2 class="w100" [data]="qcsearchmodel.seasonlist"
+                              [placeholder]="'All'"
+                              (valueChanged)="SeasonChangeHandler($event)">
+                  </ng-select2>
+                </div>
+              </div><!--col-md-2-->
+              <div class="col-md-2">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.customer</label>
+                  <ng-select2 class="w100" [data]="qcsearchmodel.customerlist"
+                              [placeholder]="'All'"
+                              (valueChanged)="CustomerChangeHandler($event)">
+                  </ng-select2>
+                </div>
+              </div><!--col-md-2-->
+            </div>
+
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.startdate</label>
+                  <input class="form-control-2 datetimepicker" [ngModel]="startdate | date:'dd/MM/YYYY'" type="text" #dp_startdate (blur)="StartDate(dp_startdate.value)">
+                </div>
+              </div><!--col-md-2-->
+              <div class="col-md-2">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.enddate</label>
+                  <input class="form-control-2 datetimepicker" [ngModel]="enddate | date:'dd/MM/YYYY'" type="text" #dp_enddate (blur)="EndDate(dp_enddate.value)">
+                </div>
+              </div><!--col-md-2-->
+              <div class="col-md-2">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.module</label>
+                  <ng-select2 class="w100" [data]="qcsearchmodel.modulelist"
+                              [placeholder]="'All'"
+                              (valueChanged)="ModuleChangeHandler($event)">
+                  </ng-select2>
+                </div>
+              </div><!--col-md-2-->
+              <div class="col-md-2">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.line</label>
+                  <ng-select2 class="w100" [data]="qcsearchmodel.linelist"
+                              [placeholder]="'All'"
+                              (valueChanged)="LineChangeHandler($event)">
+                  </ng-select2>
+                </div>
+              </div><!--col-md-2-->
+              <div class="col-md-2">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.productionorder</label>
+                  <ng-select2 class="w100" [data]="qcsearchmodel.solist"
+                              [placeholder]="'All'"
+                              (valueChanged)="SOChangeHandler($event)">
+                  </ng-select2>
+                </div>
+              </div><!--col-md-2-->
+              <div class="col-md-2">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.workorder</label>
+                  <ng-select2 class="w100" [data]="qcsearchmodel.polist"
+                              [placeholder]="'All'"
+                              (valueChanged)="POChangeHandler($event)">
+                  </ng-select2>
+                </div>
+              </div><!--col-md-2-->
+
+            </div>
+
+            <div class="mb-4">
+
+              <ul class="nav nav-pills nav-pills-success mb-2 bdr-none" role="tablist">
+
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#tab-p-i_3" translate> lang.qualityanalysis</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#tab-p-i_4" translate>lang.performance</a>
+                </li>
+
+              </ul>
+
+              <div class="tab-content">
+
+                <div class="tab-pane active" id="tab-p-i_3" role="tabpanel">
+
+                  <div class="row">
+                    <div class="col-md-6">
+
+                      <div class="card card-shadow mb-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-5 mt-4">
+                              <span class="f12 strong" translate>lang.dhurate</span>
+
+                            </div><!--col-md-5-->
+                            <div class="col-md-7">
+                              <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    lang.current<br><span class="f30">{{qcmodel.dhuCurrent }}</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    lang.average<br><span class="f30 txt-blue">{{qcmodel.dhuAvg }}</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    lang.maximum<br><span class="f30 txt-orange">{{qcmodel.dhuMax }}</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                              </div>
+                            </div><!--col-md-7-->
+                          </div><!--row-->
+                        </div>
+                      </div><!--card-shadow-->
+
+
+
+                      <div class="card card-shadow mb-3">
+
+                        <div class="card-body">
+                          <span class="f12 strong" translate>lang.dhuvariance</span>
+                          <div id="b-area" class=""></div>
+                          <ejs-chart id="chart-container-dhu" [primaryXAxis]='xAxis' [primaryYAxis]='dhuyAxis' [legendSettings]='legendSettings' [tooltip]='tooltip' height='324'>
+                            <e-series-collection>
+                              <e-series [dataSource]='dhulist' type='Line' xName='qcDate' yName='dayDefectsPer' [marker]='marker'></e-series>
+                            </e-series-collection>
+                          </ejs-chart>
+                        </div>
+                      </div>
+
+
+                    </div><!--col-md-6-->
+
+                    <div class="col-md-6">
+
+
+                      <div class="card card-shadow mb-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-5 mt-4">
+                              <span class="f12 strong" translate>lang.rejectrate</span>
+
+                            </div><!--col-md-5-->
+                            <div class="col-md-7">
+                              <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box ptb-8" translate>
+                                    lang.current<br><span class="f30">{{qcmodel.rejCurrent }}%</span><br><span class="f10">{{qcmodel.currRejected }}</span><span class="f10" translate> lang.pieces</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box ptb-8" translate>
+                                    lang.average<br><span class="f30 txt-blue">{{qcmodel.rejAvg }}%</span><br><span class="f10 txt-blue">{{qcmodel.totalRejected }}</span><span class="f10 txt-blue" translate> lang.pieces</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box ptb-8" translate>
+                                    lang.maximum<br><span class="f30 txt-orange">{{qcmodel.rejMaxPer }}%</span><br><span class="f10 txt-orange">{{qcmodel.rejMax }}</span><span class="f10 txt-orange" translate> lang.pieces</span>
+                                    <!--Maximum<br><span class="f30 txt-orange">0%</span><br><span class="f10 txt-orange">{{qcmodel.rejMax }} Pieces</span>-->
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                              </div>
+                            </div><!--col-md-7-->
+                          </div><!--row-->
+                        </div>
+                      </div><!--card-shadow-->
+
+
+                      <div class="card card-shadow mb-3">
+
+                        <div class="card-body">
+                          <span class="f12 strong" translate>lang.rejectionratevariation</span>
+                          <div id="b-area" class=""></div>
+                          <ejs-chart id="chart-container-rej" [primaryXAxis]='xAxis' [primaryYAxis]='rejyAxis' [legendSettings]='legendSettings' [tooltip]='tooltip' height='324'>
+                            <e-series-collection>
+                              <e-series [dataSource]='rejlist' type='Line' xName='qcDate' yName='rejectPer' [marker]='marker'></e-series>
+                            </e-series-collection>
+                          </ejs-chart>
+                        </div>
+                      </div>
+
+                    </div><!--col-md-6-->
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                      <div class="card card-shadow pt-20 mb-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <span class="f12 strong" translate>lang.operationwisedefect</span>
+                            </div>
+
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                              <ejs-chart style='display:block;' id="chart-container-op" [primaryXAxis]='opXAxis' [primaryYAxis]='opyAxis' [legendSettings]='legendSettings' [tooltip]='tooltip' height='324' (pointClick)="pointClick($event)">
+                                <e-series-collection>
+                                  <e-series [dataSource]='operationlistforchart' type='Bar' xName='operationName' yName='defectCount' [marker]='marker'></e-series>
+                                </e-series-collection>
+                              </ejs-chart>
+                            </div><!--col-xl-8-->
+
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 bdr-left p-0">
+
+                              <div style="padding:0px 10px 0px 8px;">
+                                <h4 class="heading-with-bdr mt-0 mb-0">{{opheading}}</h4>
+                                <span class="f12 strong plr-18 line-height-10">{{opdefects }} </span>
+                              </div>
+
+                              <div class="rb_card-3 scroll_auto scroll_mr light_scroll">
+                                <table class="table table-hover mt-3">
+                                  <tbody>
+                                    <tr *ngFor="let opdef of opdefectlist">
+                                      <th scope="row"></th>
+                                      <td>{{ opdef.defectName }}</td>
+                                      <td>{{ opdef.defectCount }} </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+
+                            </div><!--col-xl-4-->
+                          </div><!--row-->
+                        </div>
+                      </div>
+                    </div><!--col-xl-12-->
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                      <div class="card card-shadow pt-20 mb-3">
+                        <div class="card-body">
+                          <div class="row">
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                              <div class="row">
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                  <table class="table tbl-new table-responsive-sm">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col" translate>lang.operations</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <!--<tr class="table-active">
+                                        <th scope="row">OPID 123 Front Shoulder Attach<br><span class="strong">20 Defects</span></th>
+                                      </tr>-->
+                                      <tr *ngFor="let op of operationlist">
+                                        <th scope="row">{{ op.operationName }}<br><span class="strong" translate><span>{{ op.defectCount }}</span> lang.defects</span></th>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div><!--col-xl-6-->
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                  <table class="table tbl-new table-responsive-sm">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col" translate>lang.defects</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let def of defectlist">
+                                        <th scope="row">{{ def.defectName }}<br><span class="strong" translate><span>{{ def.operationCount }}</span> lang.operations</span></th>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div><!--col-xl-6-->
+
+                              </div><!--row-->
+                            </div><!--col-xl-6-->
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                              <div class="row">
+                                <div class="col-md-6" *ngFor="let img of shiftimagelist">
+                                  <!--<p>{{img.imagePath}}</p>-->
+                                  <img src={{img.imagePath}}>
+                                </div><!--col-md-6-->
+                              </div>
+                            </div><!--col-xl-6-->
+
+                          </div><!--row-->
+                        </div>
+                      </div>
+                    </div><!--col-xl-12-->
+
+                  </div><!--row-->
+
+                </div><!--tab-pane-3-->
+
+                <div class="tab-pane" id="tab-p-i_4" role="tabpanel">
+
+
+                  <div class="row">
+                    <div class="col-md-6">
+
+                      <div class="card card-shadow mb-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-5 mt-4">
+                              <span class="f12 strong" translate>lang.completion</span>
+
+                            </div><!--col-md-5-->
+                            <div class="col-md-7">
+                              <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box ptb-8" translate>
+                                    lang.orderquantity<br><span class="f30">{{qcmodel.orderQty }}</span><br><span class="f10" translate>lang.pieces</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box ptb-8" translate>
+                                    lang.planedquantity<br><span class="f30">{{qcmodel.plannedPer }}%</span><br><span class="f10">{{qcmodel.plannedQty }}</span><span class="f10" translate> lang.pieces</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box ptb-8" translate>
+                                    lang.completed<br><span class="f30 txt-blue">{{qcmodel.completedPer }}%</span><br><span class="f10 txt-blue" translate>{{qcmodel.completedQty }}</span><span class="f10 txt-blue" translate> lang.pieces</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                              </div>
+                            </div><!--col-md-7-->
+                          </div><!--row-->
+                        </div>
+                      </div><!--card-shadow-->
+
+                      <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                          <div class="card card-shadow mb-3 ptb-50">
+                            <div class="card-body">
+                              <div class="efficiency-box">
+                                <span class="f12 strong" translate>lang.sah</span>
+                              </div>
+                              <div class="efficiency-box" translate>
+                                <span class="f30">{{qcmodel.plannedSAH }}</span><br>lang.planedsah
+                              </div>
+                              <div class="efficiency-box" translate>
+                                <span class="f30 txt-blue">{{qcmodel.actualSAH }}</span><br>lang.actualsah
+                              </div>
+                            </div>
+                          </div>
+                        </div><!--col-md-6-->
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                          <div class="card card-shadow mb-3 ptb-50">
+                            <div class="card-body">
+                              <div class="efficiency-box">
+                                <span class="f12 strong" translate>lang.planvsactual</span>
+                              </div>
+                              <div class="efficiency-box" translate>
+                                <span class="f30">{{qcmodel.plannedQty }}</span><br>lang.planedpcs
+                              </div>
+                              <div class="efficiency-box" translate>
+                                <span class="f30 txt-blue">{{qcmodel.totalInspected }}</span><br>lang.checkedpcs
+                              </div>
+                            </div>
+                          </div>
+                        </div><!--col-md-6-->
+                      </div>
+
+
+                    </div><!--col-md-6-->
+
+                    <div class="col-md-6">
+
+                      <div class="card card-shadow mb-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-5 mt-4">
+                              <span class="f12 strong" translate>lang.efficiancy</span>
+
+                            </div><!--col-md-5-->
+                            <div class="col-md-7">
+                              <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    lang.plan<br><span class="f30">{{qcmodel.efficiencyPlanedPer }}%</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    lang.actual<br><span class="f30 txt-blue">{{qcmodel.efficiencyActualPer }}%</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    lang.required<br><span class="f30 txt-purple">{{qcmodel.efficiencyRequiredPer }}%</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                              </div>
+                            </div><!--col-md-7-->
+                          </div><!--row-->
+                        </div>
+                      </div><!--card-shadow-->
+
+                      <div class="card card-shadow mb-3">
+
+                        <div class="card-body">
+                          <span class="f12 strong" translate>lang.productionvariance</span>
+                          <div id="b-area" class=""></div>
+                          <ejs-chart width="522px" id="chart-container-prd" [primaryXAxis]='xAxis' [primaryYAxis]='prodvarianceyAxis' [legendSettings]='legendSettings' [tooltip]='tooltip' height='324'>
+                            <e-series-collection>
+                              <e-series [dataSource]='planedlist' type='Line' xName='planDate' yName='planQty' name='Plan' [marker]='marker'></e-series>
+                               <e-series [dataSource]='actuallist' type='Line' xName='qcDate' yName='qcQty' name='Actual' [marker]='marker'></e-series>
+                            </e-series-collection>
+                          </ejs-chart>
+                        </div>
+                      </div>
+
+                    </div><!--col-md-6-->
+                  </div><!--row-->
+                </div><!--tab-pane-4-->
+
+              </div>
+            </div>
+          </div><!--col-md-10-->
+        </div>	<!--row-->
+      </div><!--container-fluid-->
+    </div>
+
+  </div>
+</div>

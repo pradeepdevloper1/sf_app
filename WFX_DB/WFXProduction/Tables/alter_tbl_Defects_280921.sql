@@ -1,0 +1,1 @@
+alter table tbl_Defects alter column DefectName nvarchar(max) not null

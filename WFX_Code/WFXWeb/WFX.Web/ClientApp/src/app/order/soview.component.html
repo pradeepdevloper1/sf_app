@@ -1,0 +1,421 @@
+
+<p *ngIf="!soviewmodel"><em>Loading...</em></p>
+<div class="wrapper">
+
+  <div class="container_full">
+
+    <div class="content_wrapper">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-md-2">
+            <div class="card card-shadow mb-4 mt-4 h90">
+
+              <div class="card-body h100" style="padding:10px 0px;">
+
+                <h6 class="sale" ><span translate>lang.saleorder</span>  {{ soviewmodel.soNo }}</h6>
+                <div class="rb_card-2 scroll_auto scroll_mr light_scroll h90">
+                  <form method="post" class="find">
+                    <input title="Search" value="" type="submit" class="button">
+                    <input type="text" class="textbox" placeholder="{{'lang.search'|translate}}" (input)="onChangeEvent($event)">
+                  </form>
+
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr *ngFor="let polist of soviewmodel.polist">
+                        <td>
+                          <a class="wraptext" [routerLink]="['/POView', polist.value]" style="color:black;"> {{polist.value}} </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-10">
+
+            <div class="page-heading">
+
+              <div class="row d-flex align-items-center">
+                <div class="col-md-5">
+                  <div class="breadcrumb_nav">
+                    <ol class="breadcrumb">
+                      <li>
+                        <a class="parent-item" routerLink="/User/UserDashboard"><img src="../../assets/images/icon-home.svg" border="0"></a>
+                        <i class="fa fa-angle-right"></i>
+                      </li>
+                      <li >
+                        <a class="txt-blue"routerLink="/User/OrderList"><span translate>lang.orderlist</span></a>
+                        <i class="fa fa-angle-right"></i>
+                      </li>
+                      <li class="parent-item" >
+                        <span translate>lang.saleorder</span> {{ soviewmodel.soNo }}
+                      </li>
+                    </ol>
+                  </div>
+                  <div class="page-breadcrumb wraptext" >
+                    <h1><span translate>lang.saleorder</span>  {{ soviewmodel.soNo }}</h1>
+                  </div>
+
+                </div>
+
+
+                <div class="col-md-7">
+                  <div class="breadcrumb_nav">
+                    <ol class="breadcrumb-2">
+                      <li>
+                        <span class="txt-blue" translate>lang.product</span>
+                        <span class="f16"> {{ soviewmodel.product }}</span>
+                      </li>
+                      <li>
+                        <span class="txt-blue" translate>lang.style</span>
+                        <span class="f16">{{ soviewmodel.style }}</span>
+                      </li>
+                      <li>
+                        <span class="txt-blue" translate>lang.fit</span>
+                        <span class="f16">{{ soviewmodel.fit }}</span>
+                      </li>
+                      <li>
+                        <span class="txt-blue" translate>lang.season</span>
+                        <span class="f16">{{ soviewmodel.season }} </span>
+                      </li>
+                      <li>
+                        <span class="txt-blue" translate>lang.customer</span>
+                        <span class="f16">{{ soviewmodel.customer }}</span>
+                      </li>
+                    </ol>
+                  </div>
+                </div><!--col-md-6-->
+              </div><!--row-->
+            </div>
+            <!-- page-heading -->
+
+            <div class="mb-4">
+
+              <ul class="nav nav-pills nav-pills-success mb-2 bdr-none" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#tab-p-i_1" translate> lang.summarydetails</a>
+                </li>
+              </ul>
+
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab-p-i_1" role="tabpanel">
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="card card-shadow mb-4">
+                        <div class="card-body">
+                          <div class="row">
+
+                            <div class="col-md-12">
+                              <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    <span class="f30">{{ soviewmodel.efficiencyPlanedPer }}%</span><br>lang.planefficiency
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    <span class="f30 txt-orange">{{ soviewmodel.efficiencyActualPer }}%</span><br>lang.actualefficiency
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    <span class="f30">{{ soviewmodel.efficiencyRequiredPer }}%</span><br>lang.requiredefficiency
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                              </div>
+                            </div><!--col-md-7-->
+                          </div><!--row-->
+                        </div>
+                      </div>
+
+                      <div class="card card-shadow mb-4">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-3">
+                              <span class="f10 line-height-20" translate>lang.orderquality</span><br>
+                              <span class="f32 line-height-20">{{ soviewmodel.soQty }}</span>
+                              <div style="clear:both; display:block; margin-bottom:-10px;"></div>
+                              <span class="f10 line-height-0" translate>lang.pieces</span>
+                            </div><!--col-md-3-->
+                            <div class="col-md-9">
+                              <div class="row">
+                                <div *ngIf="soviewmodel.completedQty > 0" class="text-align-center plr-5"  [style.width]=PassWidthPer>
+                                  <span class='f16 txt-on-time normal'>{{ soviewmodel.completedQty }}</span><br><div class="f10 mtb-up-12"><span translate>lang.pass</span></div>
+                                  <img src="../../assets/images/icon-on-time.svg" class="mt-3">
+                                  <div class="progress mt-2">
+                                    <div class="progress-bar bg-warning-on-time" role="progressbar" style="width: 100%"></div>
+                                  </div>
+                                </div>
+
+                                <div *ngIf="soviewmodel.defectedQty > 0"class="text-align-center plr-5"  [style.width]=DefectWidthPer>
+                                  <span  class='f16 txt-on-hold normal'>{{ soviewmodel.defectedQty }}</span><br><div class="f10 mtb-up-12"><span translate>lang.defective</span></div>
+                                  <img src="../../assets/images/icon-on-hold.svg" class="mt-3">
+                                  <div class="progress mt-2">
+                                    <div class="progress-bar bg-warning-on-hold" role="progressbar" style="width: 100%"></div>
+                                  </div>
+                                </div>
+
+                                <div *ngIf="soviewmodel.rejectedQty > 0" class="text-align-center plr-5" [style.width]=RejectWidthPer>
+                                  <span  class='f16 txt-delayed normal'>{{ soviewmodel.rejectedQty }}</span><br><div class="f10 mtb-up-12"><span translate>lang.reject</span></div>
+                                  <img src="../../assets/images/icon-delayed.svg" class="mt-3">
+                                  <div class="progress mt-2">
+                                    <div class="progress-bar bg-warning-delayed" role="progressbar" style="width: 100%"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div><!--col-md-9-->
+                          </div>
+                        </div>
+                      </div><!--card-shadow-->
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="card card-shadow mb-3 ptb-24">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-xl-6 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    <span class="f30">{{ soviewmodel.plannedSAH}}</span><br>lang.planedsah
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+
+                                <div class="col-xl-6 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    <span class="f30 txt-blue">{{ soviewmodel.actualSAH }}</span><br>lang.actualsah
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                              </div><!--row-->
+                            </div>
+                          </div><!--card-shadow-->
+                        </div><!--col-md-6-->
+                        <div class="col-md-6">
+
+                          <div class="card bg-4 border-0 text-light ptb-10 mb-3">
+                            <div class="card-body ptb-0">
+                              <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                  <div class="w1">
+                                    <h6 class="f16 m-0 text-dark" translate>lang.rejectionrate</h6>
+                                  </div>
+                                </div><!--col-lg-7-->
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                  <div class="w2 text-dark">
+                                    <p>
+                                      {{ soviewmodel.rejectionRate }}%
+                                    </p>
+                                  </div>
+                                </div><!--col-lg-3-->
+                              </div><!--row-->
+                            </div>
+                          </div>
+
+
+                          <div class="card bg-4 border-0 text-light ptb-10">
+                            <div class="card-body ptb-0">
+                              <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                  <div class="w1">
+                                    <h6 class="f16 m-0 text-dark" translate>lang.currentdhu</h6>
+                                  </div>
+                                </div><!--col-lg-7-->
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                  <div class="w2 text-dark">
+                                    <p>
+                                      {{ soviewmodel.currentDHU }}
+                                    </p>
+                                  </div>
+                                </div><!--col-lg-3-->
+                              </div><!--row-->
+                            </div>
+                          </div>
+
+
+                        </div><!--col-md-6-->
+
+                        <div class="col-md-12">
+                          <div class="card card-shadow mb-4 mt-2">
+                            <div class="card-body">
+                              <div class="row mtb-10">
+                                <div class="col-md-3">
+                                  <span class="f10 line-height-20" translate>lang.totalorder</span><br>
+                                  <span class="f32 line-height-20">{{ soviewmodel.noOfPO }}</span>
+                                  <div style="clear:both; display:block; margin-bottom:-10px;"></div>
+                                </div><!--col-md-3-->
+                                <div class="col-md-9">
+                                  <div class="row">
+                                    <div class="text-align-center plr-5" style="width:20%;">
+                                      <span class="f32 txt-on-time normal">{{ soviewmodel.onTimePO }}</span><br><div class="f10 mtb-up-12">On Time</div>
+                                      <img src="../../assets/images/icon-on-time.svg" class="mt-3">
+                                      <div class="progress mt-2">
+                                        <div class="progress-bar bg-warning-on-time" role="progressbar" style="width: 100%"></div>
+                                      </div>
+                                    </div>
+
+                                    <div class="text-align-center plr-5" style="width:50%;">
+                                      <span class="f32 txt-on-hold normal">{{ soviewmodel.holdPO }}</span><br><div class="f10 mtb-up-12">On Hold</div>
+                                      <img src="../../assets/images/icon-on-hold.svg" class="mt-3">
+                                      <div class="progress mt-2">
+                                        <div class="progress-bar bg-warning-on-hold" role="progressbar" style="width: 100%"></div>
+                                      </div>
+                                    </div>
+
+                                    <div class="text-align-center plr-5" style="width:30%;">
+                                      <span class="f32 txt-delayed normal">{{ soviewmodel.delayedPO }}</span><br><div class="f10 mtb-up-12">Delayed</div>
+                                      <img src="../../assets/images/icon-delayed.svg" class="mt-3">
+                                      <div class="progress mt-2">
+                                        <div class="progress-bar bg-warning-delayed" role="progressbar" style="width: 100%"></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div><!--col-md-9-->
+                              </div>
+                            </div>
+                          </div><!--card-shadow-->
+                        </div><!--col-md-12-->
+                      </div><!--row-->
+                    </div><!--col-md-6-->
+
+                    <div class="col-md-3">
+                      <div class="card card-shadow mb-4">
+                        <!--<div class="card-body text-center" style="padding:10px 0px;">-->
+                        <div class="card-body text-center scroll_auto scroll_mr light_scroll" style="padding:10px 0px; height:555px !important;">
+                          <div *ngFor="let img of imagelist">
+                            <img src={{img.imagePath}} class="mb-4">
+                          </div>
+                          <!--<img src="../../assets/images/image-1.jpg" class="mb-4"><br><br><br>
+    <img src="../../assets/images/image-2.jpg">-->
+                        </div>
+                      </div>
+                    </div><!--col-md-3-->
+
+                    <div class="col-md-3">
+                      <div class="row">
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)"><img src="../../assets/images/icon-edit-order.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" translate>lang.editorder</a>
+                            </p>
+                          </div>
+                        </div><!--col-xl-6-->
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)"><img src="../../assets/images/icon-image-editor.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" translate>lang.imageeditor</a>
+                            </p>
+                          </div>
+                        </div><!--col-xl-6-->
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)"><img src="../../assets/images/icon-view-plan.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" translate>lang.viewupdateplan</a>
+                            </p>
+                          </div>
+                        </div><!--col-xl-6-->
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)"><img src="../../assets/images/icon-update-data.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" translate>lang.updatecutdata</a>
+                            </p>
+                          </div>
+                        </div><!--col-xl-6-->
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)"><img src="../../assets/images/icon-view-ob.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" translate>lang.viewupdateob</a>
+                            </p>
+                          </div>
+                        </div><!--col-xl-6-->
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)"><img src="../../assets/images/icon-bundle-generator.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" translate>lang.bundlegenerator</a>
+                            </p>
+                          </div>
+                        </div><!--col-xl-6-->
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)"><img src="../../assets/images/icon-settings-so.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" translate>lang.settings</a>
+                            </p>
+                          </div>
+                        </div><!--col-xl-6-->
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)"><img src="../../assets/images/icon-delete-order.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" translate>lang.deleteorder</a>
+                            </p>
+                          </div>
+                        </div><!--col-xl-6-->
+                        <div class="col-xl-12 col-sm-6 mb-3">
+                          <div class="shadow">
+                            <div class="edit-option-box-small bdr-top-1">
+                              <a href="javascript:void(0)"><img src="../../assets/images/icon-view-report.svg"></a>
+                              <p class="mb-0">
+                                <a href="javascript:void(0)" translate>lang.viewreport</a>
+                              </p>
+                            </div>
+                            <div class="edit-option-box-small bdr-top-2">
+                              <a href="javascript:void(0)"><img src="../../assets/images/icon-view-report.svg"></a>
+                              <p class="mb-0">
+                                <a href="javascript:void(0)" translate>lang.viewreport</a>
+                              </p>
+                            </div>
+                            <div class="edit-option-box-small bdr-bottom-1">
+                              <a href="javascript:void(0)"><img src="../../assets/images/icon-view-report.svg"></a>
+                              <p class="mb-0">
+                                <a href="javascript:void(0)" translate>lang.viewreport</a>
+                              </p>
+                            </div>
+                            <div class="edit-option-box-small bdr-bottom-2">
+                              <a href="javascript:void(0)"><img src="../../assets/images/icon-view-report.svg"></a>
+                              <p class="mb-0">
+                                <a href="javascript:void(0)" translate>lang.viewreport</a>
+                              </p>
+                            </div>
+                            <div style="clear:both; display:block;"></div>
+                          </div>
+                        </div><!--col-xl-12-->
+                      </div><!--row-->
+                    </div><!--col-md-3-->
+                  </div><!--row-->
+
+                </div><!--tab-pane-1-->
+                <div class="tab-pane" id="tab-p-i_2" role="tabpanel" translate>
+                  lang.underconstruction
+                </div>
+                <div class="tab-pane" id="tab-p-i_3" role="tabpanel" translate>
+                  lang.underconstruction
+                </div>
+                <div class="tab-pane" id="tab-p-i_4" role="tabpanel" translate>
+                  lang.underconstruction
+                </div>
+
+              </div>
+            </div>
+          </div><!--col-md-10-->
+        </div>	<!--row-->
+      </div><!--container-fluid-->
+    </div>
+
+  </div>
+
+</div>
+

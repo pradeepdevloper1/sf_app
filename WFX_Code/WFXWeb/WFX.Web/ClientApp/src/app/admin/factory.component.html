@@ -1,0 +1,132 @@
+<p><em>Loading...</em></p>
+<div class="wrapper">
+  <div class="container_full">
+    <div class="content_wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="page-heading mb-3">
+              <div class="row d-flex align-items-center">
+                <div class="col-md-5">
+                  <div class="page-breadcrumb">
+                    <h1 translate>lang.addfactory</h1>
+                  </div>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-gradient float-right" (click)="SaveFactory()" translate>
+                    lang.savechange
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card card-shadow mb-3 ptb-20">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-12 mb-3">
+                          <span class="f16" translate>lang.factorydetail</span>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3 mb-3">
+                            <label class="f12 strong" translate>lang.selectorganisation</label>
+                            <div class="form-group form-focus select-focus">
+                              <ng-select2 class="w100" [data]="factorymodel.organisationlist"
+                                [(ngModel)]="organisationid" [placeholder]="'Select'"
+                                (valueChanged)="organisationmodelChangeHandler($event)">
+                              </ng-select2>
+                            </div>
+                          </div>
+                          <div class="col-md-3 mb-3">
+                            <label class="f12 strong" translate>lang.selectcluster</label>
+                            <div class="form-group form-focus select-focus">
+                              <ng-select2 class="w100" [data]="factorymodel.clusterlist" [(ngModel)]="clusterid"
+                                [placeholder]="'Select'" (valueChanged)="clustermodelChangeHandler($event)">
+                              </ng-select2>
+                            </div>
+                          </div>
+                          <div class="col-md-3 mb-3"></div>
+                          <div class="col-md-3 mb-3"></div>
+                          <div class="col-md-3 mb-3">
+                            <label class="f12 strong" translate>lang.factorytype</label>
+                            <div class="form-group form-focus select-focus">
+                              <ng-select2 class="w100" [data]="factorymodel.factorytypelist" [(ngModel)]="factorytype"
+                                [placeholder]="'Select'" (valueChanged)="factorytypemodelChangeHandler($event)">
+                              </ng-select2>
+                            </div>
+                          </div>
+                          <div class="col-md-3 mb-3">
+                            <label class="f12 strong" translate>lang.selectlinkedwitherp</label>
+                            <div class="form-group form-focus select-focus">
+                              <ng-select2 class="w100" [data]="factorymodel.linkedwitherplist"  [placeholder]="'Select'" 
+                              [(ngModel)]="linkedwithERP" (valueChanged)="linkedwitherpmodelChangeHandler($event)" >
+                              </ng-select2>
+                            </div>
+                          </div>
+                          <div class="col-md-3 mb-3"></div>
+                          <div class="col-md-3 mb-3"></div>
+                          <div class="col-md-3 mb-3">
+                            <label class="f12 strong" translate>lang.factoryname</label>
+                            <input class="form-control" type="text" placeholder="{{'lang.factoryname'|translate}}"
+                              [(ngModel)]="factoryname" autocomplete="off">
+                          </div>
+                          <div class="col-md-3 mb-3">
+                            <label class="f12 strong" translate>lang.factoryaddress</label>
+                            <input class="form-control" type="text" placeholder="{{'lang.factoryaddress'|translate}}"
+                              [(ngModel)]="factoryaddress" autocomplete="off">
+                          </div>
+                          <div class="col-md-3 mb-3"></div>
+                          <div class="col-md-3 mb-3"></div>
+                          <div class="col-md-3 mb-3">
+                            <label class="f12 strong" translate>lang.nooflineinfactory</label>
+                            <input class="form-control" type="text" placeholder="{{'lang.nooflineinfactory'|translate}}"
+                              [(ngModel)]="noofline" autocomplete="off" (keydown)="keyPressNumbers($event)"
+                              maxlength="5">
+                          </div>
+                          <div class="col-md-3 mb-3">
+                            <label class="f12 strong" translate>lang.smartline</label>
+                            <input class="form-control" type="text" placeholder="{{'lang.smartline'|translate}}"
+                              [(ngModel)]="smartlines" autocomplete="off" (keydown)="keyPressNumbers($event)"
+                              maxlength="5">
+                          </div>
+                          <div class="col-md-3 mb-3"></div>
+                          <div class="col-md-3 mb-3"></div>
+                          <div class="col-md-3 mb-3">
+                            <label class="f12 strong" translate>lang.country</label>
+                            <div class="form-group form-focus select-focus">
+                              <ng-select2 class="w100" [data]="factorymodel.countrylist" [placeholder]="'Select'"
+                                (valueChanged)="countrymodelChangeHandler($event)">
+                              </ng-select2>
+                            </div>
+                          </div>
+                          <div class="col-md-3 mb-3">
+                            <label class="f12 strong" translate>lang.timezone</label>
+                            <div class="form-group form-focus select-focus">
+                              <ng-select2 class="w100" [data]="factorymodel.timezonelist" [placeholder]="'Select'"
+                                (valueChanged)="timezonemodelChangeHandler($event)">
+                              </ng-select2>
+                            </div>
+                          </div>
+                          <div class="col-md-3 mb-3"></div>
+                          <div class="col-md-3 mb-3"></div>
+                        </div>
+                        <div class="col-md-12 clearfix">
+                          <button type="button" class="btn button120 btn-green ptb-10 float-right"
+                            (click)="SaveFactory()" translate>
+                            lang.next
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

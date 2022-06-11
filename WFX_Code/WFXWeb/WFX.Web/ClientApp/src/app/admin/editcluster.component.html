@@ -1,0 +1,104 @@
+
+<p><em>Loading...</em></p>
+
+<div class="wrapper">
+
+  <div class="container_full">
+
+      <div class="content_wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="page-heading mb-3">
+
+                <div class="row d-flex align-items-center">
+                  <div class="col-md-5">
+
+                    <div class="page-breadcrumb">
+                      <h1 translate>lang.clusteredit</h1>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4"></div>
+
+                  <div class="col-md-3">
+                    <button type="button" class="btn btn-gradient float-right" (click)="UpdateCulster()" translate>
+                      lang.savechange
+                    </button>
+
+                  </div><!--col-md-4-->
+
+                </div><!--row-->
+
+              </div>
+              <!-- page-heading -->
+
+              <div class="mb-4">
+               <div class="row">
+
+                  <div class="col-md-12">
+
+                    <div class="card card-shadow mb-3 ptb-20">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-12 mb-3">
+                            <span class="f16" translate>lang.clusterdetail</span>
+                          </div>
+                        </div><!--row-->
+                        <!--<form [formGroup]="objForm" (ngSubmit)="Organisation()" #formDir="ngForm" novalidate>-->
+                        <div class="row">
+                          <div class="col-md-3 mb-3">
+                            <div class="form-group">
+
+                              <div class="f12 strong" translate>lang.selectorganisation</div>
+                              <div class="form-group form-focus select-focus">
+                                <ng-select2 class="w100" [data]="culstermodel.organisationlist"
+                                            [(ngModel)]="organisationid"
+                                            [placeholder]="'Select'"
+                                            (valueChanged)="organisationmodelChangeHandler($event)">
+                                </ng-select2>
+                                <!--<select class="select floating">
+      <option value="0">Select</option>
+      <option *ngFor="let list of culstermodel.clusterlist" value={{list.id}}>
+        {{list.text}}
+      </option>
+    </select>-->
+                              </div>
+                              <input class="form-control" type="text" placeholder="{{'lang.clustername'|translate}}" [(ngModel)]="clustername" autocomplete="off" required>
+                              <input class="form-control hidden" type="text" [(ngModel)]="clusterid">
+
+                            </div>
+                            <!--<div *ngIf="submitted && objForm.controls.ClusterName.errors" class="error">
+                              <div *ngIf="objForm.controls.ClusterName.errors.required">Cluster Name is required</div>
+                            </div>-->
+                          </div>
+                          <div>
+                            <p style="color:#E92626;font-size:20px;font-weight:normal" Class="success" align="left">
+                              {{errorMessage}}
+                            </p>
+                          </div>
+                          <div class="col-md-12 clearfix"></div>
+
+                          <div class="col-md-12 clearfix">
+                            <button type="button" class="btn button120 btn-green ptb-10 float-right" routerLink="/Admin/Factory/{{clusterid}}" translate>
+                              lang.addfactory
+                            </button>
+                          </div>
+                        </div><!--row-->
+
+                      </div>
+                    </div>
+                  </div><!--col-md-12-->
+                </div><!--row-->
+
+
+              </div>
+            </div><!--col-md-12-->
+
+          </div>	<!--row-->
+        </div><!--container-fluid-->
+      </div>
+
+  </div>
+
+</div>

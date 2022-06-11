@@ -1,0 +1,62 @@
+
+<div class="wrapper">
+    <div class="container_full">
+      <div class="content_wrapper">
+        <div class="container-fluid"> 
+          <div class="page-heading">
+              <div class="row d-flex align-items-center">
+              <div class="col-md-4">
+                <div class="breadcrumb_nav">
+                  <ol class="breadcrumb">
+                    <li>
+                      <a class="parent-item" routerLink="/Admin/AdminDashboard"><i class="fa fa-home"></i></a>
+                      <i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active" translate>
+                      lang.processdefinitionlist
+                    </li>
+                  </ol>
+                </div>
+                <div class="page-breadcrumb">
+                  <h1 translate>lang.processdefinitionlist</h1>
+                </div> 
+              </div>
+              <div class="col-md-4"></div> 
+              <div class="col-md-3">
+                <button type="button" class="btn btn-gradient float-right" (click)='SaveProcessDefinition()' 
+                translate>
+                  lang.savechange
+                </button> 
+              </div>
+            </div>
+          </div>
+          <section class="chart_section" style="margin-top:10px;">
+            <div class="row">
+            </div>
+            <div class="row">
+              <div class=" col-xl-12 col-md-12 col-lg-12">
+                <div class="card card-shadow mb-3 ">
+                  <ag-grid-angular #agGrid
+                                   style="width: 100%; height: 500px;"
+                                   class="ag-theme-alpine"
+                                   [rowData]="rowData"
+                                   [columnDefs]="columnDefs"
+                                   [pagination]="true"
+                                   (cellValueChanged)="onCellValueChanged($event)"
+                                   [paginationPageSize]="10"
+                                   [frameworkComponents]="frameworkComponents"
+                                   (gridReady)="onGridReady($event)">
+  
+                  </ag-grid-angular>
+                </div>
+              </div>
+               <div class=" col-xl-12 col-md-12 col-lg-12">
+              </div>
+            </div> 
+          </section> 
+        </div>
+      </div> 
+    </div>
+  </div>
+  
+  

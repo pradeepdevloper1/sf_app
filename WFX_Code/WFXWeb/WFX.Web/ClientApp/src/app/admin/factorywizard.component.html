@@ -1,0 +1,569 @@
+
+<p *ngIf="!factorymodel"><em>Loading...</em></p>
+<p *ngIf="!adminexcelmodel"><em>Loading...</em></p>
+<div class="wrapper">
+
+  <div class="container_full">
+
+    <div class="content_wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="page-heading mb-3">
+
+              <div class="row">
+                <div class="col-md-2">
+
+                  <div class="page-breadcrumb">
+                    <h1 translate>lang.factorywizard</h1>
+                  </div>
+
+                </div>
+
+                <div class="col-md-7 p-0">
+                  <ul class="nav nav-pills nav-pills-success mb-2 bdr-none" role="tablist" style="margin-top:-10px;">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#tab-p-i_1" translate> lang.master</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#tab-p-i_2" translate> lang.logindetail</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-gradient float-right" translate>
+                    lang.savechange
+                  </button>
+
+                </div><!--col-md-4-->
+
+              </div><!--row-->
+            </div>
+            <!-- page-heading -->
+
+            <div class="mb-4">
+
+
+
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab-p-i_1" role="tabpanel">
+
+                  <div class="card card-shadow mb-3 ptb-20 image-editor-height">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <span class="f16" translate>lang.factorydetail</span>
+                        </div>
+                        <div class="col-md-6">
+                          <button type="button" class="btn button120 btn-dark-green ptb-10 float-right" routerLink="/Admin/FactoryList" translate>
+                            lang.back
+                          </button>
+                        </div>
+                      </div><!--row-->
+                      <div class="row">
+                        <div class="col-md-2 mb-3">
+                          <label class="f12 strong" translate>lang.organisations</label>
+                          <div class="social-box more-pad text-left">
+                            <span class="f16">{{ factorymodel.organisationName }}</span>
+                          </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                          <label class="f12 strong" translate>lang.cluster</label>
+                          <div class="social-box more-pad text-left">
+                            <span class="f16">{{ factorymodel.clusterName }}</span>
+                          </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                          <label class="f12 strong" translate>lang.factorytype</label>
+                          <div class="social-box more-pad text-left">
+                            <span class="f16">{{ factorymodel.factoryType }}</span>
+                          </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                          <label class="f12 strong" translate>lang.factoryname</label>
+                          <div class="social-box more-pad text-left">
+                            <span class="f16">{{ factorymodel.factoryName }}</span>
+                          </div>
+                        </div>
+                        <div class="col-md-1 mb-3">
+                          <label></label>
+                          <div class="social-box no-pad">
+                            <span class="f22">
+                              <a routerLink="/Admin/EditFactory/{{factorymodel.factoryID}}">
+                                <img src="../../assets/images/icon-edit.svg">
+                              </a>
+                            </span>
+                          </div>
+                        </div>
+
+                      </div>
+
+
+
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <span class="f16" translate>lang.masterdetail</span>
+                        </div>
+                      </div><!--row-->
+
+                      <div class=" col-xl-8 col-md-8 col-lg-8">
+                        <div class="card card-shadow mb-3 ">
+
+                          <div class="">
+                            <table id="bs4-table" class="table table-bordered table-striped tb-padd-0">
+                              <thead>
+
+                                <tr>
+                                  <th class="mtb-3">&nbsp;</th>
+                                  <th class="ptb-5">Master table</th>
+                                  <th class="text-align-center">Status</th>
+                                  <th class="text-align-center">Action</th>
+                                  <th class="text-align-center">Created Date</th>
+                                  <th class="text-align-center">Updated at</th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <tr>
+                                  <td class="ptb-5">1</td>
+                                  <td>Modules</td>
+                                  <td class="text-align-center"><span [ngClass]="adminexcelmodel.module_Status ==='Uploaded'?'txt-green':'txt-orange'">{{ adminexcelmodel.module_Status }}</span></td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <input id="module-upload" type="file" name="fileUpload" (change)="ModuleFileInput($event)" />
+                                      <label for="module-upload" id="file-drag" class="m-0 p-0">
+                                        <img src="../../assets/images/icon-upload-master.svg">
+                                      </label>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a routerLink="/Admin/ModuleList/{{factorymodel.factoryID}}"><img src="../../assets/images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">{{ adminexcelmodel.module_CreateDate }}</td>
+                                  <td class="text-align-center">{{ adminexcelmodel.module_UpdateDate }}</td>
+                                </tr>
+                                <tr>
+                                  <td class="ptb-5">2</td>
+                                  <td>Line</td>
+                                  <td class="text-align-center"><span [ngClass]="adminexcelmodel.line_Status ==='Uploaded'?'txt-green':'txt-orange'">{{ adminexcelmodel.line_Status }}</span></td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <input id="line-upload" type="file" name="fileUpload" (change)="LineFileInput($event)" />
+                                      <label for="line-upload" id="file-drag" class="m-0 p-0">
+                                        <img src="../../assets/images/icon-upload-master.svg">
+                                      </label>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a routerLink="/Admin/LineList/{{factorymodel.factoryID}}"><img src="../../assets/images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">{{ adminexcelmodel.line_CreateDate }}</td>
+                                  <td class="text-align-center">{{ adminexcelmodel.line_UpdateDate }}</td>
+                                </tr>
+                                <tr>
+                                  <td class="ptb-5">3</td>
+                                  <td>Shift</td>
+                                  <td class="text-align-center"><span [ngClass]="adminexcelmodel.shift_Status ==='Uploaded'?'txt-green':'txt-orange'">{{ adminexcelmodel.shift_Status }}</span></td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <input id="shift-upload" type="file" name="fileUpload" (change)="ShiftFileInput($event)" />
+                                      <label for="shift-upload" id="file-drag" class="m-0 p-0">
+                                        <img src="../../assets/images/icon-upload-master.svg">
+                                      </label>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a routerLink="/Admin/ShiftList/{{factorymodel.factoryID}}"><img src="../../assets/images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">{{ adminexcelmodel.shift_CreateDate }}</td>
+                                  <td class="text-align-center">{{ adminexcelmodel.shift_UpdateDate }}</td>
+                                </tr>
+                                <tr>
+                                  <td class="ptb-5">4</td>
+                                  <td>Product</td>
+
+                                  <td class="text-align-center"><span [ngClass]="adminexcelmodel.product_Status ==='Uploaded'?'txt-green':'txt-orange'">{{ adminexcelmodel.product_Status }}</span></td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <input id="product-upload" type="file" name="fileUpload" (change)="ProductFileInput($event)" />
+                                      <label for="product-upload" id="file-drag" class="m-0 p-0">
+                                        <img src="../../assets/images/icon-upload-master.svg">
+                                      </label>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a routerLink="/Admin/ProductList/{{factorymodel.factoryID}}"><img src="../../assets/images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">{{ adminexcelmodel.product_CreateDate }}</td>
+                                  <td class="text-align-center">{{ adminexcelmodel.product_UpdateDate }}</td>
+                                </tr>
+
+                                <tr>
+                                  <td class="ptb-5">5</td>
+                                  <td>Fit</td>
+                                  <td class="text-align-center"><span [ngClass]="adminexcelmodel.fit_Status ==='Uploaded'?'txt-green':'txt-orange'">{{ adminexcelmodel.fit_Status }}</span></td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <input id="productfit-upload" type="file" name="fileUpload" (change)="ProductFitFileInput($event)" />
+                                      <label for="productfit-upload" id="file-drag" class="m-0 p-0">
+                                        <img src="../../assets/images/icon-upload-master.svg">
+                                      </label>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a routerLink="/Admin/ProductFitList/{{factorymodel.factoryID}}"><img src="../../assets/images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">{{ adminexcelmodel.fit_CreateDate }}</td>
+                                  <td class="text-align-center">{{ adminexcelmodel.fit_UpdateDate }}</td>
+                                </tr>
+
+                                <tr>
+                                  <td class="ptb-5">6</td>
+                                  <td>Customer</td>
+                                  <td class="text-align-center"><span [ngClass]="adminexcelmodel.customer_Status ==='Uploaded'?'txt-green':'txt-orange'">{{ adminexcelmodel.customer_Status }}</span></td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <input id="customer-upload" type="file" name="fileUpload" (change)="CustomerFileInput($event)" />
+                                      <label for="customer-upload" id="file-drag" class="m-0 p-0">
+                                        <img src="../../assets/images/icon-upload-master.svg">
+                                      </label>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a routerLink="/Admin/CustomerList/{{factorymodel.factoryID}}"><img src="../../assets/images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">{{ adminexcelmodel.customer_CreateDate }}</td>
+                                  <td class="text-align-center">{{ adminexcelmodel.customer_UpdateDate }}</td>
+                                </tr>
+
+
+
+                                <tr>
+                                  <td class="ptb-5">7</td>
+                                  <td>QC codes</td>
+                                  <td class="text-align-center"><span [ngClass]="adminexcelmodel.qcCode_Status ==='Uploaded'?'txt-green':'txt-orange'">{{ adminexcelmodel.qcCode_Status }}</span></td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <input id="qccode-upload" type="file" name="fileUpload" (change)="QCCodeFileInput($event)" />
+                                      <label for="qccode-upload" id="file-drag" class="m-0 p-0">
+                                        <img src="../../assets/images/icon-upload-master.svg">
+                                      </label>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a routerLink="/Admin/DefectsList/{{factorymodel.factoryID}}"><img src="../../assets/images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">{{ adminexcelmodel.qcCode_CreateDate }}</td>
+                                  <td class="text-align-center">{{ adminexcelmodel.qcCode_UpdateDate }}</td>
+                                </tr>
+
+                                <tr>
+                                  <td class="ptb-5">8</td>
+                                  <td>User</td>
+                                  <td class="text-align-center"><span [ngClass]="adminexcelmodel.user_Status ==='Uploaded'?'txt-green':'txt-orange'">{{ adminexcelmodel.user_Status }}</span></td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <input id="user-upload" type="file" name="fileUpload" (change)="UserFileInput($event)" />
+                                      <label for="user-upload" id="file-drag" class="m-0 p-0">
+                                        <img src="../../assets/images/icon-upload-master.svg">
+                                      </label>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a routerLink="/Admin/UserList/{{factorymodel.factoryID}}"><img src="../../assets/images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">{{ adminexcelmodel.user_CreateDate }}</td>
+                                  <td class="text-align-center">{{ adminexcelmodel.user_UpdateDate }}</td>
+                                </tr>
+                                <tr>
+                                  <td class="ptb-5">9</td>
+                                  <td>Process Definition</td>
+                                  <td class="text-align-center"><span [ngClass]="adminexcelmodel.processDefinition_Status ==='Uploaded'?'txt-green':'txt-orange'">{{ adminexcelmodel.processDefinition_Status }}</span></td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <input id="processDefinition-upload" type="file" name="fileUpload" (change)="ProcessDefinitionInput($event)" />
+                                      <label for="processDefinition-upload" id="file-drag" class="m-0 p-0">
+                                        <img src="../../assets/images/icon-upload-master.svg">
+                                      </label>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a routerLink="/Admin/ProcessDefinitionList/{{factorymodel.factoryID}}"><img src="../../assets/images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">{{ adminexcelmodel.processDefinition_CreatedOn }}</td>
+                                  <td class="text-align-center">{{ adminexcelmodel.processDefinition_LastChangedOn }}</td>
+                                </tr>
+
+                                <!--<tr>
+    <td class="ptb-5">8</td>
+    <td>Holiday</td>
+    <td class="text-align-center"><span class="txt-green">{{ adminexcelmodel.holidays_Status }}</span></td>
+    <td class="text-align-center">
+      <button type="button" class="btn  btn-white">
+        <a href="#"><img src="../../assets/images/icon-upload-master.svg" border="0"></a>
+      </button>
+      <button type="button" class="btn  btn-white">
+        <a href="#"><img src="../../assets/images/icon-edit-master.svg" border="0"></a>
+      </button>
+    </td>
+    <td class="text-align-center">{{ adminexcelmodel.holidays_CreateDate }}</td>
+    <td class="text-align-center">{{ adminexcelmodel.holidays_UpdateDate }}</td>
+  </tr>-->
+                              </tbody>
+                            </table>
+                          </div><!--card-body-->
+
+                        </div>
+                      </div><!--col-md-8-->
+
+                    </div>	<!--card-body-->
+                  </div><!--card-shadow-->
+
+                </div><!--tab-pane-1-->
+                <div class="tab-pane" id="tab-p-i_2" role="tabpanel">
+
+                  <div class="card card-shadow mb-3 ptb-20 image-editor-height">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <span class="f16" translate>lang.factorydetail</span>
+                        </div>
+                        <div class="col-md-6">
+                          <button type="button" class="btn button120 btn-dark-green ptb-10 float-right">
+                            Back
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-2 mb-3">
+                          <label class="f12 strong" translate>lang.organisations</label>
+                          <div class="social-box more-pad text-left">
+                            <span class="f16">Org1</span>
+                          </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                          <label class="f12 strong" translate>lang.cluster</label>
+                          <div class="social-box more-pad text-left">
+                            <span class="f16">Cluster1</span>
+                          </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                          <label class="f12 strong" translate>lang.factorytype</label>
+                          <div class="social-box more-pad text-left">
+                            <span class="f16">Production</span>
+                          </div>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                          <label class="f12 strong" translate>lang.factoryname</label>
+                          <div class="social-box more-pad text-left">
+                            <span class="f16">Factory1</span>
+                          </div>
+                        </div>
+
+
+                      </div>
+
+
+
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <span class="f16">Factory master log</span>
+                        </div>
+                      </div><!--row-->
+
+                      <div class=" col-xl-8 col-md-8 col-lg-8">
+                        <div class="card card-shadow mb-3 ">
+
+                          <div class="">
+                            <table id="bs4-table" class="table table-bordered table-striped tb-padd-0">
+                              <thead>
+
+                                <tr>
+                                  <th class="mtb-3">&nbsp;</th>
+                                  <th class="ptb-5">Log table</th>
+                                  <th class="text-align-center">Action</th>
+                                  <th class="text-align-center">Created Date</th>
+                                  <th class="text-align-center">Updated at</th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <tr>
+                                  <td class="ptb-5">1</td>
+                                  <td>Product</td>
+                                  <td class="text-align-center">
+                                    <input id="ob-upload" type="file" name="fileUpload" />
+                                    <label for="ob-upload" id="file-drag" class="m-0 p-0">
+                                      <div style="width:33px; margin:0px auto"><img src="../../assets/images/icon-upload-master.svg"></div>
+
+                                    </label>
+
+                                    <!--<button type="button" class="btn  btn-white">
+                                      <img src="images/icon-edit-master.svg" border="0">
+                                    </button>-->
+                                  </td>
+                                  <td class="text-align-center">21/05/2020</td>
+                                  <td class="text-align-center">21/07/2020</td>
+                                </tr>
+
+                                <!--<tr>
+                                  <td class="ptb-5">2</td>
+                                  <td>Fit</td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-upload-master.svg" border="0"></a>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">21/05/2020</td>
+                                  <td class="text-align-center">21/07/2020</td>
+                                </tr>-->
+                                <!--<tr>
+                                  <td class="ptb-5">3</td>
+                                  <td>Customer</td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-upload-master.svg" border="0"></a>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">21/05/2020</td>
+                                  <td class="text-align-center">21/07/2020</td>
+                                </tr>-->
+                                <!--<tr>
+                                  <td class="ptb-5">4</td>
+                                  <td>Line</td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-upload-master.svg" border="0"></a>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">21/05/2020</td>
+                                  <td class="text-align-center">21/07/2020</td>
+                                </tr>-->
+                                <!--<tr>
+                                  <td class="ptb-5">5</td>
+                                  <td>Shift</td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-upload-master.svg" border="0"></a>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">21/05/2020</td>
+                                  <td class="text-align-center">21/07/2020</td>
+                                </tr>-->
+                                <!--<tr>
+                                  <td class="ptb-5">6</td>
+                                  <td>QC codes</td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-upload-master.svg" border="0"></a>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">21/05/2020</td>
+                                  <td class="text-align-center">21/07/2020</td>
+                                </tr>-->
+                                <!--<tr>
+                                  <td class="ptb-5">7</td>
+                                  <td>User</td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-upload-master.svg" border="0"></a>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">21/05/2020</td>
+                                  <td class="text-align-center">21/07/2020</td>
+                                </tr>-->
+
+                                <tr>
+                                  <td class="ptb-5">8</td>
+                                  <td>Holiday</td>
+                                  <td class="text-align-center">
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-upload-master.svg" border="0"></a>
+                                    </button>
+                                    <button type="button" class="btn  btn-white">
+                                      <a href="#"><img src="images/icon-edit-master.svg" border="0"></a>
+                                    </button>
+                                  </td>
+                                  <td class="text-align-center">21/05/2020</td>
+                                  <td class="text-align-center">21/07/2020</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div><!--card-body-->
+
+                        </div>
+                      </div><!--col-md-8-->
+
+                    </div>
+                  </div>
+
+                </div><!--tab-pane-2-->
+
+
+
+
+              </div><!--col-md-12-->
+            </div>	<!--row-->
+          </div><!--container-fluid-->
+        </div>
+        <!-- Content_wrapper -->
+
+        <footer class="footer ptb-0">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <div class="copy_left">
+                  <p>
+                    Report problems at
+                    <a href="#">support@worldfashionexchange.com</a>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6 text-center">
+                <div class="copy_right">
+
+                  <div class="select-btm">
+                    <select name="slct" id="slct" class="slt">
+                      <option selected>EN</option>
+                      <option value="1">EN</option>
+                      <option value="2">EN</option>
+                      <option value="3">EN</option>
+                    </select>
+                  </div>
+                  <p><span>Language</span></p>
+                  <p><strong>Copyright</strong> World Fashion exchange 2021 <strong>Version 1.1</strong></p>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- Footer_End -->
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

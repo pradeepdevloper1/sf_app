@@ -1,0 +1,52 @@
+
+<div class="wrapper">
+
+  <div class="container_full">
+
+    <div class="content_wrapper shadow">
+      <div class="container-fluid">
+
+        <form id="file-upload-form" action="">
+
+          <input id="file-upload" type="file" name="fileUpload" (change)="handleFileInput($event)" />
+          <label for="file-upload" id="file-drag">
+            <div *ngIf="isInvalid == 0">
+              <div style="width:33px; margin:0px auto"><img src="../../assets/images/icon-upload.svg"></div>
+              <h1><span translate>lang.uploadlinetarget</span></h1>
+
+              <p translate>lang.drogfilestoupload</p>
+
+            </div>
+            <div *ngIf="isInvalid == 1">
+              <div style="width:33px; margin:0px auto"><img src="../../assets/images/icon-invalid.svg"></div>
+              <h1 class="txt-danger"><span translate>lang.invalidformat</span></h1>
+
+              <p>
+                {{ExcelFileName}}
+                <span> {{ExcelFileSize}}</span>
+              </p>
+            </div>
+            <span id="file-upload-btn" class="button" translate>lang.browse</span>
+
+            <br>
+            <button type="button" class="btn btn-pill btn-outline-secondary" (click)='SampleFile()'>
+              <img src="../../assets/images/icon-download.svg"> <span translate>lang.sampleformat</span>
+            </button>
+
+          </label>
+
+          <progress id="file-progress" value="0">
+            <span>0</span>%
+          </progress>
+
+          <output for="file-upload" id="messages"></output>
+        </form>
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

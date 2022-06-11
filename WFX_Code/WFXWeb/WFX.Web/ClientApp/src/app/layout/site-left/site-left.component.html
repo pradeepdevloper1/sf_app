@@ -1,0 +1,30 @@
+<div class="nav_small">
+    <div class="side_bar scroll_auto">
+        <ul id="dc_accordion" class="sidebar-menu tree t2">
+            <li class="menu_sub" [ngClass]="{'selectedLink':selectedItem==='UserDashboard'}">
+                <a routerLink="UserDashboard" (click)="onclick('UserDashboard')" matTooltip="Dashboard"> <img [ngClass]="{'unselected':selectedItem==='UserDashboard'}" src="../../assets/images/icon-1a.svg"> <img [ngClass]="{'selected':selectedItem==='UserDashboard'}" src="../../assets/images/icon-1ahover.svg"> <span>Dashboard</span></a>
+            </li>
+            <li class="menu_sub" [ngClass]="{'selectedLink':selectedItem==='OrderList'}">
+                <a routerLink="OrderList" (click)="onclick('OrderList')" matTooltip="Order List"> <img [ngClass]="{'unselected':selectedItem==='OrderList'}" src="../../assets/images/icon-2a.svg"> <img [ngClass]="{'selected':selectedItem==='OrderList'}" src="../../assets/images/icon-2ahover.svg"> <span>UI Elements </span> </a>
+            </li>
+            <li class="menu_sub" [ngClass]="{'selectedLink':selectedItem==='BookingList'}">
+                <a routerLink="BookingList" (click)="onclick('BookingList')" matTooltip="Line Plan"> <img [ngClass]="{'unselected':selectedItem==='BookingList'}" src="../../assets/images/icon-3a.svg"> <img [ngClass]="{'selected':selectedItem==='BookingList'}" src="../../assets/images/icon-3ahover.svg"> <span>Portlets</span> </a>
+            </li>
+            <li class="menu_sub" [ngClass]="{'selectedLink':selectedItem==='QC'}">
+                <a routerLink="QC" (click)="onclick('QC')" matTooltip="Trend Dashboard"> <img [ngClass]="{'unselected':selectedItem==='QC'}" src="../../assets/images/icon-4a.svg"> <img [ngClass]="{'selected':selectedItem==='QC'}" src="../../assets/images/icon-4ahover.svg"> <span>Charts</span> </a>
+            </li>
+            <li class="menu_sub" [ngClass]="{'selectedLink':selectedItem==='Reports'}">
+                <a routerLink="Reports" (click)="onclick('Reports')" matTooltip="Reports"> <img [ngClass]="{'unselected':selectedItem==='Reports'}" src="../../assets/images/icon-5a.svg"> <img [ngClass]="{'selected':selectedItem==='Reports'}" src="../../assets/images/icon-5ahover.svg"> <span>Widgets </span></a>
+            </li>
+            <li class="menu_sub" [ngClass]="{'selectedLink':selectedItem==='Settings'}">
+                <a routerLink="Settings" (click)="onclick('Settings')" matTooltip="Settings"> <img src="../../assets/images/icon-6a.svg"> <img src="../../assets/images/icon-6ahover.svg"> <span>Settings </span> </a>
+            </li>
+        </ul>
+        <ul class="sidebar-menu ">
+            <li class="menu_sub" [ngClass]="{'selectedLink':selectedItem==='Order'}">
+                <a routerLink="Order" (click)="onclick('Order')" matTooltip="Upload Order"> <img [ngClass]="{'unselected':selectedItem==='Order'}" src="../../assets/images/icon-7a.svg"> <img [ngClass]="{'selected':selectedItem==='Order'}" src="../../assets/images/icon-7ahover.svg"> <span>Add</span> </a>
+            </li>
+        </ul>
+
+    </div>
+</div>

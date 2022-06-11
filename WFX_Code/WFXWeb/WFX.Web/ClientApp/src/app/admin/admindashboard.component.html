@@ -1,0 +1,113 @@
+
+<p *ngIf="!admindashboardmodel"><em>Loading...</em></p>
+
+<div class="wrapper">
+
+  <div class="container_full">
+
+    <div class="content_wrapper">
+      <div class="container-fluid">
+
+        <div class="page-heading">
+
+          <!--row-->
+        </div>
+        <!-- page-heading -->
+        <!-- Section -->
+        <section class="chart_section">
+          <div class="row">
+            <div class="col-xl-4 col-md-6 mb-3">
+              <div class="card bg-1 border-0 text-light ptb-10">
+                <a routerLink="/Admin/OrganisationList" class="text-white">
+                  <div class="card-body ptb-0">
+                    <div class="row">
+                      <div class="col-lg-9 col-md-9 col-sm-9">
+                        <div class="w1">
+                         
+                          <h6 class="m-0 text-white" translate>lang.organisations</h6>
+                        </div>
+                      </div><!--col-lg-7-->
+                      <div class="col-lg-3 col-md-3 col-sm-3">
+                        <div class="w2">
+                          <p>
+                            {{ admindashboardmodel.organisations_Count }}
+                          </p>
+                        </div>
+                      </div><!--col-lg-3-->
+                    </div><!--row-->
+                  </div><!--card-body-->
+                </a>
+              </div><!--bg-1-->
+
+              <div class="admin-dashboard-buttons">
+                <a routerLink="/Admin/SaveOrganisation" class="btn btn-organisation" translate>lang.addorganisation</a>
+              </div>
+
+            </div>
+            <div class="col-xl-4 col-md-6 mb-3">
+              <div class="card bg-2 border-0 text-light ptb-10">
+                <a routerLink="/Admin/ClusterList" class="text-white">
+                  <div class="card-body ptb-0">
+                    <div class="row">
+                      <div class="col-lg-9 col-md-9 col-sm-9">
+                        <div class="w1">
+                          <h6 class="m-0 text-white" translate>lang.cluster</h6>
+                        </div>
+                      </div><!--col-lg-7-->
+                      <div class="col-lg-3 col-md-3 col-sm-3">
+                        <div class="w2">
+                          <p>
+                            {{ admindashboardmodel.clusters_Count }}
+                          </p>
+                        </div>
+                      </div><!--col-lg-3-->
+                    </div><!--row-->
+                  </div>
+                </a>
+              </div>
+
+              <div class="admin-dashboard-buttons">
+                <a routerLink="/Admin/Culster/0" class="btn btn-cluster"translate>lang.addcluster</a>
+              </div>
+
+            </div>
+            <div class="col-xl-4 col-md-6 mb-3">
+              <div class="card border-0 text-light bg-3 ptb-10">
+                <div class="card-body ptb-0">
+                  <a routerLink="/Admin/FactoryList" class="text-white">
+                    <div class="row">
+                      <div class="col-lg-9 col-md-9 col-sm-9">
+                        <div class="w1">
+                          <h6 class="m-0 text-white" translate>lang.factories</h6>
+                        </div>
+                      </div><!--col-lg-7-->
+                      <div class="col-lg-3 col-md-3 col-sm-3">
+                        <div class="w2">
+                          <p>
+                            {{admindashboardmodel.factories_Count }}
+                          </p>
+                        </div>
+                      </div><!--col-lg-3-->
+                    </div><!--row-->
+                  </a>
+                </div>
+              </div>
+
+              <div class="admin-dashboard-buttons">
+                <a routerLink="/Admin/Factory/0" class="btn btn-cluster" translate>lang.addfactory</a>
+               
+              </div>
+
+            </div>
+
+          </div><!--row-->
+
+        </section>
+        <!-- chart_section -->
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

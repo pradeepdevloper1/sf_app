@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    //"types": [],
+    "paths": {
+      "exceljs": [
+        "node_modules/exceljs/dist/exceljs.min"
+      ]
+    },
+    "types": [ "node" ]
+  },
+    "files": [
+      "main.ts",
+      "polyfills.ts"
+    ],
+    "include": [
+      "src/**/*.d.ts"
+    ]
+  }

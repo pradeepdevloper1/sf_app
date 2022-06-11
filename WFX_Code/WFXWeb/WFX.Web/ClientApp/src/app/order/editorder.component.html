@@ -1,0 +1,247 @@
+<p *ngIf="!poviewmodel"><em>Loading...</em></p>
+
+<div class="wrapper">
+
+  <div class="container_full">
+
+    <div class="content_wrapper">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-md-2">
+            <div class="card card-shadow mb-4 mt-4 h93-7">
+
+              <div class="card-body h100" style="padding:10px 0px;">
+
+                <h6 class="sale" translate>Sale Order {{ poviewmodel.soNo }}</h6>
+                <div class="rb_card-2 scroll_auto scroll_mr light_scroll h90">
+                  <form method="post" class="find">
+                    <input title="Search" value="" type="submit" class="button">
+                    <input type="text" class="textbox" placeholder="{{'lang.search'|translate}}" (input)="onChangeEvent($event)">
+                  </form>
+
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr *ngFor="let polist of poviewmodel.polist">
+                        <td>
+                          <a [routerLink]="['/EditOrder',  polist.value ]" style="color:black;"> {{polist.value}} </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div><!--col-md-2-->
+
+          <div class="col-md-10">
+
+            <div class="page-heading">
+
+              <div class="row d-flex align-items-center">
+                <div class="col-md-5">
+                  <div class="breadcrumb_nav">
+                    <ol class="breadcrumb">
+                      <li>
+                        <a class="parent-item" routerLink="/User/UserDashboard"><img src="../../assets/images/icon-home.svg" border="0"></a>
+                        <i class="fa fa-angle-right"></i>
+                      </li>
+                      <li>
+                        <a class="txt-blue" routerLink="/User/OrderList"><span translate>lang.orderlist</span></a>
+                        <i class="fa fa-angle-right"></i>
+                      </li>
+                      <li>
+                        <a class="txt-blue" [routerLink]="['/User/SOView',poviewmodel.soNo ]"><span translate>lang.saleorder</span> {{ sono }}</a>
+                        <i class="fa fa-angle-right"></i>
+                      </li>
+                      <li class="active">
+                        <a class="txt-blue" [routerLink]="['/User/POView',poviewmodel.poNo ]"><span translate>lang.purchaseorder</span> {{ pono }}</a>
+                      </li>
+                    </ol>
+                  </div>
+                  <div class="page-breadcrumb" >
+                    <h1 ><span translate>lang.editdetailspo</span> {{ pono }}</h1>
+                  </div>
+
+                </div>
+
+
+                <div class="col-md-4"></div>
+
+                <div class="col-md-3">
+                  <button *ngIf="showSaveButton" type="button" class="btn btn-gradient float-right" (click)="UpdateOrder()" translate>
+                    lang.savechange
+                  </button>
+
+                </div><!--col-md-4-->
+              </div><!--row-->
+            </div>
+            <!-- page-heading -->
+
+            <div class="mb-4">
+
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="card card-shadow mb-3 ptb-20">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-12 mb-3">
+                          <span class="f16" translate>lang.orderstyledetails</span>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-3 mb-3">
+                          <label class="f12 strong" translate> lang.ordernumber</label>
+                          <input *ngIf="shownoneditable =='ERPApp';else showeditable" type="text" class="form-control-1" placeholder="{{'lang.ordernumber'|translate}}" [(ngModel)]="poviewmodel.poNo" value="{{poviewmodel.poNo}}" readonly style="background-color: #f5f5f5!important;" (input)="showSaveButton=true">
+                          <ng-template #showeditable>
+                          <input type="text" class="form-control-1" placeholder="{{'lang.ordernumber'|translate}}" [(ngModel)]="poviewmodel.poNo" value="{{poviewmodel.poNo}}"(input)="showSaveButton=true" >
+                        </ng-template>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                          <label class="f12 strong" translate>lang.style</label>
+                          <input *ngIf="shownoneditable =='ERPApp';else showeditable1" type="text" class="form-control-1" placeholder="{{'lang.style'|translate}}" [(ngModel)]="poviewmodel.style" value="{{poviewmodel.style}}" (input)="showSaveButton=true" readonly style="background-color: #f5f5f5!important;">
+                          <ng-template #showeditable1>
+                          <input type="text" class="form-control-1" placeholder="{{'lang.style'|translate}}" [(ngModel)]="poviewmodel.style" value="{{poviewmodel.style}}"(input)="showSaveButton=true" >
+                          </ng-template>
+                        </div>
+                        <div class="col-md-3 mb-3" >
+                          <label class="f12 strong" translate>lang.fit</label>
+                          <input type="text" class="form-control-1" placeholder="{{'lang.fit'|translate}}" [(ngModel)]="poviewmodel.fit" value="{{poviewmodel.fit}}" (input)="showSaveButton=true">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                          <label class="f12 strong" translate>lang.product</label>
+                          <input *ngIf="shownoneditable =='ERPApp';else showeditable2" type="text" class="form-control-1" placeholder="{{'lang.product'|translate}}" [(ngModel)]="poviewmodel.product" value="{{poviewmodel.product}}" (input)="showSaveButton=true"  readonly style="background-color: #f5f5f5!important;">
+                          <ng-template #showeditable2>
+                          <input type="text" class="form-control-1" placeholder="{{'lang.product'|translate}}" [(ngModel)]="poviewmodel.product" value="{{poviewmodel.product}}"(input)="showSaveButton=true" >
+                          </ng-template>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                          <label translate> lang.saleorderno</label>
+                          <input *ngIf="shownoneditable =='ERPApp';else showeditable3" type="text" class="form-control-1" placeholder="{{'lang.saleorderno'|translate}}" [(ngModel)]="poviewmodel.soNo" value="{{poviewmodel.soNo}}"(input)="showSaveButton=true" readonly style="background-color: #f5f5f5!important;">
+                          <ng-template #showeditable3>
+                          <input type="text" class="form-control-1" placeholder="{{'lang.saleorderno'|translate}}" [(ngModel)]="poviewmodel.soNo" value="{{poviewmodel.soNo}}"(input)="showSaveButton=true" >
+                          </ng-template>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                          <label class="f12 strong" translate>lang.season</label>
+                          <input *ngIf="shownoneditable =='ERPApp';else showeditable4" type="text" class="form-control-1" placeholder="{{'lang.season'|translate}}" [(ngModel)]="poviewmodel.season" value="{{poviewmodel.season}}"(input)="showSaveButton=true"readonly style="background-color: #f5f5f5!important;">
+                          <ng-template #showeditable4>
+                            <input type="text" class="form-control-1" placeholder="{{'lang.season'|translate}}" [(ngModel)]="poviewmodel.season" value="{{poviewmodel.season}}"(input)="showSaveButton=true"(input)="showSaveButton=true"  >
+                          </ng-template>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                          <label class="f12 strong" translate>lang.customer</label>
+                          <input *ngIf="shownoneditable =='ERPApp';else showeditable5" type="text" class="form-control-1" placeholder="{{'lang.customer'|translate}}" [(ngModel)]="poviewmodel.customer" value="{{poviewmodel.customer}}"(input)="showSaveButton=true" readonly style="background-color: #f5f5f5!important;">
+                          <ng-template #showeditable5>
+                            <input type="text" class="form-control-1" placeholder="{{'lang.customer'|translate}}" [(ngModel)]="poviewmodel.customer" value="{{poviewmodel.customer}}" (input)="showSaveButton=true">
+                          </ng-template>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                          <label class="f12 strong" translate>lang.orderremarks</label>
+                          <input type="text" class="form-control-1" placeholder="{{'lang.orderremarks'|translate}}" [(ngModel)]="poviewmodel.orderRemark" value="{{poviewmodel.orderRemark}}"(input)="showSaveButton=true">
+                        </div>
+                      </div>
+
+
+
+                    </div>
+                  </div>
+                </div>
+              </div><!--row-->
+
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="card card-shadow mb-3 ptb-20">
+
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-12 mb-1">
+                          <span class="f16" translate>lang.partquantity</span>
+                        </div>
+                      </div>
+                      <form class="" id="">
+                        <div class="row">
+                          <div class="col-md-3 mb-3">
+                            <label class="f12 strong" translate>lang.exfactorydate</label>
+                            <div class="form-group">
+
+                              <input class="form-control-1 datetimepicker"  [ngModel]="poviewmodel.exFactory | date: 'dd/MM/yyyy'" value="{{poviewmodel.exFactory | date: 'dd/MM/yyyy'}}"  #dp_exdate (blur)="ExDate(dp_exdate.value)" >
+
+                            </div>
+                          </div>
+                          <div class="col-md-3 mb-1">
+                            <label class="f12 strong" translate>lang.planedstartdate</label>
+                            <input class="form-control-1 datetimepicker" [ngModel]="poviewmodel.planStDt | date: 'dd/MM/yyyy'" value="{{poviewmodel.planStDt | date: 'dd/MM/yyyy'}}" #dp_plandate (blur)="PlanDate(dp_plandate.value)">
+                          </div>
+
+                        </div>
+
+                      </form>
+
+                      <ul class="nav nav-pills nav-pills-success mb-2" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" data-toggle="tab" href="#tab-p-i_1" translate> lang.body</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="tab" href="#tab-p-i_2" translate> lang.sleeve</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="tab" href="#tab-p-i_3"> +</a>
+                        </li>
+
+
+                      </ul>
+
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="tab-p-i_1" role="tabpanel">
+                          <div class="row">
+                            <div class="col-md-12 text-center">
+                              <ag-grid-angular #agGrid id="myGrid"
+                                               style="width: 100%; height: 300px; text-align:start"
+                                               class="ag-theme-alpine"
+                                               [rowData]="rowData"
+                                               [columnDefs]="columnDefs"
+                                               [defaultColDef]="defaultColDef"
+                                               (cellValueChanged)="onCellValueChanged($event)"
+                                               (gridReady)="onGridReady($event)">
+
+                              </ag-grid-angular>
+                            </div><!--col-md-3-->
+                          </div><!--row-->
+
+                          <div class="row">
+                            <div class="col-md-2 mt-3">
+                              <button type="button" class="btn btn-gradient" (click)="onAddRow()" translate>
+                                lang.addcolor
+                              </button>
+                            </div>
+                            <div class="col-md-2 mt-3">
+                              <button type="button" class="btn btn-gradient" (click)="onAddCol()" translate>
+                                lang.addsize
+                              </button>
+                            </div>
+                          </div>
+
+                        </div><!--tab-pane-1-->
+                        <div class="tab-pane" id="tab-p-i_2" role="tabpanel">
+
+                        </div><!--tab-pane-2-->
+                      </div><!--tab-content-->
+
+                    </div><!--row-->
+                  </div><!--card-body-->
+                </div>
+              </div><!--row-->
+
+
+            </div>
+          </div><!--col-md-10-->
+        </div>	<!--row-->
+      </div><!--container-fluid-->
+    </div>
+
+  </div>
+</div>
+
+

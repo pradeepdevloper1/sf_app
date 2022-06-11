@@ -1,0 +1,103 @@
+<p *ngIf="!ordermodel"><em>Loading...</em></p>
+<div class="wrapper">
+  <div class="container_full">
+    <div class="content_wrapper">
+      <div class="container-fluid">
+        <div class="page-heading">
+          <div class="row d-flex align-items-center">
+            <div class="col-md-4">
+              <div class="breadcrumb_nav">
+                <ol class="breadcrumb">
+                  <li>
+                    <a class="parent-item" routerLink="/User/UserDashboard"><img src="../../assets/images/icon-home.svg"
+                        style="border:0px"></a>
+                    <i class="fa fa-angle-right"></i>
+                  </li>
+                  <li class="active" translate>lang.orderlist</li>
+                </ol>
+              </div>
+              <div class="page-breadcrumb">
+                <h1 translate> lang.orderlist</h1>
+              </div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <button  *ngIf="syncbtnvisiblity" type="button" class="btn btn-gradient float-right" (click)="syncData()"
+              [class.span-disabled]="disableClick" [class.span-visiblity]="syncspanvisiblity"
+              translate>  <i  [ngClass]= "{'fa fa-refresh fa-spin':syncbtndisable}" style="margin-right: 5px;"></i>lang.sync
+            </button>
+              <div class="row">
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6" *ngIf="orderstatusvisiblity">
+                  <div class="form-group form-focus select-focus">
+                    <label class="focus-label"  translate>lang.orderstatus</label>
+                    <ng-select2 class="w100" [data]="ordermodel.orderstatuslist" [placeholder]="'Running'"
+                      (valueChanged)="statusChangeHandler($event)">
+                    </ng-select2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4 h85" *ngIf="syncbtnvisiblity">
+              <ul class="nav nav-pills nav-pills-success mb-2 bdr-none" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="orderlistTab" data-toggle="tab" href="#tab-p-i_1"
+                    (click)="onTabClick($event)" translate> lang.orderlist</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="requeststatusTab" data-toggle="tab" href="#tab-p-i_2"
+                    (click)="onTabClick($event)" translate> lang.requeststatus</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <section class="chart_section" style="margin-top:10px;">
+          <div class="row">
+          </div>
+          <div class="tab-content h100">
+            <div class="tab-pane h100 active" id="tab-p-i_1" role="tabpanel">
+              <div class="page-heading" style="position:absolute; top:0px; ">
+                <div class="row d-flex align-items-center">
+                </div>
+              </div>
+              <div class="row h90">
+                <div class="col-xl-12 col-md-12 col-lg-12 h100">
+                  <div class="card card-shadow mb-3 h100">
+                    <ag-grid-angular #agGridorderList style="width: 100%; height: 100%;"
+                      class="ag-theme-alpine" [rowData]="rowData" [columnDefs]="columnDefs" [pagination]="true"
+                      [paginationPageSize]="20" [defaultColDef]="defaultColDef" (gridReady)="onOLGridReady($event)"
+                      [suppressRowClickSelection]="true" [tooltipShowDelay]="tooltipShowDelay" >
+                    </ag-grid-angular>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane h100 " id="tab-p-i_2" role="tabpanel">
+              <div class="page-heading" style="position:absolute; top:0px; ">
+                <div class="row d-flex align-items-center">
+                  <div class="col-md-12">
+                  </div>
+                </div>
+              </div>
+              <div class="row h90">
+                <div class="col-xl-12 col-md-12 col-lg-12 h100">
+                  <div class="card card-shadow mb-3 h100">
+                    <ag-grid-angular #agGridRequestStatusList style="width: 100%;height: 100%;"
+                      class="ag-theme-alpine" [rowData]="requeststatus_rowData" [columnDefs]="requeststatus_columnDefs"
+                      [pagination]="true" [paginationPageSize]="20" [defaultColDef]="defaultColDef" rowSelection="multiple"
+                      (gridReady)="onRSGridReady($event)" [suppressRowClickSelection]="true" [tooltipShowDelay]="tooltipShowDelay" >
+                    </ag-grid-angular>
+                  </div>
+                </div>
+              </div>
+              <div class=" col-xl-12 col-md-12 col-lg-12">
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>

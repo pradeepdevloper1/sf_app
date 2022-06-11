@@ -1,0 +1,39 @@
+<div class="wrapper">
+
+  <div class="container_full">
+
+    <div class="content_wrapper shadow">
+      <div class="container-fluid">
+
+        <form id="file-upload-form" action="">
+
+          <!--<input id="file-upload" type="file" name="fileUpload" />-->
+          <label for="file-upload" id="file-drag">
+            <div style="width:33px; margin:0px auto"><img src="../../assets/images/icon-success.svg"></div>
+            <h1 class="txt-blue" translate>lang.uploadsuccessful</h1>
+
+            <p>
+              {{(ExcelFileName.length>40)?(ExcelFileName| slice:0:25)+ '...':ExcelFileName}}
+              <span>{{ExcelFileSize}}</span>
+            </p>
+
+            <span id="btn1" class="button" (click)="SaveTarget()" translate>lang.save</span>
+            <br>
+            <span id="file-upload-btn" class="btn btn-danger" (click)='Cancel()' translate>lang.delete</span>
+            <br>
+          </label>
+
+          <progress id="file-progress" value="0">
+            <span>0</span>%
+          </progress>
+
+          <output for="file-upload" id="messages"></output>
+        </form>
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

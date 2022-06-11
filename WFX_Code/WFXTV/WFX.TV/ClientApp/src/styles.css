@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('../src/assets/css/bootstrap.min.css');
+@import url('../src/assets/css/style.css');
+@import url('../src/assets/css/select2.min.css');
+@import url('../src/assets/css/header.css');
+@import url('../src/assets/css/responsive.css');
+@import url('../src/assets/css/light.css');
+/*@import url('../src/assets/css/style-main.css');*/
+
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
+
+.ag-theme-balham .ag-header {
+  text-align: center;
+  height: 450px;
+}
+
+.example-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#myGrid {
+  flex: 1 1 0px;
+  width: 100%;
+}

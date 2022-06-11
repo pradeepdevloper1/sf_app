@@ -1,0 +1,111 @@
+
+<div class="wrapper">
+
+  <div class="container_full">
+
+    <div class="content_wrapper" style="margin-top:75px;">
+      <div class="container-fluid">
+        <!-- Section -->
+        <section class="chart_section">
+          <div class="row h90">
+            <div class=" col-xl-8 col-md-12 col-lg-4">
+
+              <div class="row">
+                <div class="col-md-6">
+
+                  <div class="new-button">
+                    <div class="new-button-heading">
+                      <span translate>lang.editlinebooking</span>
+                      <h1> {{ExcelFileName}}</h1>
+                    </div>
+                    <div class="new-button-link">
+                      <a routerLink="../Booking"><img src="../../assets/images/icon-delete.svg"></a>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!--row-->
+
+              <div class="card card-shadow mb-4 h90">
+
+                <div class="card-body" style="padding:0px 0px;">
+                  <div class="rb_card-3 scroll_auto scroll_mr light_scroll">
+                    <div id="myGrid" class="ag-theme-balham" style="min-height:430px;height:100%; width:100%;"></div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div><!--col-md-8-->
+
+            <div class=" col-xl-4 col-md-12 col-lg-8">
+              <div class="edit-alert  edit-alert-primary" style="display:none">
+                <div class="edit-alert-heading">
+                  <img src="../../assets/images/icon-error.svg" class="float-left ptr-10">
+                  <h1 class="ptr-6" translate>
+                    lang.errors
+                    <span translate>lang.pleaserectifyallerror</span>
+                  </h1>
+                </div>
+                <div class="edit-alert-link" id="errocount">
+                  0
+                </div>
+              </div>
+
+              <div class="edit-alert  edit-alert-green">
+                <div class="edit-alert-heading">
+                  <img src="../../assets/images/icon-no-error.svg" class="float-left ptr-10">
+                  <h1 class="ptr-6" translate>
+                    lang.noerrorfound
+                    <span translate>lang.clickonsave</span>
+                  </h1>
+                </div>
+                <div class="edit-alert-link green" id="errocount">
+                  0
+                </div>
+              </div>
+
+              <div class="mb-3 h85">
+                <div class="card card-shadow mb-3 h90">
+                  <div class="card-body" style="padding:0px 0px 20px 0px;">
+                    <div class="tab-pane active" id="tab-p_1" role="tabpanel">
+                      <div class="rb_card-6 scroll_auto scroll_mr light_scroll" id="errordiv">
+                        <table class="table table-striped b1" id="errortable">
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <ul class="nav nav-pills nav-fill nav-pills-inverse mb-4" role="tablist" style="border-bottom:none;">
+                    <li class="nav-item">
+                      <a class="nav-link button-next button button-next-prev" data-toggle="tab" (click)='previous()'><img src="../../assets/images/icon-previous.svg"> Previous</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link button-next button button-next-prev" data-toggle="tab" (click)='next()'> Next <img src="../../assets/images/icon-next.svg"></a>
+                    </li>
+                  </ul>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-6"><span class="button button-white button190" (click)='Cancel()'>Cancel</span></div>
+                  <div class="col-md-6"><span class="button button190" (click)='Save()'>Save</span></div>
+                </div>
+
+              </div>
+
+            </div><!--row-->
+
+          </div><!--row-->
+
+        </section>
+        <!-- chart_section -->
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

@@ -1,0 +1,1322 @@
+<p *ngIf="!poviewmodel"><em>Loading...</em></p>
+
+<div class="wrapper">
+
+  <div class="container_full">
+
+    <div class="content_wrapper">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-md-2">
+            <div class="card card-shadow mb-4 mt-4 h90-6">
+
+              <div class="card-body h100" style="padding:10px 0px;">
+
+                <h6 class="sale"><span translate>lang.productionorder</span> {{ poviewmodel.soNo }}</h6>
+                <div class="rb_card-2 scroll_auto scroll_mr light_scroll h90">
+                  <form method="post" class="find">
+                    <input title="Search" value="" type="submit" class="button">
+                    <input type="text" class="textbox" placeholder="{{'lang.search'|translate}}"
+                      (input)="onChangeEvent($event)">
+                  </form>
+
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr *ngFor="let polist of poviewmodel.polist">
+                        <td [ngClass]="{'FPPOSelected': Page==='WorkOrder' && pono=== polist.value}">
+                          <a class="wraptext" (click)="FPPOClick(polist.value,polist.processCode)"
+                            style="color:black;">
+                            {{polist.value}} </a>
+                        </td>
+                        <td *ngIf="calledFrom==='ProductionOrder'">
+                          <a class="wraptext" style="color:black;">
+                            {{polist.processName}} </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--col-md-2-->
+
+          <div class="col-md-10">
+
+            <div class="page-heading">
+              <div class="row d-flex align-items-center">
+                <div class="col-md-5">
+                  <div class="breadcrumb_nav">
+                    <ol class="breadcrumb">
+                      <li>
+                        <a class="parent-item" routerLink="/User/UserDashboard"><img
+                            src="../../assets/images/icon-home.svg" border="0"></a>
+                        <i class="fa fa-angle-right"></i>
+                      </li>
+                      <li>
+                        <a routerLink="/User/OrderList"><span translate>lang.orderlist</span></a>
+                        <i class="fa fa-angle-right"></i>
+                      </li>
+                      <li class="wraptext">
+                        <a [ngClass]="calledFrom ==='ProductionOrder'?'txt-blue':'parent-item'"
+                          [routerLink]="['/User/SOView',sono ]"><span translate>lang.po</span>
+                          {{ poviewmodel.soNo }}</a>
+                        <i *ngIf="calledFrom ==='FPPO'" class="fa fa-angle-right"></i>
+                      </li>
+                      <li *ngIf="calledFrom==='FPPO' && processCode"
+                        [ngClass]="Page==='WorkOrder'?'parent-item':'txt-blue'">
+                        <span translate>lang.process</span> {{ processCode }}
+                        <i class="fa fa-angle-right" *ngIf="Page ==='WorkOrder'"></i>
+                      </li>
+                      <li *ngIf="calledFrom==='FPPO' && Page==='WorkOrder'" class="txt-blue">
+                        <span translate>lang.wo</span> {{ pono }}
+                      </li>
+                    </ol>
+                  </div>
+                  <div class="page-breadcrumb wraptext">
+                    <h1 *ngIf="calledFrom==='ProductionOrder'"><span translate>lang.productionorder</span> {{
+                      poviewmodel.soNo }}</h1>
+                    <!-- <h1 *ngIf="calledFrom==='FPPO' && !processCode"> <span translate>lang.workorder</span> {{
+                      poviewmodel.poNo }}</h1>  -->
+                    <h1 *ngIf="processCode && !Page"> <span translate>lang.process</span> {{ poviewmodel.poNo }} </h1>
+                    <h1 *ngIf="calledFrom==='FPPO' && Page==='WorkOrder'"> <span translate>lang.workorder</span> {{
+                      poviewmodel.poNo }} </h1>
+
+                  </div>
+
+                </div>
+
+
+                <div class="col-md-7">
+                  <div class="breadcrumb_nav">
+                    <ol class="breadcrumb-2">
+                      <li>
+                        <span class="txt-blue" translate>lang.product</span>
+                        <span class="f16">{{ poviewmodel.product }}</span>
+                      </li>
+                      <li>
+                        <span class="txt-blue" translate>lang.style</span>
+                        <span class="f16">{{ poviewmodel.style }}</span>
+                      </li>
+                      <li>
+                        <span class="txt-blue" translate>lang.fit</span>
+                        <span class="f16">{{ poviewmodel.fit }}</span>
+                      </li>
+                      <li>
+                        <span class="txt-blue" translate>lang.season</span>
+                        <span class="f16">{{ poviewmodel.season }} </span>
+                      </li>
+                      <li>
+                        <span class="txt-blue" translate>lang.customer</span>
+                        <span class="f16">{{ poviewmodel.customer }}</span>
+                      </li>
+                      <li>
+                        <span class="txt-blue" translate>lang.status</span>
+                        <span class="f16">{{ poviewmodel.orderStatusText }}</span>
+                        <!--<button type="button" class="btn btn-green" *ngIf!="delay">
+                          {{ poviewmodel.orderStatusText }}
+                        </button>
+                        <button type="button" class="btn btn-danger" *ngIf="delay">
+                          {{ poviewmodel.orderStatusText }}
+                        </button>-->
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+                <!--col-md-6-->
+              </div>
+              <!--row-->
+            </div>
+            <!-- page-heading -->
+
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.startdate</label>
+                  <input class="form-control-2 datetimepicker" [ngModel]="startdate | date:'dd/MM/YYYY'" type="text"
+                    #dp_startdate (blur)="StartDate(dp_startdate.value)">
+                </div>
+              </div>
+              <!--col-md-3-->
+              <div class="col-md-3">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.enddate</label>
+                  <input class="form-control-2 datetimepicker" [ngModel]="enddate | date:'dd/MM/YYYY'" type="text"
+                    #dp_enddate (blur)="EndDate(dp_enddate.value)">
+                </div>
+              </div>
+              <!--col-md-3-->
+              <div class="col-md-3">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>lang.module</label>
+                  <ng-select2 class="w100" [data]="poviewmodel.modulelist" [placeholder]="'All'"
+                    (valueChanged)="ModuleChangeHandler($event)">
+                  </ng-select2>
+                </div>
+              </div>
+              <!--col-md-2-->
+              <div class="col-md-3">
+                <div class="form-group form-focus select-focus">
+                  <label class="focus-label" translate>Line</label>
+                  <ng-select2 class="w100" [data]="poviewmodel.linelist" [placeholder]="'All'"
+                    (valueChanged)="LineChangeHandler($event)">
+                  </ng-select2>
+                </div>
+              </div>
+              <!--col-md-2-->
+
+            </div>
+
+            <div class="mb-4">
+
+              <ul *ngIf="calledFrom =='FPPO'" class="nav nav-pills nav-pills-success mb-2 bdr-none" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#tab-p-i_1"> <span
+                      translate>lang.orderdetails</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " data-toggle="tab" href="#tab-p-i_2"><span translate>lang.sizedetails</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#tab-p-i_3"><span translate>lang.qualityanalysis</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#tab-p-i_4"><span translate>lang.performance</span> </a>
+                </li>
+
+              </ul>
+              <div class="mb-4">
+                <div class="btn-group">
+                  <div class="button-fixed">
+                  <button (click)="onOverallButtonClick($event)" class="mt-3"
+                    [ngClass]="{'buttonSelected':btnOverallSelected}"><img src="../../assets/images/overall.png"
+                      class="imgSize">
+                    Overall</button>
+                  </div>
+                    <div class="button-scroll scroll-horizontally">
+                      <button *ngFor="let item of processList; trackBy:trackByButton" class="mt-3"
+                        [ngClass]="{'buttonSelected':processCode===item.id}"
+                        (click)="onButtonClick($event,item)"><img [src]="item.img"
+                          class="imgSize">{{item.text}}</button>
+                    </div>
+                </div>
+              </div>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab-p-i_1" role="tabpanel">
+                  <div class="row">
+
+                    <div class="col-md-6" *ngIf="calledFrom =='FPPO'">
+                      <div class="card  card-shadow mb-3" style="height: 160px;">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-3" style="margin-top:20px ">
+                              <span class="f10 line-height-20" translate>lang.orderquality</span><br>
+                              <span class="f32 line-height-20">{{ poviewmodel.poQty }}</span>
+                              <div style="clear:both; display:block; margin-bottom:-10px;"></div>
+                              <span class="f10 line-height-0" translate>lang.pieces</span>
+                            </div>
+                            <!--col-md-3-->
+                            <div class="col-md-9" style="margin-top:20px ">
+                              <div class="row">
+                                <div *ngIf="poviewmodel.completedQty > 0" class="text-align-center plr-5"
+                                  [style.width]=PassWidthPer>
+                                  <span class='f16 txt-on-time normal'>{{ poviewmodel.completedQty }}</span><br>
+                                  <div class="f10 mtb-up-12"><span translate>lang.pass</span></div>
+                                  <img src="../../assets/images/icon-on-time.svg" class="mt-3">
+                                  <div class="progress mt-2">
+                                    <div class="progress-bar bg-warning-on-time" role="progressbar" style="width: 100%">
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div *ngIf="poviewmodel.defectedQty > 0" class="text-align-center plr-5"
+                                  [style.width]=DefectWidthPer>
+                                  <span class='f16 txt-on-hold normal'>{{ poviewmodel.defectedQty }}</span><br>
+                                  <div class="f10 mtb-up-12"><span translate>lang.defective</span></div>
+                                  <img src="../../assets/images/icon-on-hold.svg" class="mt-3">
+                                  <div class="progress mt-2">
+                                    <div class="progress-bar bg-warning-on-hold" role="progressbar" style="width: 100%">
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div *ngIf="poviewmodel.rejectedQty > 0" class="text-align-center plr-5"
+                                  [style.width]=RejectWidthPer>
+                                  <span class='f16 txt-delayed normal'>{{ poviewmodel.rejectedQty }}</span><br>
+                                  <div class="f10 mtb-up-12"><span translate>lang.reject</span></div>
+                                  <img src="../../assets/images/icon-delayed.svg" class="mt-3">
+                                  <div class="progress mt-2">
+                                    <div class="progress-bar bg-warning-delayed" role="progressbar" style="width: 100%">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!--col-md-9-->
+                          </div>
+
+
+                        </div>
+                        <!--card-shadow-->
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="card card-shadow mb-4" style="height: 130px">
+                            <div class="card-body" style="margin-bottom:-5px; margin-top:5px;">
+                              <div class="row">
+                                <div class="col-xl-3 col-sm-6 mb-3">
+
+                                  <span class="f10 line-height-10" translate>lang.receivedate</span><br />
+                                  <span class="f20  line-height-10 normal">{{ poviewmodel.recvDate | date:
+                                    'dd-MM-yyyy'}}</span>
+
+                                  <div class="clearfix"></div>
+
+                                  <span class="f10 line-height-10" translate>lang.planedenddate</span><br />
+                                  <span class="f20  line-height-10 normal">{{ poviewmodel.planEndDate | date:
+                                    'dd-MM-yyyy'}}</span>
+                                </div>
+                                <!--col-xl-3-->
+                                <div class="col-xl-4 col-sm-6 mb-3">
+
+                                  <span class="f10 line-height-10" translate>lang.planstartdate</span> <br />
+                                  <span class="f20  line-height-10 normal">{{ poviewmodel.planStartDate | date:
+                                    'dd-MM-yyyy'}}</span>
+
+                                  <div class="clearfix"></div>
+
+                                  <span class="f10 line-height-10" translate>lang.actualstartdate</span><br />
+                                  <span class="f20  line-height-10 normal">{{ poviewmodel.actualStartDate | date:
+                                    'dd-MM-yyyy'}}</span>
+
+                                </div>
+                                <!--col-xl-3-->
+                                <div class="col-xl-5 col-sm-6 mb-3">
+                                  <button type="button" class="btn btn-danger text-left w100 mt-2 mb-1">
+                                    <span class="f10" translate>lang.expecteddelay </span> {{
+                                    poviewmodel.expectedDelay
+                                    }}<span translate> lang.days</span>
+                                  </button>
+
+                                  <button type="button" class="btn btn-danger text-left w100 mt-1 mb-1">
+                                    <span class="f10" translate>lang.expecteddeldate </span> {{
+                                    poviewmodel.expectedDelDate | date: 'dd-MM-yy'}}
+                                  </button>
+                                </div>
+                                <!--col-xl-4-->
+                              </div>
+                              <!--row-->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-md-6" *ngIf="calledFrom==='FPPO'">
+                      <div class="card card-shadow mb-3" style="max-height: 160px;">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-5">
+                              <span class="f10" translate>lang.runningonline</span>
+                              <div class="row" *ngFor="let list of poviewmodel.linelist" value={{list.id}}>
+                                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4" *ngIf="list.text !== 'All'">
+                                  <div class="social-box less-pad" style="width: fit-content">
+                                    <span class="f22" style="overflow-wrap: normal;">{{list.text}}</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <button type="button" class="btn btn-danger">
+                                  <span translate>lang.efficiencyloss</span> {{ poviewmodel.efficiencyLossGain }}%
+                                </button>
+                              </div>
+
+                            </div>
+                            <div class="col-md-7">
+                              <div class="row">
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    <span class="f30">{{ poviewmodel.efficiencyPlanedPer
+                                      }}%</span><br>lang.planefficiency
+                                  </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    <span class="f30 txt-orange">{{ poviewmodel.efficiencyActualPer
+                                      }}%</span><br>lang.actualefficiency
+                                  </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    <span class="f30">{{ poviewmodel.efficiencyRequiredPer
+                                      }}%</span><br>lang.requiredefficiency
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                        <div class="row" *ngIf="calledFrom==='FPPO'">
+                          <div class="col-md-6">
+                            <!-- <div class="col-6"> -->
+                              <div class="card bg-4 border-0 text-light ptb-10 mb-3" style="height: 130px">
+                                <div class="card-body ptb-0">
+                                  <!-- <div class="row"> -->
+                                  <div class="col-lg-8 col-md-8 col-sm-8">
+                                    <div class="w1">
+                                      <h6 class="f16 m-0 text-dark" translate>lang.rejectionrate</h6>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="w2 text-dark">
+                                      <p>
+                                        {{ poviewmodel.rejectionRate }}%
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <!-- </div> -->
+                                </div>
+                              <!-- </div> -->
+                            </div>
+                          </div>
+                            <div class="col-md-6">
+                              <div class="card bg-4 border-0 text-light ptb-10" style="height: 130px">
+                                <div class="card-body ptb-0">
+                                  <!-- <div class="row"> -->
+                                  <div class="col-lg-8 col-md-8 col-sm-8">
+                                    <div class="w1">
+                                      <h6 class="f16 m-0 text-dark" translate>lang.currentdhu</h6>
+                                    </div>
+                                  </div>
+                                  <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="w2 text-dark">
+                                      <p>
+                                        {{ poviewmodel.currentDHU }}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <!-- </div> -->
+                                </div>
+                              </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div *ngIf="calledFrom =='ProductionOrder'">
+                        <div class="scroll_auto scroll_mr light_scroll" style="max-height: 300px;margin-bottom: 10px">
+                          <ul class="processlist">
+
+                            <!-- <ul class="processlist"> -->
+                            <li class="processlist-item" *ngFor="let item of processDetails;let i= index;">
+                              <div class="card" *ngIf="item.processCode==='Overall'">
+                                <div class="card-block card-space">
+                                  <div class="card-xs-font-size" translate>lang.orderquantity</div>
+                                  <div class="card-lg-font-size">{{poviewmodel.poQty}}</div>
+                                  <div class="card-xs-font-size" translate>lang.pieces</div>
+                                </div>
+                              </div>
+                              <div class="two-columns"
+                                *ngIf="item.processCode==='Washing' || item.processCode==='Packing'">
+                                <div class="card">
+                                  <div class="card-block">
+                                    <div class="mt-10">{{item.processCode}}</div>
+                                    <div class="single-chart">
+                                      <svg viewBox="0 0 36 36" class="circular-chart orange">
+                                        <path class="circle-bg" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+                                        a 15.9155 15.9155 0 0 1 0 31.831
+                                        a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <text x="18" y="15.35" class="percentage">{{item.passPcs}} </text>
+                                        <text x="18" y="22.35" class="percentage" translate>lang.completed</text>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card text-center">
+                                  <div class="card-block ">
+                                    <div class="percentage-text  font-green-color">{{item.actualEfficiency}}%</div>
+                                    <div class="card-sm-font-size " translate>{{item.processCode}} <br>lang.efficiency
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="two-columns"
+                                *ngIf="item.processCode==='Finishing'|| item.processCode==='Cutting'">
+                                <div class="card">
+                                  <div class="card-block">
+                                    <div class="mt-10">{{item.processCode}}</div>
+                                    <!---progress 1 start -->
+                                    <div class="card-block-progress-container">
+                                      <div class="progress-left-container">
+                                        <div class="progress-text" translate>lang.pass</div>
+                                      </div>
+                                      <div class="card-progress-bar-container">
+                                        <div class="progressbars" [style.Width]="item.PassWidth">
+                                          <div data-percentage="0%" style="width: 100%;"
+                                            class="progress-bar bg-warning-on-time" role="progressbar" aria-valuemin="0"
+                                            aria-valuemax="100"></div>
+                                        </div>
+                                      </div>
+                                      <div class="progress-right-container">
+                                        <div class="font-green-color card-md-font-size">{{item.passPcs}}</div>
+                                      </div>
+                                    </div>
+                                    <!---- progress 1 end-->
+
+                                    <!---progress 2 start -->
+                                    <div class="card-block-progress-container">
+                                      <div class="progress-left-container">
+                                        <div class="progress-text" translate>lang.defective</div>
+                                      </div>
+                                      <div class="card-progress-bar-container">
+                                        <div class="progressbars"  [style.Width]="item.DefectWidth">
+                                          <div data-percentage="0%" style="width: 100%;"
+                                            class="progress-bar bg-warning-on-hold" role="progressbar" aria-valuemin="0"
+                                            aria-valuemax="100"></div>
+                                        </div>
+                                      </div>
+                                      <div class="progress-right-container">
+                                        <div class="font-yellow-color card-md-font-size">{{item.defectPcs}}</div>
+                                      </div>
+                                    </div>
+                                    <!---- progress 2 end-->
+
+                                    <!---progress 3 start -->
+                                    <div class="card-block-progress-container">
+                                      <div class="progress-left-container">
+                                        <div class="progress-text" translate>lang.reject</div>
+                                      </div>
+                                      <div class="card-progress-bar-container ">
+                                        <div class="progressbars" [style.Width]="item.RejectWidth">
+                                          <div data-percentage="0%" style="width: 100%;"
+                                            class="progress-bar bg-warning-delayed" role="progressbar" aria-valuemin="0"
+                                            aria-valuemax="100"></div>
+                                        </div>
+                                      </div>
+                                      <div class="progress-right-container">
+                                        <div class="font-red-color card-md-font-size">{{item.rejectPcs}}</div>
+                                      </div>
+                                    </div>
+                                    <!---- progress 3 end-->
+                                  </div>
+                                </div>
+                                <div class="card text-center">
+                                  <div class="card-block ">
+                                    <div class="percentage-text font-yellow-color">{{item.actualEfficiency}}%</div>
+                                    <div class="card-sm-font-size" translate>{{item.processCode}} <br>lang.efficiency
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="three-columns" *ngIf="item.processCode==='Sewing'">
+                                <div class="card">
+                                  <div class="card-block ">
+                                    <div class="mt-10">{{item.processCode}}</div>
+                                    <!---progress 1 start -->
+                                    <div class="row m-0">
+                                      <div class="col-md-6 p-0">
+                                        <div class="progress-text" style="font-size: 8px" translate>lang.pass</div>
+                                      </div>
+
+                                      <div class="col-md-6 p-0">
+                                        <div class="font-green-color card-md-font-size">{{item.passPcs}}</div>
+                                      </div>
+                                    </div>
+                                    <!---- progress 1 end-->
+
+                                    <!---progress 2 start -->
+                                    <div class="row m-0">
+                                      <div class="col-md-6 p-0">
+                                        <div class="progress-text" style="font-size: 8px" translate>lang.defective</div>
+                                      </div>
+
+                                      <div class="col-md-6 p-0">
+                                        <div class="font-yellow-color card-md-font-size">{{item.defectPcs}}</div>
+                                      </div>
+                                    </div>
+                                    <!---- progress 2 end-->
+
+                                    <!---progress 3 start -->
+                                    <div class="row m-0">
+                                      <div class="col-md-6 p-0">
+                                        <div class="progress-text" style="font-size: 8px" translate>lang.reject</div>
+                                      </div>
+
+                                      <div class="col-md-6 p-0">
+                                        <div class="font-red-color card-md-font-size">{{item.rejectPcs}}</div>
+                                      </div>
+                                    </div>
+                                    <!---- progress 3 end-->
+
+                                  </div>
+                                </div>
+                                <div class="card">
+                                  <div class="card-block text-center planned-text">
+                                    <div class="" translate>lang.planned</div>
+                                    <div class="">{{item.plannedSAH}}</div>
+                                    <div class=""><strong>SAH</strong></div>
+                                    <div class="">{{item.actualSAH}}</div>
+                                    <div class="" translate>lang.actual</div>
+                                  </div>
+                                </div>
+                                <div class="card text-center">
+                                  <div class="card-block ">
+                                    <div class="percentage-text font-red-color">{{item.actualEfficiency}}%</div>
+                                    <div class="card-sm-font-size" translate>{{item.processCode}} <br>lang.efficiency
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+
+                          </ul>
+
+
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="card card-shadow mb-4" style="height: 130px">
+                              <div class="card-body" style="margin-bottom:-5px; margin-top:5px;">
+                                <div class="row">
+                                  <div class="col-xl-3 col-sm-6 mb-3">
+
+                                    <span class="f10 line-height-10" translate>lang.receivedate</span><br />
+                                    <span class="f20  line-height-10 normal">{{ poviewmodel.recvDate | date:
+                                      'dd-MM-yyyy'}}</span>
+
+                                    <div class="clearfix"></div>
+
+                                    <span class="f10 line-height-10" translate>lang.planedenddate</span><br />
+                                    <span class="f20  line-height-10 normal">{{ poviewmodel.planEndDate | date:
+                                      'dd-MM-yyyy'}}</span>
+                                  </div>
+
+                                  <div class="col-xl-4 col-sm-6 mb-3">
+
+                                    <span class="f10 line-height-10" translate>lang.planstartdate</span> <br />
+                                    <span class="f20  line-height-10 normal">{{ poviewmodel.planStartDate | date:
+                                      'dd-MM-yyyy'}}</span>
+
+                                    <div class="clearfix"></div>
+
+                                    <span class="f10 line-height-10" translate>lang.actualstartdate</span><br />
+                                    <span class="f20  line-height-10 normal">{{ poviewmodel.actualStartDate | date:
+                                      'dd-MM-yyyy'}}</span>
+
+                                  </div>
+
+                                  <div class="col-xl-5 col-sm-6 mb-3">
+                                    <button type="button" class="btn btn-danger text-left w100 mt-2 mb-1">
+                                      <span class="f10" translate>lang.expecteddelay </span> {{
+                                      poviewmodel.expectedDelay
+                                      }}<span translate> lang.days</span>
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger text-left w100 mt-1 mb-1">
+                                      <span class="f10" translate>lang.expecteddeldate </span> {{
+                                      poviewmodel.expectedDelDate | date: 'dd-MM-yy'}}
+                                    </button>
+                                  </div>
+
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                          <!--col-md-12-->
+
+                        <!--row-->
+                      <!-- </div> -->
+                      <!--col-md-6-->
+
+
+                    </div>
+
+                    <div class="col-md-3" *ngIf="calledFrom==='ProductionOrder'">
+                      <div class="row">
+                        <div class="col-md-12" >
+                          <div class="card card-shadow mb-4">
+                            <!--<div class="card-body text-center" style="padding:10px 0px;">-->
+                            <div class="card-body text-center scroll_auto scroll_mr light_scroll"
+                              style="padding:10px 0px; height:555px !important;">
+                              <div *ngFor="let img of imagelist">
+                                <!--<p>{{img.imagePath}}</p>-->
+                                <img src={{img.imagePath}} class="mb-4">
+                              </div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+                    <div class="col-md-3" *ngIf="calledFrom==='ProductionOrder'">
+                      <div class="row">
+
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)" (click)="CheckOrderStatusForEdit()"><img
+                                src="../../assets/images/icon-edit-order.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" (click)="CheckOrderStatusForEdit()"> <span
+                                  translate>lang.editorder </span></a>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)" (click)="CheckOrderStatusForImage(0)"><img
+                                src="../../assets/images/icon-image-editor.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" (click)="CheckOrderStatusForImage(0)"> <span
+                                  translate>lang.imageeditor</span> </a>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)" (click)="CheckOrderStatusForPlan()"><img
+                                src="../../assets/images/icon-view-plan.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" (click)="CheckOrderStatusForPlan()"> <span
+                                  translate>lang.viewupdateplan</span> </a>
+                            </p>
+                          </div>
+                        </div>
+
+
+
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)" (click)="CheckOrderStatusForImage(1)"><img
+                                src="../../assets/images/icon-view-ob.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" (click)="CheckOrderStatusForImage(1)"> <span
+                                  translate>lang.viewupdateob</span></a>
+                            </p>
+                          </div>
+                        </div>
+
+
+
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)" (click)="CheckOrderStatusForProcessTemplate()"><img
+                                style="width:20px;height:20px" src="../../assets/images/processtemplate.png"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)" (click)="CheckOrderStatusForProcessTemplate()"><span
+                                  translate>lang.processtemplate</span> </a>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="col-xl-6 col-sm-6 mb-3">
+                          <div class="edit-option-box">
+                            <a href="javascript:void(0)"><img src="../../assets/images/icon-delete-order.svg"></a>
+                            <p class="mb-0">
+                              <a href="javascript:void(0)"><span translate>lang.deleteorder</span></a>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="col-xl-12 col-sm-6 mb-3">
+                          <div class="shadow">
+
+                            <div class="edit-option-box-small bdr-top-1">
+                              <a href="javascript:void(0)"><img src="../../assets/images/icon-view-report.svg"></a>
+                              <p class="mb-0 ml-2">
+                                <a href="javascript:void(0)"> <span translate>lang.viewreport</span></a>
+                              </p>
+                            </div>
+
+                            <div class="edit-option-box-small bdr-top-2">
+                              <a href="javascript:void(0)"><img src="../../assets/images/icon-view-report.svg"></a>
+                              <p class="mb-0 ml-2">
+                                <a href="javascript:void(0)"><span translate>lang.viewreport </span> </a>
+                              </p>
+                            </div>
+
+                            <div class="edit-option-box-small bdr-bottom-1">
+                              <a href="javascript:void(0)"><img src="../../assets/images/icon-view-report.svg"></a>
+                              <p class="mb-0 ml-2" translate>
+                                <a href="javascript:void(0)"><span translate>lang.viewreport </span> </a>
+                              </p>
+                            </div>
+
+                            <div class="edit-option-box-small bdr-bottom-2">
+                              <a href="javascript:void(0)"><img src="../../assets/images/icon-view-report.svg"></a>
+                              <p class="mb-0 ml-2" translate>
+                                <a href="javascript:void(0)"><span translate>lang.viewreport </span> </a>
+                              </p>
+                            </div>
+
+                            <div style="clear:both; display:block;"></div>
+                          </div>
+                        </div>
+                        <!--col-xl-12-->
+                      </div>
+                      <!--row-->
+
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+                <!--tab-pane-1-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="tab-pane" id="tab-p-i_2" role="tabpanel" *ngIf="calledFrom==='FPPO'">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <div class="card card-shadow mb-4 h95">
+
+                        <div class="card-body h100" style="padding:10px 0px;">
+                          <h6 class="part"><span translate>lang.parts </span> </h6>
+                          <table class="table table-striped">
+                            <tbody>
+                              <tr *ngFor="let lst of poviewmodel.partlist">
+                                <td>{{ lst.part }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+
+                      </div>
+                    </div>
+                    <!--col-md-2-->
+                    <div class="col-md-10">
+                      <div class="card card-shadow mb-4">
+
+                        <div class="card-body p-0">
+                          <div class="rb_card-1 scroll_auto scroll_mr light_scroll">
+                            <table class="table table-striped table-bordered tbl-size">
+                              <tr>
+                                <td></td>
+                                <td></td>
+                                <td *ngFor="let sizelist of poviewmodel._lstcolor[0].sizelist">
+                                  {{sizelist.orderSizeName}}
+                                </td>
+                              </tr>
+                              <tbody *ngFor="let colorlist of poviewmodel._lstcolor">
+                                <tr>
+                                  <td rowspan="6">
+                                    <div class="blue-box"></div>
+                                    <strong>{{colorlist.colorname}}</strong><br>
+                                    <!--<span class="f10 txt-blue">12345680%</span>-->
+                                  </td>
+                                  <td translate>lang.colorOrderQty</td>
+                                  <td *ngFor="let sizelist of colorlist.sizelist">
+                                    {{sizelist.orderQty}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td translate>lang.colorPlannedQty</td>
+                                  <td *ngFor="let sizelist of colorlist.sizelist">
+                                    {{sizelist.plannedQty}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td translate>lang.yetToPlanQty</td>
+                                  <td *ngFor="let sizelist of colorlist.sizelist">
+                                    {{sizelist.yetToPlanQty}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td translate>lang.colorCompletedQty</td>
+                                  <td *ngFor="let sizelist of colorlist.sizelist">
+                                    {{sizelist.completedQty}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td translate>lang.colorBalanceQty</td>
+                                  <td *ngFor="let sizelist of colorlist.sizelist">
+                                    {{sizelist.balanceQty}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td translate>lang.colorSizeCompl%</td>
+                                  <td *ngFor="let sizelist of colorlist.sizelist">
+                                    {{sizelist.complPer}}%
+                                  </td>
+                                </tr>
+                              </tbody>
+
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <!--col-md-10-->
+                  </div>
+                  <!--row-->
+                </div>
+                <!--tab-pane-2-->
+
+                <div class="tab-pane" id="tab-p-i_3" role="tabpanel" *ngIf="calledFrom==='FPPO'">
+
+
+
+                  <div class="row">
+                    <div class="col-md-6">
+
+                      <div class="card card-shadow mb-3">
+                        <div class="card-body">
+                          <div class="row mb-up-2">
+                            <div class="col-md-5 mt-4">
+                              <span class="f12 strong" translate>lang.dhurate</span>
+
+                            </div>
+                            <!--col-md-5-->
+                            <div class="col-md-7">
+                              <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    lang.current<br><span class="f30">{{qcmodel.dhuCurrent }}</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    lang.average<br><span class="f30 txt-blue">{{qcmodel.dhuAvg }}</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box" translate>
+                                    lang.maximum<br><span class="f30 txt-orange">{{qcmodel.dhuMax }}</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                              </div>
+                            </div>
+                            <!--col-md-7-->
+                          </div>
+                          <!--row-->
+                        </div>
+                      </div>
+                      <!--card-shadow-->
+
+                      <div class="card card-shadow mb-3">
+
+                        <div class="card-body">
+                          <span class="f12 strong" translate>lang.dhuvariance</span>
+                          <div id="b-area" class=""></div>
+                          <ejs-chart width="450px" id="chart-container-dhu" [primaryXAxis]='xAxis'
+                            [primaryYAxis]='dhuyAxis' [legendSettings]='legendSettings' [tooltip]='tooltip'
+                            height='324'>
+                            <e-series-collection>
+                              <e-series [dataSource]='dhulist' type='Line' xName='qcDate' yName='dayDefectsPer'
+                                [marker]='marker'></e-series>
+                            </e-series-collection>
+                          </ejs-chart>
+                        </div>
+                      </div>
+
+
+                    </div>
+                    <!--col-md-6-->
+
+                    <div class="col-md-6">
+
+
+                      <div class="card card-shadow mb-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-5 mt-4">
+                              <span class="f12 strong" translate>lang.rejectionrate</span>
+
+                            </div>
+                            <!--col-md-5-->
+                            <div class="col-md-7">
+                              <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box ptb-8" translate>
+                                    lang.current<br><span class="f30">{{qcmodel.rejCurrent }}%</span><br><span
+                                      class="f10">{{qcmodel.currRejected }}</span><span class="f10"
+                                      translate>lang.pieces</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box ptb-8" translate>
+                                    lang.average<br><span class="f30 txt-blue">{{qcmodel.rejAvg }}%</span><br><span
+                                      class="f10 txt-blue">{{qcmodel.totalRejected }}</span><span class="f10 txt-blue"
+                                      translate>lang.pieces</span>
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  <div class="efficiency-box ptb-8" translate>
+                                    lang.maximum<br><span class="f30 txt-orange">{{qcmodel.rejMaxPer }}%</span><br><span
+                                      class="f10 txt-orange">{{qcmodel.rejMax }}</span><span class="f10 txt-orange"
+                                      translate>lang.pieces</span>
+                                    <!--Maximum<br><span class="f30 txt-orange">11%</span><br><span class="f10 txt-orange">{{qcmodel.rejMax }} Pieces</span>-->
+                                  </div>
+                                  <!--/social-box-->
+                                </div>
+                              </div>
+                            </div>
+                            <!--col-md-7-->
+                          </div>
+                          <!--row-->
+                        </div>
+                      </div>
+                      <!--card-shadow-->
+
+
+                      <div class="card card-shadow mb-3">
+
+                        <div class="card-body">
+                          <span class="f12 strong" translate>lang.rejectionratevariation</span>
+                          <div id="b-area" class=""></div>
+                          <ejs-chart width="450px" id="chart-container-rej" [primaryXAxis]='xAxis'
+                            [primaryYAxis]='rejyAxis' [legendSettings]='legendSettings' [tooltip]='tooltip'
+                            height='324'>
+                            <e-series-collection>
+                              <e-series [dataSource]='rejlist' type='Line' xName='qcDate' yName='rejectPer'
+                                [marker]='marker'></e-series>
+                            </e-series-collection>
+                          </ejs-chart>
+                        </div>
+
+                      </div>
+                    </div>
+                    <!--col-md-6-->
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                      <div class="card card-shadow pt-20 mb-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <span class="f12 strong" translate>lang.operationwisedefect</span>
+                            </div>
+
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                              <ejs-chart style='display:block;' id="chart-container-op" [primaryXAxis]='opXAxis'
+                                [primaryYAxis]='opyAxis' [legendSettings]='legendSettings' [tooltip]='tooltip'
+                                height='324' (pointClick)="pointClick($event)">
+                                <e-series-collection>
+                                  <e-series [dataSource]='operationlistforchart' type='Bar' xName='operationName'
+                                    yName='defectCount' [marker]='marker'></e-series>
+                                </e-series-collection>
+                              </ejs-chart>
+                            </div>
+                            <!--col-xl-8-->
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 bdr-left p-0">
+
+                              <div style="padding:0px 10px 0px 8px;">
+                                <h4 class="heading-with-bdr mt-0 mb-0">{{opheading}}</h4>
+                                <span class="f12 strong plr-18 line-height-10">{{opdefects }} </span>
+                              </div>
+
+                              <div class="rb_card-3 scroll_auto scroll_mr light_scroll">
+                                <table class="table table-hover mt-3">
+                                  <tbody>
+                                    <tr *ngFor="let opdef of opdefectlist">
+                                      <th scope="row"></th>
+                                      <td>{{ opdef.defectName }}</td>
+                                      <td>{{ opdef.defectCount }} </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+
+                            </div>
+                            <!--col-xl-4-->
+                          </div>
+                          <!--row-->
+                        </div>
+                      </div>
+                    </div>
+                    <!--col-xl-12-->
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                      <div class="card card-shadow pt-20 mb-3">
+                        <div class="card-body">
+                          <div class="row">
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                              <div class="row">
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                  <table class="table tbl-new table-responsive-sm">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col" translate>lang.operations</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let op of operationlist">
+                                        <th scope="row">{{ op.operationName }}<br><span class="strong">{{ op.defectCount
+                                            }} Defects</span></th>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                <!--col-xl-6-->
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                  <table class="table tbl-new table-responsive-sm">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col" translate>lang.defects</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let def of defectlist">
+                                        <th scope="row">{{ def.defectName }}<br><span class="strong">{{
+                                            def.operationCount }} Operations</span></th>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                <!--col-xl-6-->
+
+                              </div>
+                              <!--row-->
+                            </div>
+                            <!--col-xl-6-->
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                              <div class="row">
+                                <div class="col-md-6" *ngFor="let img of shiftimagelist">
+                                  <!--<p>{{img.imagePath}}</p>-->
+                                  <img src={{img.imagePath}}>
+                                </div>
+                                <!--col-md-6-->
+                              </div>
+                            </div>
+                            <!--col-xl-6-->
+
+                          </div>
+                          <!--row-->
+                        </div>
+                      </div>
+                    </div>
+                    <!--col-xl-12-->
+
+                  </div>
+                  <!--row-->
+                </div>
+                <!--tab-pane-3-->
+
+                <div class="tab-pane" id="tab-p-i_4" role="tabpanel" *ngIf="calledFrom==='FPPO'">
+                  <div class="tab-pane active" id="tab-p-i_4" role="tabpanel">
+
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="card card-shadow mb-3">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-md-5 mt-4">
+                                <span class="f12 strong" translate>lang.completion</span>
+
+                              </div>
+                              <!--col-md-5-->
+                              <div class="col-md-7">
+                                <div class="row">
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div class="efficiency-box ptb-8" translate>
+                                      lang.orderquantity<br><span class="f30">{{qcmodel.orderQty }}</span><br><span
+                                        class="f10" translate>lang.pieces</span>
+                                    </div>
+                                    <!--/social-box-->
+                                  </div>
+
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div class="efficiency-box ptb-8" translate>
+                                      lang.planedquantity<br><span class="f30">{{qcmodel.plannedPer }}%</span><br><span
+                                        class="f10">{{qcmodel.plannedQty }}</span><span class="f10"
+                                        translate>lang.pieces</span>
+                                    </div>
+                                    <!--/social-box-->
+                                  </div>
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div class="efficiency-box ptb-8" translate>
+                                      lang.completed<br><span class="f30 txt-blue">{{qcmodel.completedPer
+                                        }}%</span><br><span class="f10 txt-blue">{{qcmodel.completedQty }}</span><span
+                                        class="f10 txt-blue" translate>lang.pieces</span>
+                                    </div>
+                                    <!--/social-box-->
+                                  </div>
+                                </div>
+                              </div>
+                              <!--col-md-7-->
+                            </div>
+                            <!--row-->
+                          </div>
+                        </div>
+                        <!--card-shadow-->
+
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div class="card card-shadow mb-3 ptb-50">
+                              <div class="card-body">
+                                <div class="efficiency-box">
+                                  <span class="f12 strong" translate>lang.sah</span>
+                                </div>
+                                <div class="efficiency-box" translate>
+                                  <span class="f30">{{qcmodel.plannedSAH }}</span><br>lang.planedsah
+                                </div>
+                                <div class="efficiency-box" translate>
+                                  <span class="f30 txt-blue">{{qcmodel.actualSAH }}</span><br>lang.actualsah
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!--col-md-6-->
+
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div class="card card-shadow mb-3 ptb-50">
+                              <div class="card-body">
+                                <div class="efficiency-box">
+                                  <span class="f12 strong" translate>lang.planvsactual</span>
+                                </div>
+                                <div class="efficiency-box" translate>
+                                  <span class="f30">{{qcmodel.plannedQty }}</span><br>lang.planedpcs
+                                </div>
+                                <div class="efficiency-box" translate>
+                                  <span class="f30 txt-blue">{{qcmodel.totalInspected }}</span><br>lang.checkedpcs
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!--col-md-6-->
+                        </div>
+
+
+                      </div>
+                      <!--col-md-6-->
+
+                      <div class="col-md-6">
+
+                        <div class="card card-shadow mb-3">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-md-5 mt-4">
+                                <span class="f12 strong" translate>lang.efficiancy</span>
+
+                              </div>
+                              <!--col-md-5-->
+                              <div class="col-md-7">
+                                <div class="row mb-up-2">
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div class="efficiency-box" translate>
+                                      lang.plan<br><span class="f30">{{qcmodel.efficiencyPlanedPer }}%</span>
+                                    </div>
+                                    <!--/social-box-->
+                                  </div>
+
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div class="efficiency-box" translate>
+                                      lang.actual<br><span class="f30 txt-blue">{{qcmodel.efficiencyActualPer }}%</span>
+                                    </div>
+                                    <!--/social-box-->
+                                  </div>
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div class="efficiency-box" translate>
+                                      lang.required<br><span class="f30 txt-purple">{{qcmodel.efficiencyRequiredPer
+                                        }}%</span>
+                                    </div>
+                                    <!--/social-box-->
+                                  </div>
+                                </div>
+                              </div>
+                              <!--col-md-7-->
+                            </div>
+                            <!--row-->
+                          </div>
+
+                        </div>
+                        <!--card-shadow-->
+                        <div class="card card-shadow mb-3">
+
+                          <div class="card-body">
+                            <span class="f12 strong" translate>lang.productionvariance</span>
+                            <div id="b-area" class="box_height">
+                              <ejs-chart width="450px" id="chart-container-prd" [primaryXAxis]='xAxis'
+                                [primaryYAxis]='prodvarianceyAxis' [legendSettings]='legendSettings' [tooltip]='tooltip'
+                                height='324'>
+                                <e-series-collection>
+                                  <e-series [dataSource]='planedlist' type='Line' xName='planDate' yName='planQty'
+                                    name='Plan' [marker]='marker'></e-series>
+                                  <e-series [dataSource]='actuallist' type='Line' xName='qcDate' yName='qcQty'
+                                    name='Actual' [marker]='marker'></e-series>
+                                </e-series-collection>
+                              </ejs-chart>
+                            </div>
+                          </div>
+                        </div>
+
+
+                      </div>
+                      <!--col-md-6-->
+                    </div>
+                    <!--row-->
+                  </div>
+                  <!--tab-pane-4-->
+                </div>
+                <!--tab-pane-4-->
+
+              </div>
+            </div>
+          </div>
+          <!--col-md-10-->
+        </div>
+        <!--row-->
+      </div>
+      <!--container-fluid-->
+    </div>
+
+    <!-- </div>
+
+</div> -->

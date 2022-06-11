@@ -1,0 +1,28 @@
+1.FuncCheckSubCategory	NA
+2.SP_SubCategoryList	NA
+3.ViewInvoicePrint OK
+4.ViewItemBOM OK
+5.ViewOrderItemsForPacking OK
+6.ViewOrderPendingZinkReport OK
+7.ViewPatternIssueDetails NA D
+8.ViewPatternRoomDetails NA D
+9.ViewPRDCasting OK
+10.ViewPRDCategoryMapping OK D
+11.ViewPRDCategoryNotMap Ok D
+12.ViewProduct NA D
+13.ViewProductList OK
+14.ViewProductListForProcessCharge NA D
+15.ViewProductProcessDetails OK
+16.ViewProductWithoutPhoto NA D
+17.ViewSaleOrderChild OK
+18.ViewSaleOrderDetails OK
+19.ViewSample_Request NA D
+20.ViewSampleIssue NA D
+21.ViewSampleRM NA D
+22.ViewShowCosting OK
+22.ViewWorkPlanChild NA D
+23.ViewZinkCurrentWeekZinkReport OK
+24.ViewSaleOrderList OK 
+25.ViewOrderPlan Ok
+++++++++++++
+26.ViewOrderPendingZinkReport  "Is Casted check for calculate zink"

@@ -1,0 +1,144 @@
+<div class="wrapper" *ngIf="productList && productList.length">
+    <div class="container_full">
+        <div class="content_wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="card card-shadow mb-4 mt-4 h90-6">
+
+                            <div class="card-body h100" style="padding:10px 0px;">
+
+                                <h6 class="sale"><span translate>lang.products</span> </h6>
+                                <!-- {{ poviewmodel.soNo }} -->
+                                <div class="rb_card-2 h90">
+                                    <form method="post" class="find">
+                                        <input title="Search" value="" type="submit" class="button">
+                                        <input type="text" class="textbox" placeholder="{{'lang.search'|translate}}" (input)="onChangeEvent($event)">
+                                    </form>
+
+                                    <table class="table table-striped scroll_auto scroll_mr light_scroll">
+                                        <tbody>
+                                            <tr *ngFor="let product of filteredProductList">
+                                                <td [ngClass]="{'selectedTd' : product.productID === selectedProductID}" style="cursor: pointer;" (click)="productClicked(product.productID)">
+                                                    <a class="wraptext" style="color:black;"> {{product.productName}} </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--col-md-2-->
+                    <div class="col-md-10">
+                        <div class="page-heading">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-5">
+                                    <div class="breadcrumb_nav">
+                                        <ol class="breadcrumb">
+                                            <li>
+                                                <a class="parent-item" routerLink="/User/UserDashboard"><img src="../../assets/images/icon-home.svg" border="0"></a>
+                                                <i class="fa fa-angle-right"></i>
+                                            </li>
+                                            <li>
+                                                <a class="txt-blue" routerLink="/User/Settings"><span translate>lang.settings</span></a>
+                                                <i class="fa fa-angle-right"></i>
+                                            </li>
+                                            <!-- <li class="wraptext">
+                                                <a class="txt-blue" [routerLink]="['/User/SOView',sono ]"><span translate>lang.saleorder</span>  {{ poviewmodel.soNo }}</a>
+                                                <i class="fa fa-angle-right"></i>
+                                            </li> -->
+                                            <li class="parent-item">
+                                                <span translate>lang.uploadob</span>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="page-breadcrumb wraptext">
+                                        <h1><span translate>lang.obupload</span></h1>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4"></div>
+                                <div class="col-md-3">
+                                    <button type="button" class="btn btn-gradient float-right" (click)='saveChanges()'>
+                                    Save Changes
+                                  </button>
+                                </div>
+                                <!-- col-md-3 -->
+                            </div>
+                        </div>
+                        <!-- page-heading -->
+                        <div class="mb-4" *ngIf="processDefinitionList && processDefinitionList.length">
+                            <ul class="horizontal-list nav nav-pills nav-pills-success mb-2 bdr-none clsULHorizontalList" role="tablist">
+                                <li class="nav-item" *ngFor="let process of processDefinitionList" (click)="processDefinitionClicked(process.processCode)">
+                                    <a class="nav-link active" data-toggle="tab" href="#tab-p-i_1" translate>{{process.processName}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- mb-4 -->
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card card-shadow h95">
+                                    <div class="card-body plr-0">
+
+                                        <div class="uploadObRbCard-3 scroll_auto scroll_mr light_scroll pb-50">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                    <tr *ngFor="let obFile of obFileUploadDataList">
+                                                        <td [ngClass]="{'selectedTd' : obFile.obFileUploadID === selectedOBFileUploadID}" style="cursor: pointer;" (click)="obFileClicked(obFile.obFileUploadID)">
+                                                            <a class="wraptext" style="color:black;"> {{obFile.fileName}} </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="mt-2">
+                                            <form id="file-upload-form  mb-2 align-items-center" style="text-align: -webkit-center;" action="">
+
+                                                <input id="file-upload" type="file" name="fileUpload" (change)="handleFileInput($event)" />
+                                                <label for="file-upload" id="file-drag">
+                                              <div *ngIf="isInvalid == 0">
+                                                <div style="width:33px; margin:0px auto"><img src="../../assets/images/icon-upload.svg"></div>
+                                                <h1 translate>lang.uploadob</h1>
+
+                                                <p translate>lang.dragfiletoupload</p>
+
+                                              </div>
+                                              <div *ngIf="isInvalid == 1">
+                                                <div style="width:33px; margin:0px auto"><img src="../../assets/images/icon-invalid.svg"></div>
+                                                <h1 class="txt-danger">lang.invalidformat</h1>
+
+                                                <p>
+                                                  {{ExcelFileName}}
+                                                  <span> {{ExcelFileSize}}</span>
+                                                </p>
+                                              </div>
+                                              <span id="file-upload-btn" class="button" translate>lang.browse</span>
+                                              <br>
+                                            </label>
+                                                <progress id="file-progress" value="0">
+                                              <span>0</span>%
+                                            </progress>
+                                                <output for="file-upload" id="messages"></output>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--col-md-3-->
+
+                            <div class="col-md-9">
+                                <div class="card card-shadow mb-3 h85">
+                                    <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-alpine" [rowData]="gridRowData" [columnDefs]="colDef" (gridReady)="OnGridReady($event)" [defaultColDef]="defaultColDef">
+                                    </ag-grid-angular>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--col-md-10-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

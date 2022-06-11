@@ -1,0 +1,109 @@
+<p *ngIf="!dashboardmodel"><em>Loading...</em></p>
+<div class="wrapper">
+  <!-- header -->
+  <header class="main-header">
+    <div class="container_header">
+      <div class="logo d-flex align-items-center justify-content-center justify-content-lg-start">
+        <a href="#"> <span class="logo-default"> <img src="../../assets/images/logo2.svg" alt=""> </span> </a>
+      </div>
+      <div class="right_detail">
+        <div class="row d-flex align-items-center min-h pos-md-r">
+          <div class="col-xl-12 col-10 d-flex justify-content-end">
+            <div class="right_bar_top d-flex align-items-center">
+              <!-- Dropdown_User -->
+              <div class="select-top">
+                <select name="slct" id="slct" class="slt">
+                  <option selected>{{UserName}}</option>
+                </select>
+              </div>
+              <!-- notification_End -->
+              <!-- DropDown_Inbox -->
+              <div class="dropdown dropdown-inbox">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"
+                  (click)="logout()"> <img src="../../assets/images/icon-12a.svg"></a>
+              </div>
+              <!--DropDown_Inbox_End -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- header_End -->
+  <!-- Content_right -->
+  <div class="container_full">
+    <div class="col-md-12">
+      <div class="container-fluid">
+        <div class="page-heading">
+          <!--row-->
+        </div>
+        <!-- page-heading -->
+        <!-- Section -->
+        <section class="chart_section">
+          <div class="row">
+            <div class="col-md-4">
+            </div>
+            <!--col-md-4-->
+            <div class="col-md-2">
+              <div class="form-group form-focus select-focus">
+                <label class="focus-label">Module</label>
+                <ng-select2 class="w100" [data]="dashboardmodel.modulelist" [(ngModel)]="Module"
+                  [placeholder]="'Select'" (valueChanged)="moduleChangeHandler($event)">
+                </ng-select2>
+              </div>
+            </div>
+            <!--col-md-2-->
+            <div class="col-md-2">
+              <div class="form-group form-focus select-focus">
+                <label class="focus-label">Line</label>
+                <ng-select2 class="w100" [data]="dashboardmodel.linelist" [(ngModel)]="Line" [placeholder]="'Select'"
+                  (valueChanged)="lineChangeHandler($event)">
+                </ng-select2>
+              </div>
+            </div>
+            <!--col-md-2-->
+            <div class="col-md-2">
+              <div class="form-group form-focus select-focus">
+                <label class="focus-label">Shift</label>
+                <ng-select2 class="w100" [data]="dashboardmodel.shiftlist" [(ngModel)]="Shift" [placeholder]="'Select'"
+                  (valueChanged)="shiftChangeHandler($event)">
+                </ng-select2>
+              </div>
+            </div>
+            <!--col-md-2-->
+            <div class="col-md-4">
+            </div>
+            <!--col-md-4-->
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4" style="text-align:center;">
+              <button type="submit" class="btn btn-success btn-flat m-b-30 mt-30" (click)='Play()'>Play TV Screen</button>
+            </div>
+            <div class="col-md-4">
+            </div>
+          </div>
+          <!--row-->
+        </section>
+        <!-- chart_section -->
+      </div>
+    </div>
+    <!-- Content_right_End -->
+    <div class="footer bg_darck ptb-20" >
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-4 col-lg-4 col-md-4 pull-left text-left">Version 1.0</div>
+          <div class="col-xl-4 col-lg-4 col-md-4  copy_right">
+            <p>
+              Copyright &copy; World Fashion exchange All Rights Reserved.
+            </p>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-4 pull-right text-right"><a
+              href="mailto:support@worldfashionexchange.com">support@worldfashionexchange.com</a></div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer_End -->
+  </div>
+</div>

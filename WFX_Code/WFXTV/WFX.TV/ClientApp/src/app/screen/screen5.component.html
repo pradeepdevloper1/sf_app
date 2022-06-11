@@ -1,0 +1,132 @@
+<p *ngIf="!model"><em>Loading...</em></p>
+<div class="wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 mb-10">
+        <div class="top-heading">
+          QUALITY BOTTLENECKS
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10"></div>
+      <div class="col-md-3 mb-10"></div>
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <a href="" style="float: right;" (click)="home()"> <img src="../../assets/images/icon-1a.svg"></a>
+        </div>
+      </div>
+      <!--col-md-3-->
+    </div>
+    <!--row-->
+    <div class="row mt-30 ">
+      <div class="col-md-4 pl-40">
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Checkpoint</span>
+            End line QC {{ UserName }}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Customer</span>
+            {{ model.customer }}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Date & Time</span>
+            {{ CurrentDate | date: 'dd/MM/yyyy hh:mm:ss a'}}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Line</span>
+            {{ model.line }}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Work Order</span>
+            {{ model.poNo}}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Product</span>
+            {{ model.product}}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Time Left</span>
+            {{ model.timeLeft}}
+          </div>
+        </div>
+        <!--col-md-3-->
+      </div>
+      <!--col-md-4-->
+      <div class="col-md-8 mt-nv60">
+        <div class="card card-shadow mb-4">
+          <div class="card-body padding-30 ptb-15">
+            <div class="row">
+              <div class="col-xl-6 col-md-6 mb-2">
+                <div class="card bg-warning border-0 ptb-10 text-light">
+                  <div class="card-body color-box text-center">
+                    <h6 class="m-0">DHU</h6>
+                    <h2 class="ft-60">
+                      {{ model.defectRate}}
+                    </h2>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-md-6 mb-2">
+                <div class="card bg-danger border-0 ptb-10 text-light">
+                  <div class="card-body color-box text-center">
+                    <h6 class="m-0">REJECT RATE</h6>
+                    <h2 class="ft-60">
+                      {{ model.rejectRate}}%
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--row-->
+            <p class="defects">Top Defects/Operations</p>
+            <div class="card card-shadow mb-2 btm-20" *ngFor="let lst of model.rejectionDefectList">
+              <div class="card-body padding-10">
+                <div class="row">
+                  <div class="col-xl-2">
+                    <div class="card bg-warning border-0 ptb-0 text-light">
+                      <div class="card-body color-box text-center">
+                        <h3 class="txt-wht">
+                          {{ lst.defectCount }}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <!--col-xl-2-->
+                  <div class="col-xl-8">
+                    <p class="txt-black">{{ lst.defectName }}</p>
+                  </div>
+                  <!--col-xl-8-->
+                </div>
+                <!--row-->
+              </div>
+            </div>
+            <!--card-shadow-->
+          </div>
+          <!--card-body-->
+        </div>
+      </div>
+      <!--col-md-9-->
+    </div>
+    <!--ROW-->
+  </div>
+  <!--container-fluid-->
+</div>

@@ -1,0 +1,13 @@
+.selectedLink{
+  border-left:2px solid #03A9F4
+}
+.selectedLink:hover{
+  border-left: 0px;
+}
+.selected{
+  opacity: 1 !important;
+}
+
+.unselected{
+  opacity: 0 !important ;
+}

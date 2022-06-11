@@ -1,0 +1,6 @@
+
+
+ALTER TABLE tbl_OB
+ADD OBLocation NVARCHAR(MAX)
+
+UPDATE tbl_OB SET OBLocation ='NA'

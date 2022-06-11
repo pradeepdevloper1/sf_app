@@ -1,0 +1,163 @@
+<p *ngIf="!model"><em>Loading...</em></p>
+<div class="wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 mb-10">
+        <div class="top-heading">
+          PRODUCTION STATUS BOARD
+        </div>
+      </div>
+      <!--col-md-3-->
+      <div class="col-md-3 mb-10"></div>
+      <div class="col-md-3 mb-10"></div>
+      <div class="col-md-3 mb-10">
+        <div class="top-text">
+          <a href="" style="float: right;" (click)="home()"> <img src="../../assets/images/icon-1a.svg"></a>
+        </div>
+      </div>
+    </div>
+    <!--row-->
+    <div class="row mt-30 ">
+      <div class="col-md-4 pl-40">
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Checkpoint</span>
+            End line QC {{ UserName }}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Customer</span>
+            {{ model.customer }}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Date & Time</span>
+            {{ CurrentDate | date: 'dd/MM/yyyy hh:mm:ss a'}}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Line</span>
+            {{ model.line }}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Work Order</span>
+            {{ model.poNo}}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Product</span>
+            {{ model.product}}
+          </div>
+        </div>
+        <!--col-md-3-->
+        <div class="col-md-12 mb-30 hgt-scr3">
+          <div class="top-text">
+            <span>Time Left</span>
+            {{ model.timeLeft}}
+          </div>
+        </div>
+        <!--col-md-3-->
+      </div>
+      <!--col-md-4-->
+      <div class="col-md-8 mt-nv60">
+        <div class="mb-4">
+          <div class="card-body padding-0">
+            <div class="row">
+              <div class="ver-col mb-3">
+                <div class="card bg-secondary border-0  full-hgt ptb-20 text-light">
+                  <div class="card-body color-box text-center">
+                    <h6 class="m-0">HOURLY ACHIEVED</h6>
+                    <h2>
+                      {{ model.hourlyAchieve}}
+                    </h2>
+                    <div class="btm">
+                      <h3 class="colour1">Target</h3>
+                      <h4 class="colour1">{{ model.hourlytarget}}</h4>
+                    </div>
+                    <!--btm-->
+                  </div>
+                </div>
+              </div>
+              <div class="ver-col mb-3">
+                <div class="card bg-info border-0 full-hgt ptb-20 text-light">
+                  <div class="card-body color-box text-center">
+                    <h6 class="m-0">EFFICIENCY</h6>
+                    <h2>
+                      {{ model.effAchieve}}%
+                    </h2>
+                    <div class="btm">
+                      <h3 class="colour2">Target</h3>
+                      <h4 class="colour2">{{ model.effTarget}}%</h4>
+                    </div>
+                    <!--btm-->
+                  </div>
+                </div>
+              </div>
+              <div class="ver-col mb-3">
+                <div class="card bg-primary border-0 full-hgt ptb-20 text-light">
+                  <div class="card-body color-box text-center">
+                    <h6 class="m-0">COMPLETED PIECES</h6>
+                    <h2>
+                      {{ model.outputGoodPCS}}
+                    </h2>
+                    <div class="btm">
+                      <h3 class="colour3">Target</h3>
+                      <h4 class="colour3">{{ model.target}}</h4>
+                    </div>
+                    <!--btm-->
+                  </div>
+                </div>
+              </div>
+              <div class="ver-col mb-3">
+                <div class="card bg-warning border-0 full-hgt ptb-20 text-light">
+                  <div class="card-body color-box text-center">
+                    <h6 class="m-0">EXPECTED DATE</h6>
+                    <h2 class="less">
+                      {{ model.exFactoryDate | date: 'dd-MM-yy'}}
+                    </h2>
+                    <div class="btm">
+                      <h3 class="colour4">Planned</h3>
+                      <h4 class="colour4">{{ model.exFactoryDate | date: 'dd-MM-yy'}}</h4>
+                    </div>
+                    <!--btm-->
+                  </div>
+                </div>
+              </div>
+              <div class="ver-col mb-3">
+                <div class="card bg-danger border-0 full-hgt ptb-20 text-light">
+                  <div class="card-body color-box text-center">
+                    <h6 class="m-0">DHU</h6>
+                    <h2>
+                      {{ model.defectRate}}
+                    </h2>
+                    <div class="btm">
+                      <h3 class="colour5">Pieces</h3>
+                      <h4 class="colour5"> {{ model.reWorkDefectPCS}}</h4>
+                    </div>
+                    <!--btm-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--row-->
+          </div>
+          <!--card-body-->
+        </div>
+      </div>
+      <!--col-md-8-->
+    </div>
+    <!--ROW-->
+  </div>
+  <!--container-fluid-->
+</div>

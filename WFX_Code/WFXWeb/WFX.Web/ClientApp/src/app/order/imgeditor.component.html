@@ -1,0 +1,183 @@
+<p *ngIf="!poviewmodel"><em>Loading...</em></p>
+<div class="wrapper">
+  <div class="container_full h90-6">
+    <div class="content_wrapper">
+      <div class="container-fluid">
+        <div class="row h100">
+          <div class="col-md-2 h100">
+            <div class="card card-shadow mb-4 mt-4 h100">
+              <div class="card-body h100" style="padding:10px 0px;">
+                <h6 class="sale"> <span translate>lang.saleorder</span> {{ poviewmodel.soNo }}</h6>
+                <div class="rb_card-2 scroll_auto scroll_mr light_scroll h100">
+                  <form method="post" class="find">
+                    <input title="Search" value="" type="submit" class="button">
+                    <input type="text" class="textbox" placeholder="{{'lang.search'|translate}}"
+                      (input)="onChangeEvent($event)">
+                  </form>
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr *ngFor="let polist of poviewmodel.polist">
+                        <td>
+                          <a class="wraptext" style="color:black;"> {{polist.value}}
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <div class="page-heading">
+              <div class="row d-flex align-items-center">
+                <div class="col-md-5">
+                  <div class="breadcrumb_nav">
+                    <ol class="breadcrumb">
+                      <li>
+                        <a class="parent-item" routerLink="/User/UserDashboard">
+                          <img src="../../assets/images/icon-home.svg" style="border:0"></a>
+                        <i class="fa fa-angle-right"></i>
+                      </li>
+                      <li>
+                        <a class="txt-blue" routerLink="/User/OrderList"><span translate>lang.orderlist</span></a>
+                        <i class="fa fa-angle-right"></i>
+                      </li>
+                      <li>
+                        <a class="txt-blue" [routerLink]="['/User/SOView',poviewmodel.soNo ]"><span translate>lang.saleorder</span> {{ poviewmodel.soNo }}</a>
+                        <i class="fa fa-angle-right"></i>
+                      </li>
+                      <li class="active">
+                        <a class="txt-blue" [routerLink]="['/User/POView',poviewmodel.poNo ]"><span translate>lang.purchaseorder</span> {{ poviewmodel.poNo }}</a>
+                      </li>
+                    </ol>
+                  </div>
+                  <div class="page-breadcrumb">
+                    <h1 *ngIf="title === 'imageeditorpo'"><span translate>lang.imageeditorpo</span> {{ poviewmodel.poNo }} </h1>
+                    <h1 *ngIf="title === 'obeditorpo'"><span translate>lang.obeditorpo</span> {{ poviewmodel.poNo }} </h1>
+                  </div>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-3">
+                  <button *ngIf="showSaveButton &&  title === 'obeditorpo'" type="button" class="btn btn-gradient" style="float: right;" (click)="savechanges()" translate>
+                    lang.savechange</button>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4 h85">
+              <ul class="nav nav-pills nav-pills-success mb-2 bdr-none" role="tablist">
+                <li class="nav-item">
+                  <a id=firsttab [ngClass]="{'active show': poviewmodel.picesChecked  == 0, 'nav-link': 0==0}"
+                    data-toggle="tab" href="#tab-p-i_1" (click)=changetitle($event) translate> lang.uploadphoto
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a id=secondtab [ngClass]="{'active show' : poviewmodel.picesChecked == 1, 'nav-link': 0==0}"
+                    data-toggle="tab" href="#tab-p-i_2" (click)=changetitle($event) translate> lang.uploadob
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content h100">
+                <div [ngClass]="{'active' : poviewmodel.picesChecked == 0, 'tab-pane h100': 0==0}" id="tab-p-i_1"
+                  role="tabpanel">
+                  <div class="row">
+                    <div class="col-md-3 text-center" *ngFor="let list of poviewmodel.imagelist">
+                      <div class="card card-shadow image-editor-height mb-3 pt-30 pb-10 image">
+                        <div class="card-body">
+                          <!-- <span class="f16"> {{list.imageName}} </span> -->
+                          <div style="height: 300px;"><img class =imagediv src={{list.imagePath}} ></div>
+                          <div class="row d-flex align-items-center w2 ">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                              <div class="social-box less-pad-0 icon2">
+                                <a href={{list.imagePath}} class="lightbox-image link" data-fancybox="images"
+                                  data-caption="" title="">
+                                  <img src="../../assets/images/icon-eye.svg"></a>
+                              </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                              <div class="social-box less-pad-0 icon3">
+                                <form id="file-upload-form" action="" class="w-100">
+                                  <input id="file-upload" type="file" name="fileUpload"
+                                    (change)="ChangeImage($event,list.poImageID,list.imageName)" />
+                                  <label for="file-upload" id="file-drag" class="m-0 p-0">
+                                    <img src="../../assets/images/icon-change-image.svg"
+                                      (click)="clickImage(list.poImageID,list.imageName)">
+                                  </label>
+                                </form>
+                              </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                              <div class="social-box less-pad-0 icon3">
+                                <button type="button" class="btn  btn-white  lightbox-image link m-0 p-0"
+                                  (click)="deleteImage(list.poImageID,list.imageName)">
+                                  <img src="../../assets/images/icon-delete.svg">
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 text-center" *ngIf="this.imagecount < 4">
+                      <div class="card card-shadow image-editor-height mb-3 ptb-30">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-xl-5 col-lg-4 col-md-4 col-sm-4"></div>
+                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 pt-130">
+                              <div class="social-box less-pad-0">
+                                <form id="file-upload-form" action="" class="w-100">
+                                  <input id="file-upload-plus" type="file" name="fileUpload"
+                                    (change)="UploadImage($event)" />
+                                  <label for="file-upload-plus" id="file-drag" class="m-0 p-0">
+                                    <img src="../../assets/images/icon-7a.svg">
+                                  </label>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix" style="height:20px;"></div>
+                </div>
+                <div [ngClass]="{'active' : poviewmodel.picesChecked == 1, 'tab-pane h100': 0==0}" id="tab-p-i_2"
+                  role="tabpanel">
+                  <div class="row h100">
+                    <div class="col-md-3 text-center">
+                      <div class="card card-shadow mb-3 pt-80  pb-160 h95">
+                        <div class="card-body plr-0">
+                          <div style="width:33px; margin:0px auto"><img src="../../assets/images/icon-upload.svg">
+                          </div>
+                          <h1 class="mb-40" translate>lang.uploadob</h1>
+                          <form id="file-upload-form" action="" class="w-50" style="height: 40px;margin-top: 5%;">
+
+                            <input id="ob-upload" type="file" name="fileUpload" (change)="OBFileInput($event)" />
+                            <label for="ob-upload" id="file-drag" class="m-0 p-0">
+                              <span id="file-upload-btn" class="button w-80" translate>lang.browse</span>
+                            </label>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-9 h100">
+                      <div class="card card-shadow mb-3 h85">
+                        <ag-grid-angular #agGrid style="width: 100%; height: 100%;" class="ag-theme-balham" [suppressLoadingOverlay]="true"
+                          [rowData]="rowData" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"    (cellValueChanged)="cellValueChanged($event)">
+                        </ag-grid-angular>
+                      </div>
+                      <div class="float-right">
+                        <button type="button" class="btn btn-next float-right" translate>lang.next</button>
+                      </div>
+                      <div class="clearfix" style="height:20px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
